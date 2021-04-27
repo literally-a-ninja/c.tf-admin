@@ -1,5 +1,8 @@
 <?php
 
+use App\Auth\CreatorsAuthProvider;
+use Illuminate\Foundation\Auth\User;
+
 return [
 
     /*
@@ -67,8 +70,8 @@ return [
 
     'providers' => [
         'users' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'driver' => 'creators',
+            'model' => 'users'
         ],
 
         // 'users' => [
