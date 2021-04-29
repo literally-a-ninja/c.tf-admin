@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DigitalDirectiveController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -22,7 +23,7 @@ use App\Http\Controllers\HomeController;
 
 Auth::routes();
 
-Route::get('/', [ HomeController::class, 'index', ])->name('home');
+Route::get('/', [HomeController::class, 'index',])->name('home');
 
 Route::get('generator_builder', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@builder')->name('io_generator_builder');
 
@@ -39,10 +40,15 @@ Route::post(
     '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generateFromFile'
 )->name('io_generator_builder_generate_from_file');
 
-
-
 Route::resource('users', App\Http\Controllers\UserController::class);
 
 Route::resource('items', App\Http\Controllers\ItemController::class);
 
 Route::resource('statistics', App\Http\Controllers\StatisticController::class);
+
+Route::prefix('/dd20')->group(function()
+{
+    Route::get('/', DigitalDirectiveController::class . '@index')->name('dd20.index');
+    Route::get('/find', DigitalDirectiveController::class . '@find')->name('dd20.find');
+    Route::get('/{player}', DigitalDirectiveController::class . '@view')->name('dd20.view');
+});

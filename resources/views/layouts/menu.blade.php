@@ -22,3 +22,11 @@
 </li>
 
 
+<li class="nav-item">
+    <a href="{{ route('dd20.index') }}"
+       class="nav-link {{ Request::is('dd20*') ? 'active' : '' }}">
+        <p>Digital Directive</p>
+    </a>
+</li>
+
+

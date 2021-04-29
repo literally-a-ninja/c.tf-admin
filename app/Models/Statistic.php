@@ -23,6 +23,7 @@ class Statistic extends Model
     public $timestamps = false;
 
     public $fillable = [
+        'steamid',
         'target',
         'progress',
     ];

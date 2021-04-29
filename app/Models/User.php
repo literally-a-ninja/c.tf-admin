@@ -35,15 +35,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  */
 class User extends Model
 {
-
     use HasFactory;
 
     public $table = 'tf_users';
-    
+
     public $timestamps = false;
-
-
-
 
     public $fillable = [
         'steamid',
@@ -66,7 +62,7 @@ class User extends Model
         'lastlogin',
         'lastserver',
         'backpack_pages',
-        'presence'
+        'presence',
     ];
 
     /**
@@ -96,7 +92,7 @@ class User extends Model
         'lastlogin' => 'string',
         'lastserver' => 'string',
         'backpack_pages' => 'integer',
-        'presence' => 'string'
+        'presence' => 'string',
     ];
 
     /**
@@ -125,8 +121,6 @@ class User extends Model
         'lastlogin' => 'nullable|string|max:255',
         'lastserver' => 'nullable|string|max:255',
         'backpack_pages' => 'nullable|integer',
-        'presence' => 'nullable|string'
+        'presence' => 'nullable|string',
     ];
-
-    
 }
