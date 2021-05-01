@@ -1,0 +1,209 @@
+{
+    "tour_digital_directive_1": {
+        "tour_name": "Platinum Palliative",
+        "description": "This tour contains 16 advanced missions across 13 maps, each with minor gameplay changes, additions, and/or a pure vanilla experience. In this tour you will find Custom Tanks, and Robot Changes.",
+        "difficulty": 3,
+
+        "mission_complete_loot_list": "mvm_victory",
+        "tour_complete_loot_list": "mvm_victory_directive",
+
+        "mission_complete_campaign_name": "mvm_directive",
+        "mission_complete_campaign_points": 50,
+
+        "missions": [{
+            "map": "mvm_autumnull_rc2",
+            "name": "Tincan Termination",
+            "title": "mvm_autumnull_rc2_adv_tincan_termination",
+            "waves": 7,
+            "indicators": ["robot_changes", "custom_tanks"]
+        }, {
+            "map": "mvm_akure_rc1",
+            "name": "Thermal Thunder",
+            "title": "mvm_akure_rc1_adv_thermal_thunder",
+            "waves": 7
+        }, {
+            "map": "mvm_estate_rc1",
+            "name": "Carbureted Clash",
+            "title": "mvm_estate_rc1_adv_carbureted_clash",
+            "waves": 6,
+            "indicators": ["robot_changes"]
+        }, {
+            "map": "mvm_giza_b7",
+            "name": "Tomb Adventure",
+            "title": "mvm_giza_b7_adv_tomb_adventure",
+            "waves": 5,
+            "indicators": ["major_changes", "gatebot"]
+        }, {
+            "map": "mvm_goldpit_rc1",
+            "name": "Equal Opposites",
+            "title": "mvm_goldpit_rc1_adv_equal_opposites",
+            "waves": 7,
+            "indicators": ["gatebot"]
+        }, {
+            "map": "mvm_goldpit_rc1",
+            "name": "Gilded Mainframe",
+            "title": "mvm_goldpit_rc1_adv_gilded_mainframe",
+            "waves": 7,
+            "indicators": ["robot_changes", "player_changes"]
+        }, {
+            "map": "mvm_hanami_rc1",
+            "name": "Typhoon Tycoon",
+            "title": "mvm_hanami_rc1_adv_typhoon_tycoon",
+            "waves": 6,
+            "indicators": ["custom_tanks"]
+        }, {
+            "map": "mvm_hideout_b3",
+            "name": "Wet Warfare",
+            "title": "mvm_hideout_b3_adv_wet_warfare",
+            "waves": 6
+        }, {
+            "map": "mvm_hoovydam_b8",
+            "name": "Blast Perfect",
+            "title": "mvm_hoovydam_b8_adv_blast_perfect",
+            "waves": 3,
+            "indicators": ["endurance", "gatebot"],
+            "endurance_waves": [1, 2, 3]
+        }, {
+            "map": "mvm_production_rc6",
+            "name": "Indeathrialization",
+            "title": "mvm_production_rc6_adv_indeathrialization",
+            "waves": 7,
+            "indicators": ["major_changes"]
+        }, {
+            "map": "mvm_rustvalley_rc3a",
+            "name": "Dust and Dirt",
+            "title": "mvm_rustvalley_rc3a_adv_dust_and_dirt",
+            "waves": 6,
+            "indicators": ["custom_tanks", "gatebot"]
+        }, {
+            "map": "mvm_tensai_rc3",
+            "name": "Scarlet Embodiment",
+            "title": "mvm_tensai_rc3_adv_scarlet_embodiment",
+            "waves": 6
+        }, {
+            "map": "mvm_tensai_rc3",
+            "name": "Surface Tension",
+            "title": "mvm_tensai_rc3_adv_surface_tension",
+            "waves": 7,
+            "indicators": ["weapon_changes"]
+        }, {
+            "map": "mvm_transmission_rc7a",
+            "name": "White Noise",
+            "title": "mvm_transmission_rc7a_adv_white_noise",
+            "waves": 6,
+            "indicators": ["gatebot", "robot_changes", "weapon_changes"]
+        }, {
+            "map": "mvm_boogge_rc3c",
+            "name": "Rotten Resurgence",
+            "title": "mvm_boogge_rc3c_adv_rotten_resurgence",
+            "waves": 1,
+            "indicators": ["custom_tanks", "robot_changes", "custom_tanks", "endurance"],
+            "endurance_waves": [1]
+        }]
+    },
+    "tour_digital_directive_2": {
+        "tour_name": "Malware Mashup",
+        "description": "This tour contains 14 advanced missions across 11 maps, each with significant gameplay changes and additions. In this tour, you will find RED Robots, Custom Tanks, Custom Upgrade Changes, Custom Weapon Changes, and Custom Player Changes.",
+        "difficulty": 3,
+
+        "mission_complete_loot_list": "mvm_victory",
+        "tour_complete_loot_list": "mvm_victory_directive",
+
+        "mission_complete_campaign_name": "mvm_directive",
+        "mission_complete_campaign_points": 50,
+
+        "missions": [{
+            "map": "mvm_akure_rc1",
+            "name": "Reboot Rush",
+            "title": "mvm_akure_rc1_adv_reboot_rush",
+            "waves": 7,
+            "indicators": ["red_robots", "custom_tanks", "robot_changes"]
+        }, {
+            "map": "mvm_boogge_rc3c",
+            "name": "Voidlings",
+            "title": "mvm_boogge_rc3c_adv_voidlings",
+            "waves": 5,
+            "indicators": ["major_changes", "weapon_changes", "custom_upgrades", "robot_changes", "custom_tanks"]
+        }, {
+            "map": "mvm_cliffside_b6",
+            "name": "Ashes to Ashes",
+            "title": "mvm_cliffside_b6_adv_ashes_to_ashes",
+            "waves": 6,
+            "indicators": ["major_changes", "weapon_changes", "robot_changes", "red_robots", "player_changes", "custom_upgrades", "custom_tanks"]
+        }, {
+            "map": "mvm_cliffside_b6",
+            "name": "Bionic Bits",
+            "title": "mvm_cliffside_b6_adv_bionic_bits",
+            "waves": 7,
+            "indicators": ["major_changes", "player_changes", "weapon_changes", "robot_changes", "custom_tanks", "no_canteens"]
+        }, {
+            "map": "mvm_estate_rc1",
+            "name": "Marina Mayhem",
+            "title": "mvm_estate_rc1_adv_marina_mayhem",
+            "waves": 6,
+            "indicators": ["major_changes", "weapon_changes", "red_robots"]
+        }, {
+            "map": "mvm_kelly_rc1b",
+            "name": "Mobocracy",
+            "title": "mvm_kelly_rc1b_adv_mobocracy",
+            "waves": 6,
+            "indicators": ["no_canteens", "major_changes", "weapon_changes", "red_robots", "player_changes", "robot_changes", "custom_upgrades", "custom_tanks"]
+        }, {
+            "map": "mvm_seabed_b6",
+            "name": "Ocean Commotion",
+            "title": "mvm_seabed_b6_adv_ocean_commotion",
+            "waves": 6,
+            "indicators": ["gatebot", "major_changes", "player_changes", "robot_changes", "weapon_changes", "custom_upgrades"]
+        }, {
+            "map": "mvm_sharp_rc9",
+            "name": "Sudden Equinox",
+            "title": "mvm_sharp_rc9_adv_sudden_equinox",
+            "waves": 5,
+            "indicators": ["major_changes", "player_changes", "robot_changes", "custom_upgrades"]
+        }, {
+            "map": "mvm_silentsky_rc4",
+            "name": "Ground Zero",
+            "title": "mvm_silentsky_rc4_adv_ground_zero",
+            "waves": 6,
+            "indicators": ["major_changes", "red_robots", "robot_changes", "player_changes", "custom_tanks"]
+        }, {
+            "map": "mvm_swirl_rc1",
+            "name": "Alpine Skylines",
+            "title": "mvm_swirl_rc1_adv_alpine_skylines",
+            "waves": 6,
+            "indicators": ["gatebot", "red_robots", "player_changes", "custom_upgrades", "robot_changes", "custom_tanks"]
+        }, {
+            "map": "mvm_winterbridge_rc6",
+            "name": "Corrupted Catharsis",
+            "title": "mvm_winterbridge_rc6_adv_corrupted_catharsis",
+            "waves": 4,
+            "indicators": ["no_canteens", "gatebot", "major_changes", "custom_tanks", "weapon_changes", "endurance", "medieval"],
+            "endurance_waves": [1, 2, 3, 4]
+        }, {
+            "map": "mvm_winterbridge_rc6",
+            "name": "Necromantic Nonsense",
+            "title": "mvm_winterbridge_rc6_adv_necromantic_nonsense",
+            "waves": 5,
+            "indicators": ["gatebot", "major_changes", "custom_tanks", "medieval"]
+        }, {
+            "map": "mvm_yiresa_rc5",
+            "name": "Mesa Malware",
+            "title": "mvm_yiresa_rc5a_adv_mesa_malware",
+            "waves": 6,
+            "indicators": ["gatebot", "major_changes", "weapon_changes", "robot_changes", "red_robots", "player_changes", "custom_upgrades"]
+        }, {
+            "map": "mvm_dusk_rc7b",
+            "name": "Chasing Daybreak",
+            "title": "mvm_dusk_rc7b_adv_chasing_daybreak",
+            "waves": 7,
+            "indicators": ["custom_tanks"]
+        }, {
+            "map": "mvm_autumnull_rc2",
+            "name": "Dynamic Disaster",
+            "title": "mvm_autumnull_rc2_adv_dynamic_disaster",
+            "waves": 2,
+            "indicators": ["major_changes", "robot_changes", "custom_tanks", "endurance"],
+            "endurance_waves": [1]
+        }]
+    }
+}

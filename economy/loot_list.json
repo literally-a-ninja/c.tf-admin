@@ -1,0 +1,157 @@
+{
+    "mvm_victory": {
+        "_comment": "Used to give items for completing a mission.",
+
+        "lists": [{
+            "_comment": "80% of getting a Robo crate",
+
+            "chance": 100,
+            "type": "random_from_list",
+            "items": [{
+                "name": "Digital Directive Crate"
+            }]
+        }, {
+            "_comment": "40% of getting 1 random crate.",
+
+            "chance": 40,
+            "type": "random_from_random_collection",
+            "collections": [
+                "Crates_collection"
+            ]
+        }, {
+            "_comment": "100% of getting a random strange part.",
+
+            "chance": 80,
+            "type": "random_from_collection",
+            "collection": "StrangeParts_collection"
+        }, {
+            "_comment": "10% of getting a music kit.",
+
+            "chance": 10,
+            "type": "random_from_collection",
+            "collection": "MusicKits_collection"
+        }, {
+            "_comment": "70% of getting a random paint kit.",
+
+            "chance": 70,
+            "type": "random_from_collection",
+            "collection": "ExtraLootPaints_collection"
+        }, {
+            "_comment": "50% chance to get a basic killstreak kit.",
+
+            "chance": 50,
+            "type": "random_from_list",
+            "items": [{
+                "name": "Killstreak Kit",
+                "attributes": [{
+                    "name": "killstreak tier",
+                    "value": 1
+                }]
+            }]
+        }]
+    },
+    "mvm_victory_directive": {
+        "_comment": "Used to give items for completing the tour.",
+
+        "lists": [{
+            "_comment": "50% of getting a Strangifier tool.",
+
+            "chance": 50,
+            "type": "random_from_list",
+            "items": [{
+                "name": "Strangifier"
+            }]
+        }, {
+            "_comment": "100% chance to get a specialized or professional killstreak kit.",
+
+            "chance": 100,
+            "type": "random_from_list",
+            "items": [{
+                "name": "Killstreak Kit",
+                "attributes": [{
+                    "name": "item style override",
+                    "value": 1
+                }, {
+                    "name": "killstreak tier",
+                    "value": 2
+                }, {
+                    "name": "killstreak idleeffect",
+                    "value": 0,
+                    "value_compute": {
+                        "type": "random_value_from_list",
+                        "values": [1, 2, 3, 4, 5, 6, 7]
+                    }
+                }]
+            }, {
+                "name": "Killstreak Kit",
+                "attributes": [{
+                    "name": "item style override",
+                    "value": 2
+                }, {
+                    "name": "killstreak tier",
+                    "value": 3
+                }, {
+                    "name": "killstreak idleeffect",
+                    "value": 0,
+                    "value_compute": {
+                        "type": "random_value_from_list",
+                        "values": [1, 2, 3, 4, 5, 6, 7]
+                    }
+                }, {
+                    "name": "killstreak effect",
+                    "value": 0,
+                    "value_compute": {
+                        "type": "random_value_from_list",
+                        "values": [2002, 2003, 2004, 2005, 2006, 2007, 2008]
+                    }
+                }]
+            }]
+        }, {
+            "_comment": "100% chance of getting a Silver weapon.",
+
+            "chance": 100,
+            "type": "random_from_collection",
+            "collection": "NewZealiumItems_collection",
+
+            "attributes": [{
+                "name": "is new zealium item",
+                "value": true
+            }],
+
+            "post_creation_applications": [
+                "strangify",
+                "killstreakify"
+            ]
+        }, {
+            "_comment": "1% chance of getting a Silver Crate Smasher.",
+
+            "chance": 1,
+            "type": "random_from_list",
+            "items": [{
+                "name": "Silver Crate Smasher",
+
+                "attributes": [{
+                    "name": "killstreak tier",
+                    "value": 3
+                }, {
+                    "name": "killstreak idleeffect",
+                    "value": 0,
+                    "value_compute": {
+                        "type": "random_value_from_list",
+                        "values": [1, 2, 3, 4, 5, 6, 7]
+                    }
+                }, {
+                    "name": "killstreak effect",
+                    "value": 0,
+                    "value_compute": {
+                        "type": "random_value_from_list",
+                        "values": [2002, 2003, 2004, 2005, 2006, 2007, 2008]
+                    }
+                }],
+                "post_creation_applications": [
+                    "strangify"
+                ]
+            }]
+        }]
+    }
+}

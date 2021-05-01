@@ -1,0 +1,253 @@
+{
+    "1": {
+        "name": "Kills",
+        "event": "TF_KILL"
+    },
+    "2": {
+        "name": "Points Scored",
+        "event": "TF_SCORE_POINTS"
+    },
+    "3": {
+        "name": "Asissts",
+        "event": "TF_KILL_ASSIST"
+    },
+    "4": {
+        "name": "Airborne Enemies Killed",
+        "event": "TF_KILL_AIRBORNE_ENEMY"
+    },
+    "5": {
+        "name": "Scouts Killed",
+        "event": "TF_KILL_CLASS_SCOUT"
+    },
+    "6": {
+        "name": "Soldiers Killed",
+        "event": "TF_KILL_CLASS_SOLDIER"
+    },
+    "7": {
+        "name": "Pyros Killed",
+        "event": "TF_KILL_CLASS_PYRO"
+    },
+    "8": {
+        "name": "Demomen Killed",
+        "event": "TF_KILL_CLASS_DEMOMAN"
+    },
+    "9": {
+        "name": "Heavies Killed",
+        "event": "TF_KILL_CLASS_HEAVY"
+    },
+    "10": {
+        "name": "Engineers Killed",
+        "event": "TF_KILL_CLASS_ENGINEER"
+    },
+    "11": {
+        "name": "Medics Killed",
+        "event": "TF_KILL_CLASS_MEDIC"
+    },
+    "12": {
+        "name": "Snipers Killed",
+        "event": "TF_KILL_CLASS_SNIPER"
+    },
+    "13": {
+        "name": "Spies Killed",
+        "event": "TF_KILL_CLASS_SPY"
+    },
+    "14": {
+        "name": "Revenge Kills",
+        "event": "TF_KILL_REVENGE"
+    },
+    "15": {
+        "name": "Domination Kills",
+        "event": "TF_KILL_DOMINATE"
+    },
+    "16": {
+        "name": "Cloaked Spies Killed",
+        "event": "TF_KILL_CLOAKED_SPY"
+    },
+    "17": {
+        "name": "Defender Kills",
+        "event": "TF_OBJECTIVE_DEFEND"
+    },
+    "18": {
+        "name": "Kills While Ubercharged",
+        "event": "TF_KILL_WHILE_UBERCHARGED"
+    },
+    "19": {
+        "name": "Damage Dealt",
+        "event": "TF_DEAL_DAMAGE"
+    },
+    "20": {
+        "name": "Player Hits",
+        "event": "TF_HIT_PLAYER"
+    },
+    "21": {
+        "name": "Allied Healing Done",
+        "event": "TF_HEALING_TEAMMATES"
+    },
+    "22": {
+        "name": "Taunting Player Kills",
+        "event": "TF_KILL_TAUNTING"
+    },
+    "23": {
+        "name": "Medics Killed That Have Full ÜberCharge",
+        "event": "TF_KILL_UBERED_MEDIC"
+    },
+    "24": {
+        "name": "Killstreaks Ended",
+        "event": "TF_KILL_STREAK_ENDED"
+    },
+    "25": {
+        "name": "Not Crit nor MiniCrit Kills",
+        "event": "TF_KILL_NON_CRITICAL"
+    },
+    "26": {
+        "name": "Headshot Kills",
+        "event": "TF_KILL_HEADSHOT"
+    },
+    "27": {
+        "name": "Critical Hits",
+        "event": "TF_KILL_CRITICAL"
+    },
+    "28": {
+        "name": "Gib Kills",
+        "event": "TF_KILL_GIB"
+    },
+    "29": {
+        "name": "Buildings Destroyed",
+        "event": "TF_KILL_OBJECT"
+    },
+    "30": {
+        "name": "Projectiles Reflected",
+        "event": "TF_REFLECT"
+    },
+    "31": {
+        "name": "Kills with a Taunt Attack",
+        "event": "TF_KILL_WHILE_TAUNTING"
+    },
+    "32": {
+        "name": "Souls Collected",
+        "event": "TF_COLLECT_SOULS"
+    },
+    "33": {
+        "name": "Merasmissions Completed"
+    },
+    "34": {
+        "name": "Gifts Collected"
+    },
+    "35": {
+        "name": "Mechachievements Completed"
+    },
+    "36": {
+        "name": "Robots Killed",
+        "event": "TF_MVM_KILL_ROBOT"
+    },
+    "37": {
+        "name": "Giant Robots Killed",
+        "event": "TF_MVM_KILL_ROBOT_GIANT"
+    },
+    "38": {
+        "name": "Scout Robots Killed",
+        "event": "TF_MVM_KILL_ROBOT_SCOUT"
+    },
+    "39": {
+        "name": "Soldier Robots Killed",
+        "event": "TF_MVM_KILL_ROBOT_SOLDIER"
+    },
+    "40": {
+        "name": "Pyro Robots Killed",
+        "event": "TF_MVM_KILL_ROBOT_PYRO"
+    },
+    "41": {
+        "name": "Demoman Robots Killed",
+        "event": "TF_MVM_KILL_ROBOT_DEMOMAN"
+    },
+    "42": {
+        "name": "Heavy Robots Killed",
+        "event": "TF_MVM_KILL_ROBOT_HEAVY"
+    },
+    "43": {
+        "name": "Engineer Robots Killed",
+        "event": "TF_MVM_KILL_ROBOT_ENGINEER"
+    },
+    "44": {
+        "name": "Medic Robots Killed",
+        "event": "TF_MVM_KILL_ROBOT_MEDIC"
+    },
+    "45": {
+        "name": "Sniper Robots Killed",
+        "event": "TF_MVM_KILL_ROBOT_SNIPER"
+    },
+    "46": {
+        "name": "Spy Robots Killed",
+        "event": "TF_MVM_KILL_ROBOT_SPY"
+    },
+    "47": {
+        "name": "Giant Scout Robots Killed",
+        "event": "TF_MVM_KILL_ROBOT_GIANT_SCOUT"
+    },
+    "48": {
+        "name": "Giant Soldier Robots Killed",
+        "event": "TF_MVM_KILL_ROBOT_GIANT_SOLDIER"
+    },
+    "49": {
+        "name": "Giant Pyro Robots Killed",
+        "event": "TF_MVM_KILL_ROBOT_GIANT_PYRO"
+    },
+    "50": {
+        "name": "Giant Demoman Robots Killed",
+        "event": "TF_MVM_KILL_ROBOT_GIANT_DEMOMAN"
+    },
+    "51": {
+        "name": "Giant Heavy Robots Killed",
+        "event": "TF_MVM_KILL_ROBOT_GIANT_HEAVY"
+    },
+    "52": {
+        "name": "Giant Engineer Robots Killed",
+        "event": "TF_MVM_KILL_ROBOT_GIANT_ENGINEER"
+    },
+    "53": {
+        "name": "Giant Medic Robots Killed",
+        "event": "TF_MVM_KILL_ROBOT_GIANT_MEDIC"
+    },
+    "54": {
+        "name": "Giant Sniper Robots Killed",
+        "event": "TF_MVM_KILL_ROBOT_GIANT_SNIPER"
+    },
+    "55": {
+        "name": "Giant Spy Robots Killed",
+        "event": "TF_MVM_KILL_ROBOT_GIANT_SPY"
+    },
+    "56": {
+        "name": "Distance Travelled",
+        "event": "TF_TOBEMADEEVENTUALLYIDK"
+    },
+    "57": {
+        "name": "Shield Bash Kills",
+        "event": "TF_KILL_SHIELD"
+    },
+    "58": {
+        "name": "Round MVPs",
+        "event": "TF_ROUND_MVP"
+    },
+    "59": {
+        "name": "Distance Travelled",
+        "event": "TF_DISTANCE_TRAVELLED"
+    },
+    "60": {
+        "name": "Tanks Destroyed",
+        "event": "TF_MVM_DESTROY_TANK"
+    },
+    "61": {
+        "name": "Blimps Destroyed",
+        "event": "TF_MVM_DESTROY_TANK_BLIMP"
+    },
+    "63": {
+        "name": "Damage Dealt to Robots",
+        "event": "TF_MVM_DAMAGE_ROBOT"
+    },
+    "64": {
+        "name": "Campaign Points"
+    },
+    "65": {
+        "name": "Missions Completed During Beta"
+    }
+}

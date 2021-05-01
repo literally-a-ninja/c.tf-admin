@@ -1,0 +1,7 @@
+{
+    "Gamemodes": [{
+        "name": "Payload",
+        "description": "Escore the payload through a series of checkpoints to win.",
+        "maps": ["pl_"]
+    }]
+}

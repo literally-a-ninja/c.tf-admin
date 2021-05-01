@@ -1,0 +1,34 @@
+{
+    "1": {
+        "name": "TF_MVM_WAVE_TOTAL",
+        "title": "Total wave attempts in Mann vs. Machine",
+        "event": "TF_MVM_STAT_WAVE_ATTEMPT"
+    },
+    "2": {
+        "name": "TF_MVM_WAVE_COMPLETED",
+        "title": "Successful wave attempts in Mann vs. Machine",
+        "event": "TF_MVM_STAT_WAVE_WIN"
+    },
+    "3": {
+        "name": "TF_MVM_WAVE_FAILED",
+        "title": "Failed wave attempts in Mann vs. Machine",
+        "event": "TF_MVM_STAT_WAVE_LOSS"
+    },
+    "4": {
+        "name": "TF_MVM_WAVE_WINRATE",
+        "title": "Success rate in Mann vs. Machine",
+        "type": "avgrate",
+        "postfix": "S/F",
+
+        "total_stat": "TF_MVM_WAVE_COMPLETED",
+        "part_stat": "TF_MVM_WAVE_FAILED"
+    },
+    "5": {
+        "name": "TF_MVM_WAVE_WIN_PERCENT",
+        "title": "Percentage of successful wave attempts in Mann vs. Machine",
+        "type": "percentage",
+
+        "total_stat": "TF_MVM_WAVE_TOTAL",
+        "part_stat": "TF_MVM_WAVE_COMPLETED"
+    }
+}
