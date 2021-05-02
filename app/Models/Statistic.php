@@ -36,7 +36,7 @@ class Statistic extends Model
     protected $casts = [
         'steamid' => 'string',
         'target' => 'string',
-        'progress' => 'string',
+        'progress' => 'array',
     ];
 
     /**
