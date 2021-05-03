@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Eloquent as Model;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
@@ -17,6 +16,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Statistic extends Model
 {
     use HasFactory;
+
+    /**
+     * Validation rules
+     *
+     * @var array
+     */
+    public static $rules = [
+        'target' => 'required|string|max:150',
+        'progress' => 'nullable|string',
+    ];
 
     public $table = 'tf_progress_new';
 
@@ -40,12 +49,35 @@ class Statistic extends Model
     ];
 
     /**
-     * Validation rules
-     *
-     * @var array
+     * TEMPORARY
      */
-    public static $rules = [
-        'target' => 'required|string|max:150',
-        'progress' => 'nullable|string',
-    ];
+    public function name()
+    {
+        $stem = explode(':', $this->target)[1];
+        return substr($stem, 0, strlen($stem) - 1);
+    }
+
+    /**
+     * TEMPORARY
+     */
+    public function waves()
+    {
+        $waves = [];
+        foreach ($this->progress as $key => $value)
+        {
+            switch ($key)
+            {
+                case 'updated';
+                    break;
+
+                default:
+                    // wave_1, wave_1_duration, etc.
+                    [$_, $n] = explode('_', $key);
+                    $waves[intval($n)] = true;
+                    break;
+            }
+        }
+
+        return $waves;
+    }
 }

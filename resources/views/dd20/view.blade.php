@@ -24,11 +24,23 @@
         </div>
         <div class="card">
             <div class="card-body">
-                <form>
+                <form class="form-inline">
                     <div class="form-group">
-                        <label>Points accumulated</label>
+                        <label for="campaign.progress">Points accumulated</label>
                         <div class="col-sm-2">
-                            <input class="form-control" type="text" placeholder="Default input">
+                            <input class="form-control" name="campaign.progress" type="text" value="{{$campaign->progress['progress']}}" placeholder="0" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="campaign.progress_seen">Points seen</label>
+                        <div class="col-sm-2">
+                            <input class="form-control" name="campaign.progress_seen" type="text" value="{{$campaign->progress['progress_seen']}}" placeholder="0" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="campaign.checked">Has signed contract?</label>
+                        <div class="col-sm-2">
+                            <input class="form-control" name="campaign.checked" type="checkbox" {{$campaign->progress['signed'] ? 'checked' : ''}} disabled>
                         </div>
                     </div>
                 </form>
@@ -37,48 +49,68 @@
 
         <h2>Campaign Missions</h2>
         <i class="small">All missions completed by the player, grouped by map.</i>
-        <div id="accordion">
-            @foreach(['mvm_autumnull_rc2', 'mvm_example', 'mvm_bigrock'] as $map)
-                <div class="card">
-                    <div class="card-header" id="heading">
+        <div class="accordion">
+            @foreach($missions as $map => $mapMissions)
+                <div class="card" id="accordion-{{$map}}">
+                    <button class="card-header btn btn-link" id="heading-{{$map}}" data-toggle="collapse" data-target="#card-{{$map}}" aria-expanded="true" aria-controls="collapse">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex flex-grow-1 align-items-center">
                                 <div class="col col-1">
-                                    <img class="img-thumbnail w-100 h-100" src="//creators.tf/api/mapthumb?map={{$map}}"/>
+                                    <img class="img-thumbnail w-100 h-100" src="//local.creators.tf/api/mapthumb?map={{$map}}"/>
                                 </div>
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapse">
-                                    <h2>{{ucfirst(explode('_', $map)[1])}}</h2>
-                                </button>
-                                <span class="text-muted">2 mission available</span>
-                            </div>
-                            <div>
-                                <h2 class="fas fa-chevron-down"></h2>
+                                <h2>{{ucfirst(explode('_', $map)[1])}}</h2>
+                                <span class="ml-2 text-muted">{{sizeof($mapMissions)}} mission(s) available</span>
                             </div>
                         </div>
-                    </div>
-                    <div id="collapse" class="collapse" aria-labelledby="heading" data-parent="#accordion">
-                        <div class="card-body">
-                            @foreach($missions as $i => $mission)
-                                <form>
-                                    <div class="form-group">
-                                        <label>{{$mission->target}}</label>
-                                        <div class="row">
-                                            @for ($i = 1; $i <= 6; $i++)
+                    </button>
+                    <div id="card-{{$map}}" class="card-body collapse" aria-labelledby="heading" data-parent="#accordion-{{$map}}">
+                        @foreach($mapMissions as $mission)
+                            <form action="{{route('dd20.save', compact('player'))}}" class="mb-5">
+                                @csrf
+                                <input type="hidden" name="reference" value="{{$mission->title}}">
+                                <div class="form-group">
+                                    <div class="d-flex align-items-center">
+                                        <h4 class="d-inline"><label>{{$mission->name}}</label></h4>
+                                    </div>
+                                    <div class="form-group row">
+                                        @isset ($stats[$mission->title])
+                                            @php
+                                                $waves = $stats[$mission->title]->waves();
+                                            @endphp
+                                            @for ($i = 1; $i <= $mission->waves; $i++)
                                                 <div class="col-sm-1">
-                                                    <label>Wave {{$i}}</label>
-                                                    <input class="form-control" type="text" placeholder="0">
+                                                    <div class="d-flex flex-column justify-content-center text-center">
+                                                        <label for="{{$mission->title}}.{{$i}}">Wave {{$i}}</label>
+                                                        @isset ($waves[$i - 1])
+                                                            <input type="checkbox" name="{{$mission->title}}.{{$i}}" checked>
+                                                        @else
+                                                            <input type="checkbox" name="{{$mission->title}}.{{$i}}">
+                                                        @endisset
+                                                    </div>
                                                 </div>
                                             @endfor
-                                        </div>
+                                        @else
+                                            @for ($i = 1; $i <= $mission->waves; $i++)
+                                                <div class="col-sm-1">
+                                                    <div class="d-flex flex-column justify-content-center text-center">
+                                                        <label for="{{$mission->title}}.{{$i}}">Wave {{$i}}</label>
+                                                        <input type="checkbox" name="{{$mission->title}}.{{$i}}">
+                                                    </div>
+                                                </div>
+                                            @endfor
+                                        @endisset
                                     </div>
-                                </form>
-                            @endforeach
-                        </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-default mr-2"><i class="fas fa-eraser"></i> Reset progress</button>
+                                        <button type="submit" class="btn btn-default mr-2"><i class="fas fa-save"></i> Save changes</button>
+                                        <button type="submit" class="btn btn-warning"><i class="fas fa-magic"></i> Distribute Loot</button>
+                                    </div>
+                                </div>
+                            </form>
+                        @endforeach
                     </div>
                 </div>
-            @endforeach
-        </div>
+        @endforeach
     </section>
-
 @endsection
 

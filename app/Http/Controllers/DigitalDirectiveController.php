@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateStatisticRequest;
-use App\Http\Requests\UpdateStatisticRequest;
-use App\Http\Controllers\AppBaseController;
+use App\Definitions\Tour;
 use App\Models\Statistic;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Flash;
 use Illuminate\Support\Facades\Redirect;
 use Response;
 
@@ -52,20 +49,33 @@ class DigitalDirectiveController extends AppBaseController
      *
      * @return Response
      */
-    public function view(Request $request, string $userId)
+    public function view(Request $request, User $player, Tour $tour)
     {
-        $player = User::find($userId);
+        $missions = collect([
+            $tour->newInstance('tour_digital_directive_2')->missions(),
+            $tour->newInstance('tour_digital_directive_1')->missions(),
+        ]);
 
+        $missions = $missions->flatten()->groupBy('map');
         $campaign = Statistic::query()
             ->where('steamid', '=', $player->steamid)
             ->where('target', '=', '[C:mvm_directive]')
             ->firstOrFail();
 
-        $missions = Statistic::query()
+        $stats = Statistic::query()
             ->where('steamid', '=', $player->steamid)
             ->where('target', 'LIKE', '[MVMM:%')
-            ->get();
+            ->get()
+            ->mapWithKeys(function(Statistic $statistic)
+            {
+                return [ $statistic->name() => $statistic ];
+            });
 
-        return view('dd20.view', compact('player', 'campaign', 'missions'));
+        return view('dd20.view', compact('player', 'campaign', 'missions', 'stats'));
+    }
+
+    public function store(Request $request, User $player)
+    {
+        dd($request->query());
     }
 }

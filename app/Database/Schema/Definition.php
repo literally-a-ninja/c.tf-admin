@@ -46,17 +46,12 @@ abstract class Definition implements Arrayable, Jsonable
     protected $contents = [];
 
     /**
-     * Create a new instance of the given definition.
-     *
-     * @return static
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    public function __construct(string $key = '')
+    public function loadFromDisk()
     {
         $contents = Storage::disk($this->disk)->get($this->location);
         $contents = json_decode($contents, true);
-
-        $this->key = $key;
         $this->contents = $this->transform($contents);
     }
 
@@ -82,6 +77,21 @@ abstract class Definition implements Arrayable, Jsonable
             // This exception confirms better to what we're doing plus this will create a 404 if unhandled.
             throw new RecordsNotFoundException("$this->key not found.");
         }
+    }
+
+    /**
+     * Create a new instance of the given definition.
+     *
+     * @return static
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     */
+    public function newInstance(string $key = '')
+    {
+        $model = new static();
+        $model->key = $key;
+        $model->loadFromDisk();
+
+        return $model;
     }
 
     /**

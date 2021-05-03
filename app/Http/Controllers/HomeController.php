@@ -24,7 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        dd(new Tour('tour_digital_directive_1'));
         return view('home');
     }
 }
