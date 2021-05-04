@@ -25,7 +25,7 @@
         <div class="card">
             <div class="card-body">
                 <label for="form-rpc">Website Controls</label>
-                <form id="form-rpc" method="post" class="form-inline" action="{{ route('dd20.rpc', compact('player')) }}">
+                <form id="form-rpc" method="GET" class="form-inline" action="{{ route('dd20.rpc', compact('player')) }}">
                     @csrf
                     <button type="submit" name="action" value="reset_cache" class="btn btn-primary"><i class="fas fa-bomb"></i> Update main cache</button>
                 </form>
