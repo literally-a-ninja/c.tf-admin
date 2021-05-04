@@ -23,6 +23,7 @@ class Tour extends Definition
         foreach ($this->contents['missions'] as $mission)
         {
             $object = new Mission();
+            $object->contents = $mission;
             foreach ($mission as $k => $v)
             {
                 $object->$k = $v;

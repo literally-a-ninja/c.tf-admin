@@ -65,16 +65,10 @@ class Statistic extends Model
         $waves = [];
         foreach ($this->progress as $key => $value)
         {
-            switch ($key)
+            $array = explode('_', $key);
+            if (sizeof($array) == 2 && $array[0] == 'wave')
             {
-                case 'updated';
-                    break;
-
-                default:
-                    // wave_1, wave_1_duration, etc.
-                    [$_, $n] = explode('_', $key);
-                    $waves[intval($n)] = true;
-                    break;
+                $waves[intval($array[1])] = $value;
             }
         }
 

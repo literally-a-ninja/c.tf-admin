@@ -2,6 +2,8 @@
 
 namespace App\Definitions;
 
+use App\Database\Schema\Definition;
+
 /**
  * Class Mission
  *
@@ -13,6 +15,6 @@ namespace App\Definitions;
  * @property-read $waves
  * @property-read $indicators
  */
-class Mission
+class Mission extends Definition
 {
 }

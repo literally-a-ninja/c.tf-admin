@@ -111,4 +111,14 @@ abstract class Definition implements Arrayable, Jsonable
     {
         return json_encode($this->contents, $options);
     }
+
+    public function fromJson(string $json)
+    {
+        $attrs = json_decode($json);
+        $this->contents = $attrs;
+        foreach ($attrs as $k => $v)
+        {
+            $this->$k = $v;
+        }
+    }
 }

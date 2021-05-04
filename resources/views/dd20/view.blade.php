@@ -56,7 +56,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex flex-grow-1 align-items-center">
                                 <div class="col col-1">
-                                    <img class="img-thumbnail w-100 h-100" src="//local.creators.tf/api/mapthumb?map={{$map}}"/>
+                                    <img class="img-thumbnail w-100 h-100" src="//creators.tf/api/mapthumb?map={{$map}}"/>
                                 </div>
                                 <h2>{{ucfirst(explode('_', $map)[1])}}</h2>
                                 <span class="ml-2 text-muted">{{sizeof($mapMissions)}} mission(s) available</span>
@@ -65,9 +65,9 @@
                     </button>
                     <div id="card-{{$map}}" class="card-body collapse" aria-labelledby="heading" data-parent="#accordion-{{$map}}">
                         @foreach($mapMissions as $mission)
-                            <form action="{{route('dd20.save', compact('player'))}}" class="mb-5">
+                            <form action="{{route('dd20.save', compact('player'))}}" method="post" class="mb-5">
                                 @csrf
-                                <input type="hidden" name="reference" value="{{$mission->title}}">
+                                <input type="hidden" name="reference" value="{{base64_encode($mission->toJson())}}">
                                 <div class="form-group">
                                     <div class="d-flex align-items-center">
                                         <h4 class="d-inline"><label>{{$mission->name}}</label></h4>
@@ -81,11 +81,7 @@
                                                 <div class="col-sm-1">
                                                     <div class="d-flex flex-column justify-content-center text-center">
                                                         <label for="{{$mission->title}}.{{$i}}">Wave {{$i}}</label>
-                                                        @isset ($waves[$i - 1])
-                                                            <input type="checkbox" name="{{$mission->title}}.{{$i}}" checked>
-                                                        @else
-                                                            <input type="checkbox" name="{{$mission->title}}.{{$i}}">
-                                                        @endisset
+                                                        <input type="checkbox" name="waves[]" value="{{$i}}" {{ isset($waves[$i]) && $waves[$i] ? 'checked' : ''}}>
                                                     </div>
                                                 </div>
                                             @endfor
@@ -94,16 +90,16 @@
                                                 <div class="col-sm-1">
                                                     <div class="d-flex flex-column justify-content-center text-center">
                                                         <label for="{{$mission->title}}.{{$i}}">Wave {{$i}}</label>
-                                                        <input type="checkbox" name="{{$mission->title}}.{{$i}}">
+                                                        <input type="checkbox" id="{{$mission->title}}{{$i}}" name="waves[]" value="{{$i}}">
                                                     </div>
                                                 </div>
                                             @endfor
                                         @endisset
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-default mr-2"><i class="fas fa-eraser"></i> Reset progress</button>
-                                        <button type="submit" class="btn btn-default mr-2"><i class="fas fa-save"></i> Save changes</button>
-                                        <button type="submit" class="btn btn-warning"><i class="fas fa-magic"></i> Distribute Loot</button>
+                                        <button type="submit" name="erase" class="btn btn-default mr-2"><i class="fas fa-eraser"></i> Reset progress</button>
+                                        <button type="submit" name="save" class="btn btn-default mr-2"><i class="fas fa-save"></i> Save changes</button>
+                                        <button type="submit" name="loot" class="btn btn-warning" disabled data-toggle="tooltip" title="TODO: Implement"><i class="fas fa-magic"></i> Distribute Loot</button>
                                     </div>
                                 </div>
                             </form>
