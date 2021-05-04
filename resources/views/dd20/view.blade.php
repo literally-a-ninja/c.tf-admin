@@ -24,26 +24,32 @@
         </div>
         <div class="card">
             <div class="card-body">
-                <form class="form-inline">
-                    <div class="form-group">
-                        <label for="campaign.progress">Points accumulated</label>
-                        <div class="col-sm-2">
-                            <input class="form-control" name="campaign.progress" type="text" value="{{$campaign->progress['progress']}}" placeholder="0" disabled>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="campaign.progress_seen">Points seen</label>
-                        <div class="col-sm-2">
-                            <input class="form-control" name="campaign.progress_seen" type="text" value="{{$campaign->progress['progress_seen']}}" placeholder="0" disabled>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="campaign.checked">Has signed contract?</label>
-                        <div class="col-sm-2">
-                            <input class="form-control" name="campaign.checked" type="checkbox" {{$campaign->progress['signed'] ? 'checked' : ''}} disabled>
-                        </div>
-                    </div>
+                <label for="form-rpc">Website Controls</label>
+                <form id="form-rpc" method="post" class="form-inline" action="{{ route('dd20.rpc', compact('player')) }}">
+                    @csrf
+                    <button type="submit" name="action" value="reset_cache" class="btn btn-primary"><i class="fas fa-bomb"></i> Update main cache</button>
                 </form>
+                {{--                <label for="form-summary">Summary</label>--}}
+                {{--                <form id="form-summary" class="form-inline">--}}
+                {{--                    <div class="form-group">--}}
+                {{--                        <label for="campaign.progress">Points accumulated</label>--}}
+                {{--                        <div class="col-sm-2">--}}
+                {{--                            <input class="form-control" name="campaign.progress" type="text" value="{{$campaign->progress['progress']}}" placeholder="0" disabled>--}}
+                {{--                        </div>--}}
+                {{--                    </div>--}}
+                {{--                    <div class="form-group">--}}
+                {{--                        <label for="campaign.progress_seen">Points seen</label>--}}
+                {{--                        <div class="col-sm-2">--}}
+                {{--                            <input class="form-control" name="campaign.progress_seen" type="text" value="{{$campaign->progress['progress_seen']}}" placeholder="0" disabled>--}}
+                {{--                        </div>--}}
+                {{--                    </div>--}}
+                {{--                    <div class="form-group">--}}
+                {{--                        <label for="campaign.checked">Has signed contract?</label>--}}
+                {{--                        <div class="col-sm-2">--}}
+                {{--                            <input class="form-control" name="campaign.checked" type="checkbox" {{$campaign->progress['signed'] ? 'checked' : ''}} disabled>--}}
+                {{--                        </div>--}}
+                {{--                    </div>--}}
+                {{--                </form>--}}
             </div>
         </div>
 
@@ -97,9 +103,9 @@
                                         @endisset
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" name="erase" class="btn btn-default mr-2"><i class="fas fa-eraser"></i> Reset progress</button>
-                                        <button type="submit" name="save" class="btn btn-default mr-2"><i class="fas fa-save"></i> Save changes</button>
-                                        <button type="submit" name="loot" class="btn btn-warning" disabled data-toggle="tooltip" title="TODO: Implement"><i class="fas fa-magic"></i> Distribute Loot</button>
+                                        <button type="submit" name="erase" value="1" class="btn btn-default mr-2"><i class="fas fa-eraser"></i> Reset progress</button>
+                                        <button type="submit" name="save" value="1" class="btn btn-default mr-2"><i class="fas fa-save"></i> Save changes</button>
+                                        <button type="submit" name="loot" value="1" class="btn btn-warning"><i class="fas fa-magic"></i> Finish & Distribute Loot</button>
                                     </div>
                                 </div>
                             </form>

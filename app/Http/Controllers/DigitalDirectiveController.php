@@ -7,6 +7,7 @@ use App\Definitions\Tour;
 use App\Models\Statistic;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Redirect;
 use Response;
 
@@ -45,10 +46,31 @@ class DigitalDirectiveController extends AppBaseController
     }
 
     /**
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function cmd(Request $request, User $player, Mission $mission)
+    {
+        switch ($request->post('action'))
+        {
+            case 'reset_cache':
+                Http::get('//creators.tf/api/IFlushMemory');
+                break;
+
+            default:
+                break;
+        }
+
+        return Redirect::route('dd20.view', compact('player'));
+    }
+
+    /**
      * @param Request $request
      * @param string $userId
      *
-     * @return Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Response
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     public function view(Request $request, User $player, Tour $tour)
     {
@@ -92,15 +114,18 @@ class DigitalDirectiveController extends AppBaseController
             ->where('target', '=', "[MVMM:{$mission->title}]")
             ->first();
 
+        $erase = $request->post('erase', false);
+        $loot = $request->post('loot', false);
+
         // {"wave_1":true,"wave_1_once":true,"wave_1_duration":393,"updated":1618099520,"wave_2":true,"wave_2_once":true,"wave_2_duration":261,"wave_3":true,"wave_3_once":true,"wave_3_duration":153,"wave_4":true,"wave_4_once":true,"wave_4_duration":210,"wave_5":true,"wave_5_once":true,"wave_5_duration":248,"wave_6":true,"wave_6_once":true,"wave_6_duration":195,"wave_7":true,"wave_7_once":true,"wave_7_duration":106}
         $progress = [];
-        if (!$request->post('erase', false))
+        if (!$erase)
         {
             $progress = $stat ? $stat->progress : [];
             for ($i = 0; $i < $mission->waves; $i++)
             {
                 $n = $i + 1;
-                if (isset($waves[$n]))
+                if ($loot || isset($waves[$n]))
                 {
                     $progress["wave_{$n}"] = true;
                     $progress["wave_{$n}_once"] = true;
@@ -130,7 +155,30 @@ class DigitalDirectiveController extends AppBaseController
             $stat->save();
         }
 
+        if ($loot)
+        {
+            $this->giveLoot($player, $mission);
+        }
+
         return Redirect::route('dd20.view', compact('player'))
             ->with('success', "Successfully updated {$player->name}!");
+    }
+
+    /**
+     * @param \App\Models\User $player
+     * @param \App\Definitions\Mission $mission
+     */
+    protected function giveLoot(User $player, Mission $mission)
+    {
+        $apiKey = env('API_CREATORS_KEY');
+        Http::withHeaders([
+            'Access' => "Provider {$apiKey}",
+        ])->post('https://creators.tf/api/IEconomySDK/UserMvMWaveProgress', [
+            'steamids' => [$player->steamid],
+            'classes' => ['scout'],
+            'wave' => $mission->waves,
+            'time' => '999',
+            'mission' => $mission->title,
+        ]);
     }
 }

@@ -50,6 +50,7 @@ Route::prefix('/dd20')->group(function()
 {
     Route::get('/', DigitalDirectiveController::class . '@index')->name('dd20.index');
     Route::get('/find', DigitalDirectiveController::class . '@find')->name('dd20.find');
+    Route::post('/{player}/rpc', DigitalDirectiveController::class . '@cmd')->name('dd20.rpc');
     Route::get('/{player}', DigitalDirectiveController::class . '@view')->name('dd20.view');
-    Route::post('/{player}/save', DigitalDirectiveController::class . '@store')->name('dd20.save');
+    Route::post('/{player}', DigitalDirectiveController::class . '@store')->name('dd20.save');
 });
