@@ -13,6 +13,7 @@ use Response;
 
 class DigitalDirectiveController extends AppBaseController
 {
+
     /**
      * @param Request $request
      *
@@ -20,11 +21,7 @@ class DigitalDirectiveController extends AppBaseController
      */
     public function index(Request $request)
     {
-        /** @var Statistic $statistics */
-        $statistics = Statistic::all();
-
-        return view('dd20.index')
-            ->with('dd20', $statistics);
+        return view('dd20.index');
     }
 
     /**
