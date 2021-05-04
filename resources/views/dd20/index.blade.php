@@ -29,7 +29,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="query-addon"><i class="fas fa-user"></i></span>
                 </div>
-                <input type="text" class="form-control" name="query" placeholder="Username / Steam ID" aria-label="User query" aria-describedby="query-addon">
+                <input type="text" class="form-control" name="query" placeholder="Username / Community ID" aria-label="User query" aria-describedby="query-addon">
             </div>
         </form>
     </section>
