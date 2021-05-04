@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Statistic;
+use App\Models\Derived;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class StatisticFactory extends Factory

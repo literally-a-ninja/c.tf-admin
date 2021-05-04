@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateStatisticRequest;
 use App\Http\Requests\UpdateStatisticRequest;
 use App\Http\Controllers\AppBaseController;
-use App\Models\Statistic;
+use App\Models\Derived;
 use Illuminate\Http\Request;
 use Flash;
 use Response;

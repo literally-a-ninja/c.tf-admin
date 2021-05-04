@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\Statistic;
+use App\Models\Derived;
 
 class UpdateStatisticRequest extends FormRequest
 {
@@ -26,7 +26,7 @@ class UpdateStatisticRequest extends FormRequest
     public function rules()
     {
         $rules = Statistic::$rules;
-        
+
         return $rules;
     }
 }

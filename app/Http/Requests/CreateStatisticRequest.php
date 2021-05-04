@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\Statistic;
+use App\Models\Derived;
 
 class CreateStatisticRequest extends FormRequest
 {

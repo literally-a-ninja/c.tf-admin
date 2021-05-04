@@ -34,7 +34,7 @@ class Statistic extends Model
     public $fillable = [
         'steamid',
         'target',
-        'progress',
+        'progress' => '{}',
     ];
 
     /**
@@ -49,29 +49,13 @@ class Statistic extends Model
     ];
 
     /**
-     * TEMPORARY
+     * Returns the "un-database'd" version of the target.
+     *
+     * @return string
      */
-    public function name()
+    public function name(): string
     {
         $stem = explode(':', $this->target)[1];
         return substr($stem, 0, strlen($stem) - 1);
-    }
-
-    /**
-     * TEMPORARY
-     */
-    public function waves()
-    {
-        $waves = [];
-        foreach ($this->progress as $key => $value)
-        {
-            $array = explode('_', $key);
-            if (sizeof($array) == 2 && $array[0] == 'wave')
-            {
-                $waves[intval($array[1])] = $value;
-            }
-        }
-
-        return $waves;
     }
 }
