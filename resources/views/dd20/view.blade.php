@@ -67,13 +67,13 @@
                         <div class="d-flex justify-content-between align-items-center">
 
                             <div class="d-flex flex-grow-1 align-items-center">
-                                <div class="col col-2 col-lg-1">
+                                <div class="col col-5 col-md-2 col-lg-1">
                                     <img class="img-thumbnail w-100 h-100"
                                          src="//creators.tf/api/mapthumb?map={{$map}}"/>
                                 </div>
                                 <h2 class="mr-2"> {{ucfirst(explode('_', $map)[1])}} </h2>
                                 @foreach($mapMissions as $i => $mission)
-                                    <span class="text-muted">{{$i > 0 ? ', ' : '' }}{{$mission->name}}</span>
+                                    <span class="text-muted d-none d-md-inline">{{$i > 0 ? ', ' : '' }}{{$mission->name}}</span>
                                 @endforeach
                             </div>
                         </div>
@@ -91,14 +91,14 @@
                                             </h4>
                                         </div>
                                         @if ($mission->waves >= 4)
-                                            <div class="col col-{{$mission->waves - 4}} mr-5"></div>
+                                            <div class="col d-none d-md-inline col-{{$mission->waves - 4}} mr-5"></div>
                                         @endif
                                         <div class="col col-md-auto">
                                             <div class="input-group-sm">
                                                 <button type="submit" name="erase" value="1"
                                                         data-toggle="tooltip" data-placement="right"
                                                         title="Reset all progress on this mission (essentially uncheck all)"
-                                                        class="btn btn-sm btn-outline-danger d-none d-md-block mr-2"><i
+                                                        class="btn btn-sm btn-outline-danger d-none d-md-inline mr-2"><i
                                                         class="fas fa-eraser"></i></button>
                                                 <button type="button"
                                                         class="btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-split"
