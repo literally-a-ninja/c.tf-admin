@@ -70,7 +70,7 @@
                                     <img class="img-thumbnail w-100 h-100"
                                          src="//creators.tf/api/mapthumb?map={{$map}}"/>
                                 </div>
-                                <h2 class="mr-2">{{ucfirst(explode('_', $map)[1])}}</h2>
+                                <h2 class="mr-2"> {{ucfirst(explode('_', $map)[1])}} </h2>
                                 @foreach($mapMissions as $i => $mission)
                                     <span class="text-muted">{{$i > 0 ? ', ' : '' }}{{$mission->name}}</span>
                                 @endforeach
@@ -128,25 +128,26 @@
                                             @endphp
                                             @for ($i = 1; $i <= $mission->waves; $i++)
                                                 <div
-                                                    class="col-sm-1 d-flex flex-column justify-content-center text-center">
+                                                    class="col-sm-1 d-flex flex-column justify-content-center text-center"
+                                                    style="align-items: center"
+                                                >
                                                     <label for="{{$mission->title}}.{{$i}}">Wave {{$i}}</label>
-                                                    <input type="checkbox" name="waves[]"
+                                                    <input type="checkbox" name="waves[]" id="{{$mission->title}}.{{$i}}"
                                                            value="{{$i}}" {{ isset($waves[$i]) && $waves[$i] ? 'checked' : ''}}>
                                                 </div>
                                             @endfor
                                         @else
                                             @for ($i = 1; $i <= $mission->waves; $i++)
                                                 <div
-                                                    class="col-sm-1 d-flex flex-column justify-content-center text-center">
+                                                    class="col-sm-1 d-flex flex-column justify-content-center text-center"
+                                                    style="align-items: center"
+                                                >
                                                     <label for="{{$mission->title}}.{{$i}}">Wave {{$i}}</label>
-                                                    <input type="checkbox" id="{{$mission->title}}{{$i}}"
+                                                    <input type="checkbox" id="{{$mission->title}}.{{$i}}"
                                                            name="waves[]" value="{{$i}}">
                                                 </div>
                                             @endfor
                                         @endisset
-                                        <div class="col-2">
-                                            <label></label>
-                                        </div>
                                     </div>
                                 </div>
                             </form>
