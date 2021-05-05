@@ -65,6 +65,7 @@
                     <button class="card-header btn btn-link" id="heading-{{$map}}" data-toggle="collapse"
                             data-target="#card-{{$map}}" aria-expanded="true" aria-controls="collapse">
                         <div class="d-flex justify-content-between align-items-center">
+
                             <div class="d-flex flex-grow-1 align-items-center">
                                 <div class="col col-2 col-lg-1">
                                     <img class="img-thumbnail w-100 h-100"
@@ -85,7 +86,7 @@
                                 <input type="hidden" name="reference" value="{{base64_encode($mission->toJson())}}">
                                 <div class="form-group">
                                     <div class="row">
-                                        <div class="col col-2">
+                                        <div class="col col-md-2">
                                             <h4 class="d-inline"><label class="text-truncate">{{$mission->name}}</label>
                                             </h4>
                                         </div>
@@ -97,7 +98,7 @@
                                                 <button type="submit" name="erase" value="1"
                                                         data-toggle="tooltip" data-placement="right"
                                                         title="Reset all progress on this mission (essentially uncheck all)"
-                                                        class="btn btn-sm btn-outline-danger mr-2"><i
+                                                        class="btn btn-sm btn-outline-danger d-none d-md-block mr-2"><i
                                                         class="fas fa-eraser"></i></button>
                                                 <button type="button"
                                                         class="btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-split"
@@ -121,17 +122,17 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row mt-2 mt-md-0">
                                         @isset ($stats[$mission->title])
                                             @php
                                                 $waves = $stats[$mission->title]->waves();
                                             @endphp
                                             @for ($i = 1; $i <= $mission->waves; $i++)
                                                 <div
-                                                    class="col-sm-1 d-flex flex-column justify-content-center text-center"
-                                                    style="align-items: center"
+                                                    class="col-sm-1 ml-2 ml-md-0 d-flex flex-row-reverse flex-md-column justify-content-end justify-content-md-center text-center"
+                                                    style="align-items: baseline"
                                                 >
-                                                    <label for="{{$mission->title}}.{{$i}}">Wave {{$i}}</label>
+                                                    <label for="{{$mission->title}}.{{$i}}" class="pl-2 pl-md-0">Wave {{$i}}</label>
                                                     <input type="checkbox" name="waves[]" id="{{$mission->title}}.{{$i}}"
                                                            value="{{$i}}" {{ isset($waves[$i]) && $waves[$i] ? 'checked' : ''}}>
                                                 </div>
@@ -139,10 +140,10 @@
                                         @else
                                             @for ($i = 1; $i <= $mission->waves; $i++)
                                                 <div
-                                                    class="col-sm-1 d-flex flex-column justify-content-center text-center"
-                                                    style="align-items: center"
+                                                    class="col-sm-1 d-flex flex-row-reverse flex-md-column justify-content-end justify-content-md-center text-center"
+                                                    style="align-items: baseline"
                                                 >
-                                                    <label for="{{$mission->title}}.{{$i}}">Wave {{$i}}</label>
+                                                    <label for="{{$mission->title}}.{{$i}}" class="pl-2 pl-md-0">Wave {{$i}}</label>
                                                     <input type="checkbox" id="{{$mission->title}}.{{$i}}"
                                                            name="waves[]" value="{{$i}}">
                                                 </div>
