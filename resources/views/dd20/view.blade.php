@@ -64,8 +64,10 @@
                                 <div class="col col-1">
                                     <img class="img-thumbnail w-100 h-100" src="//creators.tf/api/mapthumb?map={{$map}}"/>
                                 </div>
-                                <h2>{{ucfirst(explode('_', $map)[1])}}</h2>
-                                <span class="ml-2 text-muted">{{sizeof($mapMissions)}} mission(s) available</span>
+                                <h2 class="mr-2">{{ucfirst(explode('_', $map)[1])}}</h2>
+                                @foreach($mapMissions as $i => $mission)
+                                    <span class="text-muted">{{$i > 0 ? ', ' : '' }}{{$mission->title}}</span>
+                                @endforeach
                             </div>
                         </div>
                     </button>
