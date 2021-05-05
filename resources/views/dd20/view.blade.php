@@ -66,7 +66,7 @@
                                 </div>
                                 <h2 class="mr-2">{{ucfirst(explode('_', $map)[1])}}</h2>
                                 @foreach($mapMissions as $i => $mission)
-                                    <span class="text-muted">{{$i > 0 ? ', ' : '' }}{{$mission->title}}</span>
+                                    <span class="text-muted">{{$i > 0 ? ', ' : '' }}{{$mission->name}}</span>
                                 @endforeach
                             </div>
                         </div>
