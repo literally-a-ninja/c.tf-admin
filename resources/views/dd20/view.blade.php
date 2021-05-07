@@ -107,25 +107,32 @@
                                                         title="Reset all progress on this mission (essentially uncheck all)"
                                                         class="btn btn-sm btn-outline-danger d-none d-md-inline mr-2"
                                                 ><i class="fas fa-eraser"></i></button>
-                                                <button type="button"
-                                                        class="btn btn-sm btn-primary dropdown-toggle dropdown-toggle-split"
-                                                        data-toggle="dropdown" aria-haspopup="true"
+                                                <button type="submit"
+                                                        name="procedure" value="normal"
+                                                        class="btn btn-sm btn-primary"
+                                                        title="Saves the mission. If all waves are complete loot is distributed."
+                                                        aria-haspopup="true"
                                                         aria-expanded="false"
                                                 > <i class="fas fa-save"></i> Save Mission </button>
-                                                <div class="dropdown-menu">
-                                                    <button type="submit"
-                                                            name="procedure" value="normal"
-                                                            data-toggle="tooltip" data-placement="right"
-                                                            title="The player still has waves to finish"
-                                                            class="btn btn-link dropdown-item"
-                                                    >... as Selected</button>
-                                                    <button type="submit"
-                                                            name="procedure" value="override"
-                                                            data-toggle="tooltip" data-placement="right"
-                                                            title="The player is done with this mission, auto-mark all waves and award loot."
-                                                            class="btn btn-link dropdown-item"
-                                                    >... as Victory (Gives Loot)</button>
-                                                </div>
+{{--                                                                                              <button type="button"--}}
+{{--                                                        class="btn btn-sm btn-primary dropdown-toggle dropdown-toggle-split"--}}
+{{--                                                        data-toggle="dropdown" aria-haspopup="true"--}}
+{{--                                                        aria-expanded="false"--}}
+{{--                                                > <i class="fas fa-save"></i> Save Mission </button>--}}
+{{--                                                <div class="dropdown-menu">--}}
+{{--                                                    <button type="submit"--}}
+{{--                                                            name="procedure" value="normal"--}}
+{{--                                                            data-toggle="tooltip" data-placement="right"--}}
+{{--                                                            title="The player still has waves to finish"--}}
+{{--                                                            class="btn btn-link dropdown-item"--}}
+{{--                                                    >... as Selected</button>--}}
+{{--                                                    <button type="submit"--}}
+{{--                                                            name="procedure" value="override"--}}
+{{--                                                            data-toggle="tooltip" data-placement="right"--}}
+{{--                                                            title="The player is done with this mission, auto-mark all waves and award loot."--}}
+{{--                                                            class="btn btn-link dropdown-item"--}}
+{{--                                                    >... as Victory (Gives Loot)</button>--}}
+{{--                                                </div>--}}
                                             </div>
                                         </div>
                                     </div>

@@ -124,7 +124,7 @@ class DigitalDirectiveController extends AppBaseController
         $shouldErase = $request->post ('procedure') == 'reset';
 
         $wavesLeft = $def->waves;
-        for ($i = 0, $n = 1; $i < $def->waves; $n = ++ $i) {
+        for ($i = 0, $n = 1; $i < $def->waves; $i++, $n++) {
             // V.m., Completed := (not erasing progress) AND [(giving loot) OR (marked wave as completed)].
             $truth = (! $shouldErase) && ($shouldOverride || isset($waves[$n]));
             $wavesLeft -= $truth ? 1 : 0;
