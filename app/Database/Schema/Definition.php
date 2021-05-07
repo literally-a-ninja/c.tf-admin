@@ -6,6 +6,7 @@ use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Database\RecordsNotFoundException;
 use Illuminate\Support\Facades\Storage;
+use JetBrains\PhpStorm\Pure;
 
 /**
  * Denotes a type of database object which is immutable.
@@ -48,11 +49,13 @@ abstract class Definition implements Arrayable, Jsonable
     /**
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    public function loadFromDisk()
+    public function loadFromDisk(): Definition
     {
         $contents = Storage::disk($this->disk)->get($this->location);
         $contents = json_decode($contents, true);
         $this->contents = $this->transform($contents);
+
+        return $this;
     }
 
     /**
@@ -82,14 +85,14 @@ abstract class Definition implements Arrayable, Jsonable
     /**
      * Create a new instance of the given definition.
      *
+     * @param  string  $key
      * @return static
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    public function newInstance(string $key = '')
+    #[Pure] public function newInstance(string $key = '') : Definition
     {
         $model = new static();
         $model->key = $key;
-        $model->loadFromDisk();
 
         return $model;
     }
@@ -112,11 +115,13 @@ abstract class Definition implements Arrayable, Jsonable
         return json_encode($this->contents, $options);
     }
 
-    public function fromJson(string $json)
+    /**
+     * @param  Arrayable  $arr
+     */
+    public function fill(Arrayable $arr)
     {
-        $attrs = json_decode($json);
-        $this->contents = $attrs;
-        foreach ($attrs as $k => $v)
+        $this->contents = $arr->toArray ();
+        foreach ($this->contents as $k => $v)
         {
             $this->$k = $v;
         }

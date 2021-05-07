@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * Class Statistic
+ *
  * @package App\Models
  * @version April 27, 2021, 12:38 am UTC
  *
@@ -22,15 +23,30 @@ class Statistic extends Model
      *
      * @var array
      */
-    public static $rules = [
+    public static array $rules = [
         'target' => 'required|string|max:150',
         'progress' => 'nullable|string',
     ];
 
+    /**
+     * DB Table
+     *
+     * @var string
+     */
     public $table = 'tf_progress_new';
 
+    /**
+     * Disables DB timestamps
+     *
+     * @var bool
+     */
     public $timestamps = false;
 
+    /**
+     * Columns
+     *
+     * @var string[]
+     */
     public $fillable = [
         'steamid',
         'target',
@@ -48,14 +64,34 @@ class Statistic extends Model
         'progress' => 'array',
     ];
 
+    public static function boot ()
+    {
+        parent::boot ();
+
+        $updateModel = function ($model) {
+            $model->getAttribute('progress')['updated'] = now ()->getTimestamp ();
+        };
+
+        static::creating ($updateModel);
+        static::updating ($updateModel);
+    }
+
+    /**
+     * Sets the SteamID column
+     */
+    public function setPlayer (User $player)
+    {
+        $this->steamid = $player->steamid;
+    }
+
     /**
      * Returns the "un-database'd" version of the target.
      *
      * @return string
      */
-    public function name(): string
+    public function name () : string
     {
-        $stem = explode(':', $this->target)[1];
-        return substr($stem, 0, strlen($stem) - 1);
+        $stem = explode (':', $this->target)[1];
+        return substr ($stem, 0, strlen ($stem) - 1);
     }
 }

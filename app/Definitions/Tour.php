@@ -16,7 +16,7 @@ class Tour extends Definition
     {
         if (!isset($this->contents['missions']))
         {
-            return [];
+            return collect ();
         }
 
         $missions = collect();

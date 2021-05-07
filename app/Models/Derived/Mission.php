@@ -2,11 +2,14 @@
 
 namespace App\Models\Derived;
 
+use App\Definitions\Mission as MissionDef;
 use App\Models\Statistic;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * Class Statistic
+ *
  * @package App\Models
  * @version April 27, 2021, 12:38 am UTC
  *
@@ -16,6 +19,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Mission extends Statistic
 {
     use HasFactory;
+
+
+    /**
+     * Overrides local object with econ def.
+     */
+    public function setDef (MissionDef $def)
+    {
+        $this->target = "[MVMM:{$def->title}]";
+    }
+
 
     public function markWave (int $n, bool $complete = true) : void
     {
@@ -47,15 +60,15 @@ class Mission extends Statistic
             $array = explode ('_', $key);
             if (sizeof ($array) == 1 || $array[0] != 'wave') continue;
 
-            [$_, $n] = $array;
+            [ $_, $n ] = $array;
             $n = intval ($n);
-            $type = $array[2] ?? null;
+            $type = $array[2] ?? NULL;
 
             // We only want to track complete or first complete (I.e., bijective) although
             // the contracker's actual logic is that "complete" -> "first complete" (I.e., implicative)
             switch ($type) {
                 //  E.g. wave_1_duration, wave_1_seen
-                case null:
+                case NULL:
                 case 'first':
                     $truth = (isset($waves[$n]) && $waves[$n]);
                     $waves[$n] = $truth || $value;

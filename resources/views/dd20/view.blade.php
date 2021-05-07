@@ -32,7 +32,7 @@
                 >
                     @csrf
                   <button type="submit" name="action" value="reset_cache" class="btn btn-primary"><i
-                      class="fas fa-bomb"
+                        class="fas fa-bomb"
                     ></i> Update main cache
                     </button>
                 </form>
@@ -79,7 +79,7 @@
                                 <h2 class="mr-2"> {{ucfirst(explode('_', $map)[1])}} </h2>
                               @foreach($mapMissions as $i => $mission)
                                 <span
-                                  class="text-muted d-none d-md-inline"
+                                    class="text-muted d-none d-md-inline"
                                 >{{$i > 0 ? ', ' : '' }}{{$mission->name}}</span>
                               @endforeach
                             </div>
@@ -101,7 +101,8 @@
                                         <div class="col d-none d-md-inline col-2"></div>
                                         <div class="col col-md-auto">
                                             <div class="input-group-sm">
-                                                <button type="submit" name="erase" value="1"
+                                                <button type="submit"
+                                                        name="procedure" value="reset"
                                                         data-toggle="tooltip" data-placement="right"
                                                         title="Reset all progress on this mission (essentially uncheck all)"
                                                         class="btn btn-sm btn-outline-danger d-none d-md-inline mr-2"
@@ -112,12 +113,14 @@
                                                         aria-expanded="false"
                                                 > <i class="fas fa-save"></i> Save Mission </button>
                                                 <div class="dropdown-menu">
-                                                    <button type="submit" name="save" value="1"
+                                                    <button type="submit"
+                                                            name="procedure" value="normal"
                                                             data-toggle="tooltip" data-placement="right"
                                                             title="The player still has waves to finish"
                                                             class="btn btn-link dropdown-item"
                                                     >... as Selected</button>
-                                                    <button type="submit" name="loot" value="1"
+                                                    <button type="submit"
+                                                            name="procedure" value="override"
                                                             data-toggle="tooltip" data-placement="right"
                                                             title="The player is done with this mission, auto-mark all waves and award loot."
                                                             class="btn btn-link dropdown-item"
@@ -132,8 +135,8 @@
                                         @endphp
                                       @for ($i = 1; $i <= $mission->waves; $i++)
                                         <div
-                                          class="col-sm-1 ml-2 ml-md-0 d-flex flex-row-reverse flex-md-column justify-content-end justify-content-md-center text-center"
-                                          style="align-items: baseline"
+                                            class="col-sm-1 ml-2 ml-md-0 d-flex flex-row-reverse flex-md-column justify-content-end justify-content-md-center text-center"
+                                            style="align-items: baseline"
                                         >
                                             <label for="{{$mission->title}}.{{$i}}"
                                                    class="pl-2 pl-md-0">
