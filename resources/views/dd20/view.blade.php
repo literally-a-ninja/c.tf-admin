@@ -38,7 +38,6 @@
         @foreach($tours as $i => $tour)
           <header class='mt-2 py-3'>
             <div class='text-muted'>
-              <i class='fas fa-fingerprint'></i>
               <code>{{$tour->getKey()}}</code>
             </div>
             <h2>{{$tour->tour_name}}</h2>
@@ -60,7 +59,6 @@
                                   </div>
                                   <div class='col col-2 d-flex flex-column align-items-start'>
                                     <div class='text-muted'>
-                                      <i class='fas fa-fingerprint'></i>
                                       <code>{{$map}}</code>
                                     </div>
                                     <h2 class="mr-2 p-0"> {{ucfirst(explode('_', $map)[1])}} </h2>
