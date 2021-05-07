@@ -31,6 +31,38 @@ abstract class Definition implements Arrayable, Jsonable
     protected $key = '';
 
     /**
+     * @return string
+     */
+    public function getLocation () : string
+    {
+        return $this->location;
+    }
+
+    /**
+     * @return string
+     */
+    public function getKey () : string
+    {
+        return $this->key;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDisk () : string
+    {
+        return $this->disk;
+    }
+
+    /**
+     * @return array
+     */
+    public function getContents () : array
+    {
+        return $this->contents;
+    }
+
+    /**
      * The disk this defintion is located on.
      *
      * @var string
