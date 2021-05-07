@@ -78,16 +78,17 @@ class DigitalDirectiveController extends AppBaseController
     public function view (Request $request, User $player, Tour $tour) : View|Factory|Application
     {
 
+        $tours = collect ();
         $missions = collect ();
         foreach ([ 'tour_digital_directive_1', 'tour_digital_directive_2' ] as $tourName) {
+            $tour = $tour->newInstance ($tourName)->loadFromDisk ();
+            $tours->push ($tour);
             $missions->push (
-                $tour->newInstance ($tourName)
-                    ->loadFromDisk ()
+                $tour
                     ->missions ()
+                    ->groupBy ('map')
             );
         }
-
-        $missions = $missions->flatten ()->groupBy ('map');
 
         $campaign = Statistic::query ()
             ->where ('steamid', '=', $player->steamid)
@@ -102,7 +103,7 @@ class DigitalDirectiveController extends AppBaseController
                 return [ $mission->name () => $mission ];
             });
 
-        return view ('dd20.view', compact ('player', 'campaign', 'missions', 'stats'));
+        return view ('dd20.view', compact ('player', 'campaign', 'tours', 'missions', 'stats'));
     }
 
     /**
@@ -124,7 +125,7 @@ class DigitalDirectiveController extends AppBaseController
         $shouldErase = $request->post ('procedure') == 'reset';
 
         $wavesLeft = $def->waves;
-        for ($i = 0, $n = 1; $i < $def->waves; $i++, $n++) {
+        for ($i = 0, $n = 1; $i < $def->waves; $i ++, $n ++) {
             // V.m., Completed := (not erasing progress) AND [(giving loot) OR (marked wave as completed)].
             $truth = (! $shouldErase) && ($shouldOverride || isset($waves[$n]));
             $wavesLeft -= $truth ? 1 : 0;

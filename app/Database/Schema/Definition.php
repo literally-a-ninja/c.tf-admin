@@ -53,7 +53,7 @@ abstract class Definition implements Arrayable, Jsonable
     {
         $contents = Storage::disk($this->disk)->get($this->location);
         $contents = json_decode($contents, true);
-        $this->contents = $this->transform($contents);
+        $this->fill($this->transform($contents));
 
         return $this;
     }
@@ -116,11 +116,11 @@ abstract class Definition implements Arrayable, Jsonable
     }
 
     /**
-     * @param  Arrayable  $arr
+     * @param  array|Arrayable  $arr
      */
-    public function fill(Arrayable $arr)
+    public function fill(array|Arrayable $arr)
     {
-        $this->contents = $arr->toArray ();
+        $this->contents = is_array ($arr) ? $arr : $arr->toArray ();
         foreach ($this->contents as $k => $v)
         {
             $this->$k = $v;
