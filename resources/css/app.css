@@ -1,0 +1,15 @@
+.alert {
+    animation-name: alert-bounce;
+    animation-duration: 1250ms;
+    animation-direction: normal;
+    animation-timing-function: cubic-bezier(.49, .46, 0, 1.46);
+}
+
+@keyframes alert-bounce {
+    0% {
+        transform: translateX(-5%) translateY(-5%) scale(.95);
+    }
+    75% {
+        transform: translateX(0) translateY(0)  scale(1);
+    }
+}
