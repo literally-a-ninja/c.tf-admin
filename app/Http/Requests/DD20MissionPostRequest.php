@@ -48,6 +48,16 @@ class DD20MissionPostRequest extends FormRequest
     }
 
     /**
+     * Returns indication if loot distributor should be enabled or not.
+     *
+     * @return bool
+     */
+    public function shouldProcessLoot () : bool
+    {
+        return boolval($this->post ('give_loot', false));
+    }
+
+    /**
      * Returns a collection of waves.
      *
      * @return Collection
@@ -65,7 +75,7 @@ class DD20MissionPostRequest extends FormRequest
     public function definition () : Mission
     {
         $encRef = $this->post ('reference');
-        $array = collect(json_decode (base64_decode ($encRef), true));
+        $array = collect (json_decode (base64_decode ($encRef), true));
         $mission = $this->dMission->newInstance ();
         $mission->fill ($array);
 

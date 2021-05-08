@@ -137,7 +137,7 @@ class DigitalDirectiveController extends AppBaseController
         $mission->setDef ($def);
         $mission->save ();
 
-        if (! $wavesLeft) {
+        if (! $wavesLeft && $request->shouldProcessLoot ()) {
             $this->giveLoot ($player, $def);
         }
 
