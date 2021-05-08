@@ -163,16 +163,15 @@ class DigitalDirectiveController extends AppBaseController
      */
     protected function giveLoot (User $player, Mission $mission)
     {
-        dd ('Giving loot!');
-//        $apiKey = env ('API_CREATORS_KEY');
-//        Http::withHeaders ([
-//            'Access' => "Provider {$apiKey}",
-//        ])->post ('https://creators.tf/api/IEconomySDK/UserMvMWaveProgress', [
-//            'steamids' => [ $player->steamid ],
-//            'classes' => [ 'scout' ],
-//            'wave' => $mission->waves,
-//            'time' => '999',
-//            'mission' => $mission->title,
-//        ]);
+        $apiKey = env ('API_CREATORS_KEY');
+        Http::withHeaders ([
+            'Access' => "Provider {$apiKey}",
+        ])->post ('https://creators.tf/api/IEconomySDK/UserMvMWaveProgress', [
+            'steamids' => [ $player->steamid ],
+            'classes' => [ 'scout' ],
+            'wave' => $mission->waves,
+            'time' => '999',
+            'mission' => $mission->title,
+        ]);
     }
 }
