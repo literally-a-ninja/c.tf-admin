@@ -158,8 +158,8 @@ class DigitalDirectiveController extends AppBaseController
     }
 
     /**
-     * @param  \App\Models\User  $player
-     * @param  \App\Definitions\Mission  $mission
+     * @param  User  $player
+     * @param  Mission  $mission
      */
     protected function giveLoot (User $player, Mission $mission)
     {

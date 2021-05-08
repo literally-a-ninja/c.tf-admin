@@ -23,7 +23,7 @@
             <h1 class='font-weight-bold'>{{$player->name}}</h1>
             </div>
             <div class="d-flex justify-content-center align-items-center">
-                <form id="form-rpc" method="GET" class="form-inline"
+                <form id="form-rpc" method="POST" class="form-inline"
                       action="{{ route('dd20.rpc', compact('player')) }}"
                 >
                     @csrf
