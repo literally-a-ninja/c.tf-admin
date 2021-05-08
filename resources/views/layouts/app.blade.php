@@ -5,36 +5,36 @@
     <title>C.TF Watchroom</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
-    <!-- Font Awesome -->
+  <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
           integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
-          crossorigin="anonymous"/>
+          crossorigin="anonymous" />
 
     <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css"
           rel="stylesheet">
 
-    <!-- AdminLTE -->
+  <!-- AdminLTE -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.0.5/css/adminlte.min.css"
           integrity="sha512-rVZC4rf0Piwtw/LsgwXxKXzWq3L0P6atiQKBNuXYRbg2FoRbSTIY0k2DxuJcs7dk4e/ShtMzglHKBOJxW8EQyQ=="
-          crossorigin="anonymous"/>
+          crossorigin="anonymous" />
 
-    <!-- iCheck -->
+  <!-- iCheck -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/icheck-bootstrap/3.0.1/icheck-bootstrap.min.css"
           integrity="sha512-8vq2g5nHE062j3xor4XxPeZiPjmRDh6wlufQlfC6pdQ/9urJkU07NM0tEREeymP++NczacJ/Q59ul+/K2eYvcg=="
-          crossorigin="anonymous"/>
+          crossorigin="anonymous" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"
           integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw=="
-          crossorigin="anonymous"/>
+          crossorigin="anonymous" />
 
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
           integrity="sha512-aEe/ZxePawj0+G2R+AaIxgrQuKT68I28qh+wgLrcAJOz3rxCP+TwrK5SPN+E5I+1IQjNtcfvb96HDagwrKRdBw=="
-          crossorigin="anonymous"/>
+          crossorigin="anonymous" />
 
-    @yield('third_party_stylesheets')
+  @yield('third_party_stylesheets')
 
-    @stack('page_css')
+  @stack('page_css')
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -63,10 +63,10 @@
                              alt="User Image">
                         <p>
                             {{ true ? 'Potatofactory' : Auth::user()->name }}
-                            <small>Member since {{ true ? 'May 12th' : Auth::user()->created_at->format('M. Y') }}</small>
+                          <small>Member since {{ true ? 'May 12th' : Auth::user()->created_at->format('M. Y') }}</small>
                         </p>
                     </li>
-                    <!-- Menu Footer-->
+                  <!-- Menu Footer-->
                     <li class="user-footer">
                         <a href="#" class="btn btn-default btn-flat">Profile</a>
                         <a href="#" class="btn btn-default btn-flat float-right"
@@ -82,23 +82,52 @@
         </ul>
     </nav>
 
-    <!-- Left side column. contains the logo and sidebar -->
+  <!-- Left side column. contains the logo and sidebar -->
 @include('layouts.sidebar')
 
 <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-        <section class="content">
-            @yield('content')
-        </section>
+  <div class="content-wrapper">
+    <div class='content'>
+    <div class='content-header'>
+        <div class="alert alert-primary" role="alert">
+          This is a primary alert—check it out!
+        </div>
+        <div class="alert alert-secondary" role="alert">
+          This is a secondary alert—check it out!
+        </div>
+        <div class="alert alert-success" role="alert">
+          This is a success alert—check it out!
+        </div>
+        <div class="alert alert-danger" role="alert">
+          This is a danger alert—check it out!
+        </div>
+        <div class="alert alert-warning" role="alert">
+          This is a warning alert—check it out!
+        </div>
+        <div class="alert alert-info" role="alert">
+          This is a info alert—check it out!
+        </div>
+        <div class="alert alert-light" role="alert">
+          This is a light alert—check it out!
+        </div>
+        <div class="alert alert-dark" role="alert">
+          This is a dark alert—check it out!
+        </div>
+
     </div>
 
-    <!-- Main Footer -->
+    </div>
+        <main role='main' class="content">
+            @yield('content')
+        </main>
+    </div>
+
+  <!-- Main Footer -->
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
-            <b>Version</b> 3.0.5
+            <b>Version</b> alpha-1749:080521
         </div>
-        <strong>Copyright &copy; 2014-2020 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights
-        reserved.
+      <strong>Copyright &copy; 2021 <a href="https://creators.tf">Creators.TF</a> and <a href="https://john.science">John Chandara</a>.</strong> All rights reserved.
     </footer>
 </div>
 
@@ -135,18 +164,17 @@
         integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A=="
         crossorigin="anonymous"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.4/js/bootstrap-switch.min.js" integrity="sha512-J+763o/bd3r9iW+gFEqTaeyi+uAphmzkE/zU8FxY6iAvD3nQKXa+ZAWkBI9QS9QkYEKddQoiy0I5GDxKf/ORBA=="
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.4/js/bootstrap-switch.min.js"
+        integrity="sha512-J+763o/bd3r9iW+gFEqTaeyi+uAphmzkE/zU8FxY6iAvD3nQKXa+ZAWkBI9QS9QkYEKddQoiy0I5GDxKf/ORBA=="
         crossorigin="anonymous"></script>
 
 <script>
-    $(function()
-    {
-        bsCustomFileInput.init();
+    $(function () {
+      bsCustomFileInput.init();
     });
 
-    $('input[data-bootstrap-switch]').each(function()
-    {
-        $(this).bootstrapSwitch('state', $(this).prop('checked'));
+    $('input[data-bootstrap-switch]').each(function () {
+      $(this).bootstrapSwitch('state', $(this).prop('checked'));
     });
 </script>
 
