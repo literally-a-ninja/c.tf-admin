@@ -142,7 +142,14 @@ class DigitalDirectiveController extends AppBaseController
         }
 
         return Redirect::route ('dd20.view', compact ('player'))
-            ->with ('success', "Successfully updated {$player->name}!");
+            ->with ('feedback', [
+                'success' => [
+                    [
+                        'icon' => 'fas fa-check',
+                        'title' => "Successfully updated {$def->name}!",
+                    ]
+                ],
+            ]);
     }
 
     /**

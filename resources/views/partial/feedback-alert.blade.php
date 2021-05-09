@@ -1,19 +1,16 @@
 @foreach(Session::get ('feedback', []) as $type => $messages)
   @foreach($messages as $msg)
-    <div class="alert alert-{{{$msg['type']}}}" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true"><i class='fas fa-times'></i></span>
-            </button>
-      @isset($msg['header'])
-        <i class='fas fa-{{$msg['icon']}}'></i>
+    <div class="alert alert-{{{$type}}}" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true"><i class='fas fa-times'></i></span>
+      </button>
         <h4 class="alert-heading">
-              @isset($msg['icon'])
-            <i class='fas fa-{{$msg['icon']}}'></i>
-          @endisset
-          {{$msg['header']}}
-            </h4>
+          <i class='{{$msg['icon'] ?? 'fas fa-check'}} mr-md-2'></i>
+          {{$msg['title'] ?? ''}}
+        </h4>
+      @isset($msg['message'])
+      {{$msg['message'] ?? ''}}
       @endisset
-      {{$msg['message']}}
         </div>
   @endforeach
 @endforeach
