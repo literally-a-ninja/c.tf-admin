@@ -65,10 +65,10 @@ class DigitalDirectiveController extends AppBaseController
 
         return Redirect::route ('dd20.view', compact ('player'))
             ->with ('feedback', [
-                'info' => [
+                'success' => [
                     [
                         'icon' => 'fas fa-bomb',
-                        'title' => 'Remote command successful',
+                        'title' => 'Remote command',
                         'message' => 'Your reset cache command on <a href="//creators.tf">Creators.TF</a> has been forwarded successfully.',
                     ]
                 ],
