@@ -6,10 +6,10 @@
       </button>
         <h4 class="alert-heading">
           <i class='{{$msg['icon'] ?? 'fas fa-check'}} mr-md-2'></i>
-          {{$msg['title'] ?? ''}}
+          {!! $msg['title'] ?? '' !!}
         </h4>
       @isset($msg['message'])
-      {{$msg['message'] ?? ''}}
+      {!! $msg['message'] ?? '' !!}
       @endisset
         </div>
   @endforeach

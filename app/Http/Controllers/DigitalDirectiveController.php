@@ -63,7 +63,16 @@ class DigitalDirectiveController extends AppBaseController
                 break;
         }
 
-        return Redirect::route ('dd20.view', compact ('player'));
+        return Redirect::route ('dd20.view', compact ('player'))
+            ->with ('feedback', [
+                'info' => [
+                    [
+                        'icon' => 'fas fa-bomb',
+                        'title' => 'Remote command successful',
+                        'message' => 'Your reset cache command on <a href="//creators.tf">Creators.TF</a> has been forwarded successfully.',
+                    ]
+                ],
+            ]);
     }
 
     /**
