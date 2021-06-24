@@ -1,32 +1,27 @@
 <li class="nav-item">
     <a href="{{ route('dd20.index') }}"
        class="nav-link {{ Request::is('dd20*') ? 'active' : '' }}">
-        <p>Digital Directive</p>
-    </a>
-</li>
-
-<li class="nav-item disabled">
-    {{--    <a href="{{ route('users.index') }}"--}}
-    <a
-        class="nav-link {{ Request::is('users*') ? 'active' : '' }}">
-        <p class="text-muted">Players</p>
+        <i class="fas fa-meteor"></i> <label>Digital Directive</label>
     </a>
 </li>
 
 <li class="nav-item">
-    {{--    <a href="{{ route('items.index') }}"--}}
-    <a
-        class="nav-link {{ Request::is('items*') ? 'active' : '' }}">
-        <p class="text-muted">Creators Economy</p>
+    <a href="{{route ('contracker.index')}}" class="nav-link {{ Request::is('contracker*') ? 'active' : '' }}">
+      <i class="fas fa-tasks"></i> <label>Contracker</label>
+        <span class="badge badge-primary">NEW</span>
     </a>
 </li>
 
 <li class="nav-item">
-    {{--    <a href="{{ route('statistics.index') }}"--}}
-    <a
-        class="nav-link {{ Request::is('statistics*') ? 'active' : '' }}">
-        <p class="text-muted">Player Experience</p>
+    <a href="{{route ('users.index')}}" class="nav-link {{ Request::is('users*') ? 'active' : '' }}">
+       <i class="fas fa-users"></i> <label>Players</label>
     </a>
 </li>
 
+<li class="nav-item">
+    <a href="{{ route('items.index') }}"
+       class="nav-link {{ Request::is('items*') ? 'active' : '' }}">
+        <i class="text-muted fas fa-luggage-cart"></i> <label class="text-muted">Economy</label>
+    </a>
+</li>
 

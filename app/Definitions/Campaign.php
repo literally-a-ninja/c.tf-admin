@@ -6,6 +6,7 @@ namespace App\Definitions;
 use App\Database\Schema\Definition;
 use DateTime;
 use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Support\Collection;
 
 /**
  * Class Campaign
@@ -14,10 +15,13 @@ use Illuminate\Contracts\Support\Arrayable;
  * @property-read string $title
  * @property-read DateTime $start_time
  * @property-read DateTime $end_time
- */
+ **/
 class Campaign extends Definition
 {
     protected string $location = 'economy/contracker/campaigns.json';
+
+    protected string $memberKey = 'title';
+
 
     public function fill (array|Arrayable $arr)
     {
@@ -27,10 +31,10 @@ class Campaign extends Definition
         parent::fill ($arr);
     }
 
-    protected function locate (array $original) : array
+    protected function locate (Collection $original) : array
     {
-        return collect ($original)
-            ->where ('title', $this->key)
+        return $original
+            ->where ('title', $this->id)
             ->first ();
     }
 }

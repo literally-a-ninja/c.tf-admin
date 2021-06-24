@@ -21,7 +21,7 @@
 
             <div class="card-body">
                 <div class="row">
-                    @include('statistics.fields')
+                    @include('contracker.fields')
                 </div>
             </div>
 

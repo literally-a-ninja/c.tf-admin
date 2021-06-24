@@ -47,6 +47,9 @@ class UserController extends AppBaseController
      */
     public function store(CreateUserRequest $request)
     {
+        Flash::error('Route disabled');
+        return redirect(route('users.index'));
+
         $input = $request->all();
 
         /** @var User $user */
@@ -90,13 +93,16 @@ class UserController extends AppBaseController
         /** @var User $user */
         $user = User::find($id);
 
-        if (empty($user)) {
-            Flash::error('User not found');
+        Flash::error('Route disabled');
+        return redirect(route('users.index'));
 
-            return redirect(route('users.index'));
-        }
-
-        return view('users.edit')->with('user', $user);
+//        if (empty($user)) {
+//            Flash::error('User not found');
+//
+//            return redirect(route('users.index'));
+//        }
+//
+//        return view('users.edit')->with('user', $user);
     }
 
     /**
@@ -109,6 +115,9 @@ class UserController extends AppBaseController
      */
     public function update($id, UpdateUserRequest $request)
     {
+        Flash::error('Route disabled');
+        return redirect(route('users.index'));
+
         /** @var User $user */
         $user = User::find($id);
 
@@ -139,6 +148,9 @@ class UserController extends AppBaseController
     {
         /** @var User $user */
         $user = User::find($id);
+
+        Flash::error('Route disabled');
+        return redirect(route('users.index'));
 
         if (empty($user)) {
             Flash::error('User not found');

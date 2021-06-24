@@ -90,7 +90,7 @@ class DigitalDirectiveController extends AppBaseController
         $tours = collect ();
         $missions = collect ();
         foreach ([ 'tour_digital_directive_1', 'tour_digital_directive_2' ] as $tourName) {
-            $tour = $tour->newInstance ($tourName)->loadFromDisk ();
+            $tour = $tour->newInstance ($tourName)->grabFromDisk ();
             $tours->push ($tour);
             $missions->push (
                 $tour

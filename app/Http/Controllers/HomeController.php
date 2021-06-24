@@ -26,7 +26,7 @@ class HomeController extends Controller
      */
     public function index(CampaignDD20 $dd20)
     {
-        dd($dd20->newInstance ('mvm_directive')->loadFromDisk ());
+//        dd($dd20->newInstance ('mvm_directive')->loadFromDisk ());
 //        dd($quest->newInstance ('scrapyard_slaughter')->loadFromDisk ());
 //        dd($quest->newInstance ('scrapyard_slaughter')->loadFromDisk ());
         return view('home');

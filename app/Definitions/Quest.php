@@ -36,7 +36,7 @@ class Quest extends Definition
     protected function locate(array $quests): array
     {
         return collect ($quests)
-            ->where ('title', $this->key)
+            ->where ('title', $this->id)
             ->first ();
     }
 
