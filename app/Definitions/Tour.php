@@ -27,7 +27,7 @@ class Tour extends Definition
     /**
      * @var string
      */
-    protected $location = 'economy/mvm/tours.json';
+    protected string $location = 'economy/mvm/tours.json';
 
     /**
      * @return Collection

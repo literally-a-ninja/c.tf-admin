@@ -1,316 +1,357 @@
-[{
-        "name": "Digital Directive Beta",
-        "title": "mvm_directive_beta",
-
-        "campaign_items": [{
-            "item": "directive_beta_pass",
-            "revalidate": false,
-            "quality": 6,
-            "sync_strange_parts": [0]
-        }],
-
-        "start_time": "2021-03-27 00:00:01",
-        "end_time": "2021-03-27 00:00:02"
-    }, {
-        "name": "Digital Directive",
-        "title": "mvm_directive",
-        "signable": true,
-
-        "levels": [{
-            "points": 1000,
-            "reward": {
-                "type": "item",
-                "item": "Manncoin Miner",
-                "is_unique": true
-            }
-        }, {
-            "points": 3000,
-            "reward": {
-                "type": "style_upgrade",
-                "item": "Manncoin Miner",
-                "style": 1,
-                "message": "Reaching this level will upgrade your Manncoin Miner to 'Upgraded' style."
-            }
-        }, {
-            "points": 6000,
-            "reward": {
-                "type": "style_upgrade",
-                "item": "Manncoin Miner",
-                "style": 2,
-                "message": "Reaching this level will upgrade your Manncoin Miner to 'Overclocked' style."
-            }
-        }, {
-            "points": 10000,
-            "reward": {
-                "type": "style_upgrade",
-                "item": "Manncoin Miner",
-                "style": 3,
-                "message": "Reaching this level will upgrade your Manncoin Miner to 'Australium' style."
-            }
-        }],
-
-        "campaign_items": [{
-            "item": "Manncoin Miner",
-            "revalidate": false,
-            "quality": 6,
-            "sync_strange_parts": [0],
-            "sync_completed_quests": [1]
-        }],
-
-        "tours": [
-            "tour_digital_directive_1",
-            "tour_digital_directive_2"
-        ],
-
-        "quests": [
-            "tank_terror",
-            "scrapyard_slaughter",
-            "relentless_defense",
-            "assistant",
-            "plus_two",
-            "sig_upgrade",
-            "bomb_buster",
-            "tauntkill_contract",
-            "blimp_contract",
-            "unbreak_unyield",
-            "money_contract",
-            "dairy_delivery",
-            "auto_annoyance",
-            "dmgscout_contract",
-            "doot_shoot",
-            "jarhead_juggernaut",
-            "horn_harbringer",
-            "fight_flight",
-            "wasp_contract",
-            "experimental_eviscerateer",
-            "backline_burn",
-            "propulsion_pilot",
-            "fire_fury",
-            "tried_true",
-            "pipe_dream",
-            "demoknight_contract",
-            "immovable_object",
-            "unstoppable_force",
-            "elongated_drake",
-            "kgb_contract",
-            "ranger_danger",
-            "widowmaker_contract",
-            "robot_revenge",
-            "short_circuited",
-            "wrangler_contract",
-            "milksyringe_contract",
-            "preventive_care",
-            "vacc_contract",
-            "heatmaker_contract",
-            "precise_power",
-            "bazaar_botbash",
-            "sydney_contract",
-            "bushwacka_contract",
-            "yer_contract",
-            "kunai_contract",
-            "bigearner_contract",
-            "sapper_contract",
-            "sodapopper_contract",
-            "beggars_contract",
-            "scotres_contract",
-            "kritz_contract",
-            "shield_contract",
-            "nofail_contract"
+[
+  {
+    "name": "Digital Directive Beta",
+    "title": "mvm_directive_beta",
+    "campaign_items": [
+      {
+        "item": "directive_beta_pass",
+        "revalidate": false,
+        "quality": 6,
+        "sync_strange_parts": [
+          0
         ]
-    },
-    {
-        "name": "Smissmas",
-        "title": "smissmas",
-
-        "start_time": "2021-12-01 00:00:00",
-        "end_time": "2021-01-07 00:00:00",
-
-        "event": "LOGIC_COLLECT_GIFT",
-
-        "campaign_items": [{
-            "item": "Gifting Lantern",
-            "quality": 6,
-            "sync_strange_parts": [0]
-        }]
-    },
-    {
-        "name": "Scream Fortress",
-        "title": "halloween",
-        "quests": [
-            "cp_gorge_event",
-            "cp_manor_event",
-            "koth_harvest_event",
-            "horseman",
-            "monoculus",
-            "merasmus",
-            "koth_lakeside_event",
-            "koth_viaduct_event",
-            "plr_hightower_event",
-            "sd_doomsday_event",
-            "koth_hauntson_event",
-            "koth_spillway_event",
-            "koth_synthetic_event",
-            "pd_scarab",
-            "pl_terror_event"
+      }
+    ],
+    "start_time": "2021-03-27 00:00:01",
+    "end_time": "2021-03-27 00:00:02"
+  },
+  {
+    "name": "Digital Directive",
+    "title": "mvm_directive",
+    "signable": true,
+    "levels": [
+      {
+        "points": 1000,
+        "reward": {
+          "type": "item",
+          "item": "Manncoin Miner",
+          "is_unique": true
+        }
+      },
+      {
+        "points": 3000,
+        "reward": {
+          "type": "style_upgrade",
+          "item": "Manncoin Miner",
+          "style": 1,
+          "message": "Reaching this level will upgrade your Manncoin Miner to 'Upgraded' style."
+        }
+      },
+      {
+        "points": 6000,
+        "reward": {
+          "type": "style_upgrade",
+          "item": "Manncoin Miner",
+          "style": 2,
+          "message": "Reaching this level will upgrade your Manncoin Miner to 'Overclocked' style."
+        }
+      },
+      {
+        "points": 10000,
+        "reward": {
+          "type": "style_upgrade",
+          "item": "Manncoin Miner",
+          "style": 3,
+          "message": "Reaching this level will upgrade your Manncoin Miner to 'Australium' style."
+        }
+      }
+    ],
+    "campaign_items": [
+      {
+        "item": "Manncoin Miner",
+        "revalidate": false,
+        "quality": 6,
+        "sync_strange_parts": [
+          0
         ],
-
-        "start_time": "2020-10-30 12:00:00",
-        "end_time": "2020-11-22 00:00:00",
-
-        "campaign_items_": [{
-            "item": "Tainted Tome",
-            "quality": 6,
-            "sync_strange_parts": [0],
-            "sync_completed_quests": [1]
-        }],
-
-        "levels": [{
-            "points": 40,
-            "reward": {
-                "type": "item",
-                "item": "Dreadful Dismal Cosmetic Crate"
-            }
-        }, {
-            "points": 100,
-            "reward": {
-                "type": "currency",
-                "amount": 200
-            }
-        }, {
-            "points": 190
-        }, {
-            "points": 320,
-            "reward": {
-                "type": "item",
-                "item": "Grave Digger's Goatee"
-            }
-        }, {
-            "points": 500,
-            "reward": {
-                "type": "item",
-                "item": "Pestilent Profession"
-            }
-        }, {
-            "points": 740,
-            "reward": {
-                "type": "item",
-                "item": "Doomed Seasonal Cosmetic Crate"
-            }
-        }, {
-            "points": 1050,
-            "reward": {
-                "type": "item",
-                "item": "Amphibeanie"
-            }
-        }, {
-            "points": 1440,
-            "reward": {
-                "type": "item",
-                "item": "Dreadful Dismal Cosmetic Crate"
-            }
-        }, {
-            "points": 1900,
-            "reward": {
-                "type": "upgrade_item",
-                "item": "Tainted Tome",
-                "name": "Bronze Tainted Tome",
-                "message": "Achievieng this level will upgrade your Tainted Tome to 'Bronze' style.",
-                "image": "{CDN}/assets/images/inventory/items/action/tome_bronze.png"
-            }
-        }, {
-            "points": 2400,
-            "reward": {
-                "type": "currency",
-                "amount": 500
-            }
-        }, {
-            "points": 2900
-        }, {
-            "points": 3400,
-            "reward": {
-                "type": "item",
-                "item": "Invisible Igniter"
-            }
-        }, {
-            "points": 3900,
-            "reward": {
-                "type": "item",
-                "item": "Co-Leader Cap"
-            }
-        }, {
-            "points": 4400,
-            "reward": {
-                "type": "item",
-                "item": "Doomed Seasonal Cosmetic Crate"
-            }
-        }, {
-            "points": 4900,
-            "reward": {
-                "type": "item",
-                "item": "Coxswain Coat"
-            }
-        }, {
-            "points": 5400,
-            "reward": {
-                "type": "item",
-                "item": "Dreadful Dismal Cosmetic Crate"
-            }
-        }, {
-            "points": 5900,
-            "reward": {
-                "type": "upgrade_item",
-                "item": "Tainted Tome",
-                "name": "Silver Tainted Tome",
-                "message": "Achievieng this level will upgrade your Tainted Tome to 'Silver' style.",
-                "image": "{CDN}/assets/images/inventory/items/action/tome_silver.png"
-            }
-        }, {
-            "points": 6400,
-            "reward": {
-                "type": "currency",
-                "amount": 1000
-            }
-        }, {
-            "points": 6900
-        }, {
-            "points": 7400,
-            "reward": {
-                "type": "item",
-                "item": "Combustible Cranium"
-            }
-        }, {
-            "points": 7900,
-            "reward": {
-                "type": "item",
-                "item": "Nightwalker's Necktie"
-            }
-        }, {
-            "points": 8400,
-            "reward": {
-                "type": "item",
-                "item": "Doomed Seasonal Cosmetic Crate"
-            }
-        }, {
-            "points": 8900,
-            "reward": {
-                "type": "item",
-                "item": "Keelhaul Kapitan"
-            }
-        }, {
-            "points": 9400,
-            "reward": {
-                "type": "item",
-                "item": "Dreadful Dismal Cosmetic Crate"
-            }
-        }, {
-            "points": 9900,
-            "reward": {
-                "type": "upgrade_item",
-                "item": "Tainted Tome",
-                "name": "Golden Tainted Tome",
-                "message": "Achievieng this level will upgrade your Tainted Tome to 'Golden' style.",
-                "image": "{CDN}/assets/images/inventory/items/action/tome_golden.png"
-            }
-        }]
-    }
+        "sync_completed_quests": [
+          1
+        ]
+      }
+    ],
+    "tours": [
+      "tour_digital_directive_1",
+      "tour_digital_directive_2"
+    ],
+    "quests": [
+      "tank_terror",
+      "scrapyard_slaughter",
+      "relentless_defense",
+      "assistant",
+      "plus_two",
+      "sig_upgrade",
+      "bomb_buster",
+      "tauntkill_contract",
+      "blimp_contract",
+      "unbreak_unyield",
+      "money_contract",
+      "dairy_delivery",
+      "auto_annoyance",
+      "dmgscout_contract",
+      "doot_shoot",
+      "jarhead_juggernaut",
+      "horn_harbringer",
+      "fight_flight",
+      "wasp_contract",
+      "experimental_eviscerateer",
+      "backline_burn",
+      "propulsion_pilot",
+      "fire_fury",
+      "tried_true",
+      "pipe_dream",
+      "demoknight_contract",
+      "immovable_object",
+      "unstoppable_force",
+      "elongated_drake",
+      "kgb_contract",
+      "ranger_danger",
+      "widowmaker_contract",
+      "robot_revenge",
+      "short_circuited",
+      "wrangler_contract",
+      "milksyringe_contract",
+      "preventive_care",
+      "vacc_contract",
+      "heatmaker_contract",
+      "precise_power",
+      "bazaar_botbash",
+      "sydney_contract",
+      "bushwacka_contract",
+      "yer_contract",
+      "kunai_contract",
+      "bigearner_contract",
+      "sapper_contract",
+      "sodapopper_contract",
+      "beggars_contract",
+      "scotres_contract",
+      "kritz_contract",
+      "shield_contract",
+      "nofail_contract"
+    ]
+  },
+  {
+    "name": "Smissmas",
+    "title": "smissmas",
+    "start_time": "2021-12-01 00:00:00",
+    "end_time": "2021-01-07 00:00:00",
+    "event": "LOGIC_COLLECT_GIFT",
+    "campaign_items": [
+      {
+        "item": "Gifting Lantern",
+        "quality": 6,
+        "sync_strange_parts": [
+          0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Scream Fortress",
+    "title": "halloween",
+    "quests": [
+      "cp_gorge_event",
+      "cp_manor_event",
+      "koth_harvest_event",
+      "horseman",
+      "monoculus",
+      "merasmus",
+      "koth_lakeside_event",
+      "koth_viaduct_event",
+      "plr_hightower_event",
+      "sd_doomsday_event",
+      "koth_hauntson_event",
+      "koth_spillway_event",
+      "koth_synthetic_event",
+      "pd_scarab",
+      "pl_terror_event"
+    ],
+    "start_time": "2020-10-30 12:00:00",
+    "end_time": "2020-11-22 00:00:00",
+    "campaign_items_": [
+      {
+        "item": "Tainted Tome",
+        "quality": 6,
+        "sync_strange_parts": [
+          0
+        ],
+        "sync_completed_quests": [
+          1
+        ]
+      }
+    ],
+    "levels": [
+      {
+        "points": 40,
+        "reward": {
+          "type": "item",
+          "item": "Dreadful Dismal Cosmetic Crate"
+        }
+      },
+      {
+        "points": 100,
+        "reward": {
+          "type": "currency",
+          "amount": 200
+        }
+      },
+      {
+        "points": 190
+      },
+      {
+        "points": 320,
+        "reward": {
+          "type": "item",
+          "item": "Grave Digger's Goatee"
+        }
+      },
+      {
+        "points": 500,
+        "reward": {
+          "type": "item",
+          "item": "Pestilent Profession"
+        }
+      },
+      {
+        "points": 740,
+        "reward": {
+          "type": "item",
+          "item": "Doomed Seasonal Cosmetic Crate"
+        }
+      },
+      {
+        "points": 1050,
+        "reward": {
+          "type": "item",
+          "item": "Amphibeanie"
+        }
+      },
+      {
+        "points": 1440,
+        "reward": {
+          "type": "item",
+          "item": "Dreadful Dismal Cosmetic Crate"
+        }
+      },
+      {
+        "points": 1900,
+        "reward": {
+          "type": "upgrade_item",
+          "item": "Tainted Tome",
+          "name": "Bronze Tainted Tome",
+          "message": "Achievieng this level will upgrade your Tainted Tome to 'Bronze' style.",
+          "image": "{CDN}/assets/images/inventory/items/action/tome_bronze.png"
+        }
+      },
+      {
+        "points": 2400,
+        "reward": {
+          "type": "currency",
+          "amount": 500
+        }
+      },
+      {
+        "points": 2900
+      },
+      {
+        "points": 3400,
+        "reward": {
+          "type": "item",
+          "item": "Invisible Igniter"
+        }
+      },
+      {
+        "points": 3900,
+        "reward": {
+          "type": "item",
+          "item": "Co-Leader Cap"
+        }
+      },
+      {
+        "points": 4400,
+        "reward": {
+          "type": "item",
+          "item": "Doomed Seasonal Cosmetic Crate"
+        }
+      },
+      {
+        "points": 4900,
+        "reward": {
+          "type": "item",
+          "item": "Coxswain Coat"
+        }
+      },
+      {
+        "points": 5400,
+        "reward": {
+          "type": "item",
+          "item": "Dreadful Dismal Cosmetic Crate"
+        }
+      },
+      {
+        "points": 5900,
+        "reward": {
+          "type": "upgrade_item",
+          "item": "Tainted Tome",
+          "name": "Silver Tainted Tome",
+          "message": "Achievieng this level will upgrade your Tainted Tome to 'Silver' style.",
+          "image": "{CDN}/assets/images/inventory/items/action/tome_silver.png"
+        }
+      },
+      {
+        "points": 6400,
+        "reward": {
+          "type": "currency",
+          "amount": 1000
+        }
+      },
+      {
+        "points": 6900
+      },
+      {
+        "points": 7400,
+        "reward": {
+          "type": "item",
+          "item": "Combustible Cranium"
+        }
+      },
+      {
+        "points": 7900,
+        "reward": {
+          "type": "item",
+          "item": "Nightwalker's Necktie"
+        }
+      },
+      {
+        "points": 8400,
+        "reward": {
+          "type": "item",
+          "item": "Doomed Seasonal Cosmetic Crate"
+        }
+      },
+      {
+        "points": 8900,
+        "reward": {
+          "type": "item",
+          "item": "Keelhaul Kapitan"
+        }
+      },
+      {
+        "points": 9400,
+        "reward": {
+          "type": "item",
+          "item": "Dreadful Dismal Cosmetic Crate"
+        }
+      },
+      {
+        "points": 9900,
+        "reward": {
+          "type": "upgrade_item",
+          "item": "Tainted Tome",
+          "name": "Golden Tainted Tome",
+          "message": "Achievieng this level will upgrade your Tainted Tome to 'Golden' style.",
+          "image": "{CDN}/assets/images/inventory/items/action/tome_golden.png"
+        }
+      }
+    ]
+  }
 ]

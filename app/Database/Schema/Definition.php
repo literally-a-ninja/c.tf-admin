@@ -20,7 +20,7 @@ abstract class Definition implements Arrayable, Jsonable
      *
      * @var string
      */
-    protected $location;
+    protected string $location;
 
     /**
      * The key/name of a definition.
@@ -85,7 +85,7 @@ abstract class Definition implements Arrayable, Jsonable
     {
         $contents = Storage::disk($this->disk)->get($this->location);
         $contents = json_decode($contents, true);
-        $this->fill($this->transform($contents));
+        $this->fill($this->locate($contents));
 
         return $this;
     }
@@ -97,7 +97,7 @@ abstract class Definition implements Arrayable, Jsonable
      *
      * @return array
      */
-    protected function transform(array $original): array
+    protected function locate(array $original): array
     {
         try
         {
