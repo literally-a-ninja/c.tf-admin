@@ -10,7 +10,7 @@ use Illuminate\Support\Collection;
  *
  * @package App\Definitions
  */
-class Tour extends Definition
+class EconTour extends Definition
 {
     /**
      * "tour_name": "Platinum Palliative",
@@ -40,7 +40,7 @@ class Tour extends Definition
 
         $missions = collect ();
         foreach ($this->contents['missions'] as $mission) {
-            $object = new Mission();
+            $object = new EconMission();
             $object->contents = $mission;
             foreach ($mission as $k => $v) {
                 $object->$k = $v;

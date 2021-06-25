@@ -84,12 +84,14 @@ class Definition implements Arrayable, Jsonable
     /**
      * @param  array|Arrayable  $arr
      */
-    public function fill (array|Arrayable $arr)
+    public function fill (array|Arrayable $arr): Definition
     {
         $this->contents = is_array ($arr) ? $arr : $arr->toArray ();
         foreach ($this->contents as $k => $v) {
             $this->$k = $v;
         }
+
+        return $this;
     }
 
     /**
@@ -127,8 +129,9 @@ class Definition implements Arrayable, Jsonable
     /**
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    public function grabFromDisk () : Definition
+    public function load ($id) : Definition
     {
+        $this->id = $id;
         $member = $this->locate ($this->disk ());
         $this->fill ($member);
         return $this;
@@ -168,7 +171,7 @@ class Definition implements Arrayable, Jsonable
      */
     #[Pure] public function newInstance (string $key = '') : Definition
     {
-        $model = new static();
+        $model = new static($this->filesystem);
         $model->id = $key;
 
         return $model;

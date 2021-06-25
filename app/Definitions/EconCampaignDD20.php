@@ -15,6 +15,6 @@ use Illuminate\Contracts\Support\Arrayable;
  * @property-read array $tours
  * @property-read array $quests
  */
-class CampaignDD20 extends Campaign
+class EconCampaignDD20 extends EconCampaign
 {
 }

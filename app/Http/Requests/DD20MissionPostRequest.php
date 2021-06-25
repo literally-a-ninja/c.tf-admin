@@ -2,7 +2,8 @@
 
 namespace App\Http\Requests;
 
-use App\Definitions\Mission;
+use App\Definitions\EconMission;
+use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Collection;
 use JetBrains\PhpStorm\ArrayShape;
@@ -10,7 +11,8 @@ use JetBrains\PhpStorm\ArrayShape;
 class DD20MissionPostRequest extends FormRequest
 {
     public function __construct (
-        protected Mission $dMission,
+        protected Filesystem $filesystem,
+        protected EconMission $econMission,
         array $query = [],
         array $request = [],
         array $attributes = [],
@@ -54,7 +56,7 @@ class DD20MissionPostRequest extends FormRequest
      */
     public function shouldProcessLoot () : bool
     {
-        return boolval($this->post ('give_loot', false));
+        return boolval ($this->post ('give_loot', false));
     }
 
     /**
@@ -70,15 +72,17 @@ class DD20MissionPostRequest extends FormRequest
     /**
      * Returns the original wave definition from the economy.
      *
-     * @return Mission
+     * @param  EconMission  $econMission
+     * @return EconMission
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    public function definition () : Mission
+    public function definition () : EconMission
     {
         $encRef = $this->post ('reference');
         $array = collect (json_decode (base64_decode ($encRef), true));
-        $mission = $this->dMission->newInstance ();
-        $mission->fill ($array);
 
-        return $mission;
+        return $this->econMission
+            ->newInstance ()
+            ->fill ($array);
     }
 }

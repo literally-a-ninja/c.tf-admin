@@ -12,17 +12,14 @@
     </section>
 
   <section class="content px-3">
-        @include('flash::message')
-        <div class="clearfix"></div>
-    </section>
+    @include('flash::message')
+    <div class="clearfix"></div>
+  </section>
 
   <section class="content px-4">
         <div class="d-flex justify-content-between">
-            <div class="d-flex justify-content-center align-items-center">
-              <img class="img-thumbnail mr-2" style="width: 4rem" src="{{$player->avatar}}" />
-            <h1 class='font-weight-bold'>{{$player->name}}</h1>
-            </div>
-            <div class="d-flex justify-content-center align-items-center">
+          @include('partial/player.block')
+          <div class="d-flex justify-content-center align-items-center">
                 <form id="form-rpc" method="POST" class="form-inline"
                       action="{{ route('dd20.rpc', compact('player')) }}"
                 >
@@ -116,7 +113,7 @@
                                       </div>
                                       <div class="row mt-2 mt-md-0">
                                           @php
-                                            $waves = ($stats[$mission->title] ?? new App\Models\Derived\Mission())->waves();
+                                            $waves = ($stats[$mission->title] ?? new App\Models\Interpretations\Mission())->waves()
                                           @endphp
                                         @for ($i = 1; $i <= $mission->waves; $i++)
                                           <label

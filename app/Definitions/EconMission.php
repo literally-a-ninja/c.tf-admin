@@ -15,6 +15,6 @@ use App\Database\Schema\Definition;
  * @property-read $waves
  * @property-read $indicators
  */
-class Mission extends Definition
+class EconMission extends Definition
 {
 }

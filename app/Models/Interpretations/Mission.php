@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Models\Derived;
+namespace App\Models\Interpretations;
 
-use App\Definitions\Mission as MissionDef;
+use App\Definitions\EconMission as MissionDef;
 use App\Models\Statistic;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
@@ -19,7 +18,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Mission extends Statistic
 {
     use HasFactory;
-
 
     /**
      * Overrides local object with econ def.

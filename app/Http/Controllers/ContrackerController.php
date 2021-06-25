@@ -2,11 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Definitions\Campaign;
+use App\Definitions\EconCampaign;
+use App\Definitions\EconCampaignDD20;
+use App\Definitions\EconQuest;
 use App\Http\Requests\CreateStatisticRequest;
 use App\Http\Requests\UpdateStatisticRequest;
+use App\Models\Interpretations\Campaign;
+use App\Models\Interpretations\Quest;
+use App\Models\Statistic;
 use App\Models\User;
+use Exception;
 use Flash;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -24,7 +31,7 @@ class ContrackerController extends AppBaseController
      *
      * @return Response
      */
-    public function index (Request $request, Campaign $campaignDef)
+    public function index (Request $request, EconCampaign $campaignDef)
     {
         $campaigns = $campaignDef->all ();
         return view ('contracker.index', compact ('campaigns'));
@@ -60,24 +67,49 @@ class ContrackerController extends AppBaseController
     }
 
     /**
-     * Display the specified Statistic.
+     * Control panel for a player's C.TF contrack progression.
      *
-     * @param  User  $user
-     *
+     * @param  Request  $request
+     * @param  EconCampaignDD20  $econCampaign
+     * @param  EconQuest  $econQuest
      * @return Application|Factory|View|RedirectResponse|Redirector
+     * @throws FileNotFoundException
      */
-    public function show (Request $request) : View|Factory|Redirector|RedirectResponse|Application
-    {
-        /** @var Statistic $contracker */
-        $contracker = Statistic::find ($user);
+    public function show (
+        Request $request,
+        EconCampaignDD20 $econCampaign,
+        EconQuest $econQuest,
+    ) : View|Factory|Redirector|RedirectResponse|Application {
 
-        if (empty($contracker)) {
-            Flash::error ('Statistic not found');
+        // Placeholders for my sanity
+        $requestedCampaign = 'mvm_directive';
+        $requestedUser = 'Potatofactory';
 
-            return redirect (route ('contracker.index'));
-        }
+        // TODO(Johnny): Refactor into User model.
+        /** @var $player User */
+        $player = User::query ()
+            ->orWhere ('name', '=', $requestedUser)
+            ->orWhere ('steamid', '=', $requestedUser)
+            ->firstOrFail ();
 
-        return view ('contracker.show')->with ('contracker', $contracker);
+        // Load from economy.
+        $econCampaign = $econCampaign->load ('mvm_directive');
+
+        // TODO(Johnny): Soo... everything else is referenced by it's title in the DB, EXCEPT QUESTS??
+        //               For quests, we're using the numeric JSON position WTF.
+        $econQuests = $econQuest
+            ->all ()
+            ->mapWithKeys (function ($value, $key) {
+                $value['id'] = $key;
+                return [ $key => $value ];
+            })
+            ->whereIn ('title', $econCampaign->quests);
+
+        // REQ(Johnny): Cache this shit, this is expensive to re-run over and over again.
+        $campaign = Campaign::findEcon ($econCampaign->title, $player);
+        $quests = Quest::findEcon ($econQuests->pluck ('id'), $player);
+
+        return view ('contracker.show', compact ('player', 'econCampaign', 'campaign', 'quests', 'econQuests'));
     }
 
     /**
@@ -134,7 +166,7 @@ class ContrackerController extends AppBaseController
      * @param  int  $id
      *
      * @return Response
-     * @throws \Exception
+     * @throws Exception
      *
      */
     public function destroy ($id)

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Definitions\Mission;
-use App\Definitions\Tour;
+use App\Definitions\EconMission;
+use App\Definitions\EconTour;
 use App\Http\Requests\DD20MissionPostRequest;
-use App\Models\Derived\Mission as MissionStatistic;
+use App\Models\Interpretations\Mission as MissionStatistic;
 use App\Models\Statistic;
 use App\Models\User;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
@@ -49,10 +49,10 @@ class DigitalDirectiveController extends AppBaseController
      *
      * @param  Request  $request
      * @param  User  $player
-     * @param  Mission  $mission
+     * @param  EconMission  $mission
      * @return RedirectResponse
      */
-    public function cmd (Request $request, User $player, Mission $mission) : RedirectResponse
+    public function cmd (Request $request, User $player, EconMission $mission) : RedirectResponse
     {
         switch ($request->post ('action')) {
             case 'reset_cache':
@@ -80,17 +80,17 @@ class DigitalDirectiveController extends AppBaseController
      *
      * @param  Request  $request
      * @param  User  $player
-     * @param  Tour  $tour
+     * @param  EconTour  $tour
      * @return Application|Factory|View
      * @throws FileNotFoundException
      */
-    public function view (Request $request, User $player, Tour $tour) : View|Factory|Application
+    public function view (Request $request, User $player, EconTour $tour) : View|Factory|Application
     {
 
         $tours = collect ();
         $missions = collect ();
         foreach ([ 'tour_digital_directive_1', 'tour_digital_directive_2' ] as $tourName) {
-            $tour = $tour->newInstance ($tourName)->grabFromDisk ();
+            $tour = $tour->load ($tourName);
             $tours->push ($tour);
             $missions->push (
                 $tour
@@ -163,10 +163,10 @@ class DigitalDirectiveController extends AppBaseController
 
     /**
      * @param  User  $player
-     * @param  Mission  $missionDef
+     * @param  EconMission  $missionDef
      * @return Builder
      */
-    protected function queryMission (User $player, Mission $missionDef) : Builder
+    protected function queryMission (User $player, EconMission $missionDef) : Builder
     {
         return MissionStatistic::query ()
             ->where ('steamid', '=', $player->steamid)
@@ -175,9 +175,9 @@ class DigitalDirectiveController extends AppBaseController
 
     /**
      * @param  User  $player
-     * @param  Mission  $mission
+     * @param  EconMission  $mission
      */
-    protected function giveLoot (User $player, Mission $mission)
+    protected function giveLoot (User $player, EconMission $mission)
     {
         $apiKey = env ('API_CREATORS_KEY');
         Http::withHeaders ([

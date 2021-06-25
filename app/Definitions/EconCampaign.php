@@ -16,23 +16,29 @@ use Illuminate\Support\Collection;
  * @property-read DateTime $start_time
  * @property-read DateTime $end_time
  **/
-class Campaign extends Definition
+class EconCampaign extends Definition
 {
     protected string $location = 'economy/contracker/campaigns.json';
 
     protected string $memberKey = 'title';
 
-
-    public function fill (array|Arrayable $arr)
+    /**
+     * @param  array|Arrayable  $arr
+     * @return EconCampaign
+     */
+    public function fill (array|Arrayable $arr): EconCampaign
     {
         $arr['start_time'] = strtotime ($arr['start_time'] ?? 'now');
         $arr['end_time'] = strtotime ($arr['start_time'] ?? 'now');
 
-        parent::fill ($arr);
+        return parent::fill ($arr);
     }
 
     protected function locate (Collection $original) : array
     {
+        if (empty($this->id))
+            return $original->toArray ();
+
         return $original
             ->where ('title', $this->id)
             ->first ();

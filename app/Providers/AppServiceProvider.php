@@ -2,17 +2,14 @@
 
 namespace App\Providers;
 
-use App\Database\Schema\Definition;
-use App\Definitions\Campaign;
-use App\Definitions\CampaignDD20;
-use App\Definitions\Mission;
-use App\Definitions\Quest;
-use App\Http\Controllers\ContrackerController;
+use App\Definitions\EconCampaign;
+use App\Definitions\EconCampaignDD20;
+use App\Definitions\EconQuest;
+use App\Definitions\EconTour;
 use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
-use League\CommonMark\Extension\TableOfContents\Node\TableOfContents;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -35,7 +32,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot ()
     {
-        $this->app->when ([Campaign::class, Definition::class, Tour::class])
+        $this->app->when ([
+            EconCampaign::class,
+            EconCampaignDD20::class,
+            EconTour::class,
+            EconQuest::class,
+        ])
             ->needs (Filesystem::class)
             ->give (fn () => Storage::disk ('local-def'));
 
