@@ -4,7 +4,7 @@
 namespace App\Definitions;
 
 
-use App\Database\Schema\Definition;
+use App\Database\Schema\CachableDefinition;
 use Illuminate\Support\Collection;
 
 /**
@@ -21,7 +21,7 @@ use Illuminate\Support\Collection;
  * @property-read array $objectives
  * @property-read array $rewards
  */
-class EconQuest extends Definition
+class EconQuest extends CachableDefinition
 {
     /**
      * @var string
@@ -30,7 +30,7 @@ class EconQuest extends Definition
 
     public function all () : Collection
     {
-        return $this->disk ();
+        return $this->read ();
     }
 
     /**

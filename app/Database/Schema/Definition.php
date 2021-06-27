@@ -2,10 +2,10 @@
 
 namespace App\Database\Schema;
 
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
-use Illuminate\Database\RecordsNotFoundException;
 use Illuminate\Support\Collection;
 use JetBrains\PhpStorm\Pure;
 
@@ -14,7 +14,7 @@ use JetBrains\PhpStorm\Pure;
  *
  * @package App\
  */
-class Definition implements Arrayable, Jsonable
+abstract class Definition implements Arrayable, Jsonable
 {
     /**
      * Where is this definition located?
@@ -29,7 +29,7 @@ class Definition implements Arrayable, Jsonable
      * @var string
      * @default ''
      */
-    protected $id = '';
+    protected string $id = '';
 
     /**
      * Unique identifier each member has.
@@ -46,52 +46,12 @@ class Definition implements Arrayable, Jsonable
      * @var array
      * @default an empty array
      */
-    protected $contents = [];
+    protected array $contents = [];
 
     public function __construct (
         protected Filesystem $filesystem
-    ) {
-    }
-
-    /**
-     * Returns a collection of all definitions within this file.
-     * @return Collection
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
-     */
-    public function all () : Collection
+    )
     {
-        return $this->disk ()
-            ->map (function ($data) {
-                $c = new static($this->filesystem);
-                $c->fill ($data);
-                return $c;
-            });
-
-    }
-
-    /**
-     * Reads from disk.
-     *
-     * @return Collection
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
-     */
-    protected function disk () : Collection
-    {
-        $contents = $this->filesystem->get ($this->location);
-        return collect (json_decode ($contents, true));
-    }
-
-    /**
-     * @param  array|Arrayable  $arr
-     */
-    public function fill (array|Arrayable $arr): Definition
-    {
-        $this->contents = is_array ($arr) ? $arr : $arr->toArray ();
-        foreach ($this->contents as $k => $v) {
-            $this->$k = $v;
-        }
-
-        return $this;
     }
 
     /**
@@ -111,14 +71,6 @@ class Definition implements Arrayable, Jsonable
     }
 
     /**
-     * @return string
-     */
-    public function getDisk () : string
-    {
-        return $this->disk;
-    }
-
-    /**
      * @return array
      */
     public function getContents () : array
@@ -127,52 +79,75 @@ class Definition implements Arrayable, Jsonable
     }
 
     /**
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     * @throws FileNotFoundException
      */
-    public function load ($id) : Definition
+    public function findById ($id) : ?CachableDefinition
     {
-        $this->id = $id;
-        $member = $this->locate ($this->disk ());
-        $this->fill ($member);
-        return $this;
+        $all = $this->all ();
+        if (! empty($this->memberKey)) {
+            return $all->firstWhere ($this->memberKey, $id);
+        }
+
+        if (! empty($this->id)) {
+            return $all->get ($id);
+        }
+
+        return NULL;
     }
 
     /**
-     * Applies any necessary transformations to obtain our data.
+     * Returns a collection of all definitions within this file.
      *
-     * @param  array  $original
-     *
-     * @return array
+     * @return Collection
+     * @throws FileNotFoundException
      */
-    protected function locate (Collection $original) : array
+    public function all () : Collection
     {
-        try {
-            if (! empty($this->memberKey)) {
+        return $this->read ()
+            ->map (function ($data) {
+                $c = new static($this->filesystem);
+                $c->fill ($data);
+                return $c;
+            });
 
-                return $original->firstWhere ($this->memberKey, $this->id);
-            }
+    }
 
-            if (! empty($this->id)) {
-                return $original->get ($this->id);
-            }
-            return $original;
-        } catch (\ErrorException $error) {
-            // This exception confirms better to what we're doing plus this will create a 404 if unhandled.
-            throw new RecordsNotFoundException("$this->id not found.");
+    /**
+     * Reads and parse data.
+     *
+     * @return Collection
+     * @throws FileNotFoundException
+     */
+    protected function read () : Collection
+    {
+        $contents = $this->filesystem->get ($this->location);
+        return collect (json_decode ($contents, true));
+    }
+
+    /**
+     * @param  array|Arrayable  $arr
+     */
+    public function fill (array|Arrayable $arr) : Definition
+    {
+        $this->contents = is_array ($arr) ? $arr : $arr->toArray ();
+        foreach ($this->contents as $k => $v) {
+            $this->$k = $v;
         }
+
+        return $this;
     }
 
     /**
      * Create a new instance of the given definition.
      *
-     * @param  string  $key
+     * @param  string  $id
      * @return static
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     * @throws FileNotFoundException
      */
-    #[Pure] public function newInstance (string $key = '') : Definition
+    #[Pure] public function newInstance (string $id = '') : CachableDefinition
     {
         $model = new static($this->filesystem);
-        $model->id = $key;
+        $model->id = $id;
 
         return $model;
     }

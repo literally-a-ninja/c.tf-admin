@@ -93,7 +93,7 @@ class ContrackerController extends AppBaseController
             ->firstOrFail ();
 
         // Load from economy.
-        $econCampaign = $econCampaign->load ('mvm_directive');
+        $econCampaign = $econCampaign->findById ('mvm_directive');
 
         // TODO(Johnny): Soo... everything else is referenced by it's title in the DB, EXCEPT QUESTS??
         //               For quests, we're using the numeric JSON position WTF.

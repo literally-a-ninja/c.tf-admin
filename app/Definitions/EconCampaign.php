@@ -3,7 +3,7 @@
 
 namespace App\Definitions;
 
-use App\Database\Schema\Definition;
+use App\Database\Schema\CachableDefinition;
 use DateTime;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Collection;
@@ -16,7 +16,7 @@ use Illuminate\Support\Collection;
  * @property-read DateTime $start_time
  * @property-read DateTime $end_time
  **/
-class EconCampaign extends Definition
+class EconCampaign extends CachableDefinition
 {
     protected string $location = 'economy/contracker/campaigns.json';
 

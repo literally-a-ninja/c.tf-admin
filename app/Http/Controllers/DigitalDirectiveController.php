@@ -49,10 +49,9 @@ class DigitalDirectiveController extends AppBaseController
      *
      * @param  Request  $request
      * @param  User  $player
-     * @param  EconMission  $mission
      * @return RedirectResponse
      */
-    public function cmd (Request $request, User $player, EconMission $mission) : RedirectResponse
+    public function cmd (Request $request, User $player) : RedirectResponse
     {
         switch ($request->post ('action')) {
             case 'reset_cache':
@@ -78,19 +77,18 @@ class DigitalDirectiveController extends AppBaseController
     /**
      * POST /dd20/:user/
      *
-     * @param  Request  $request
      * @param  User  $player
      * @param  EconTour  $tour
      * @return Application|Factory|View
      * @throws FileNotFoundException
      */
-    public function view (Request $request, User $player, EconTour $tour) : View|Factory|Application
+    public function view (User $player, EconTour $tour) : View|Factory|Application
     {
 
         $tours = collect ();
         $missions = collect ();
         foreach ([ 'tour_digital_directive_1', 'tour_digital_directive_2' ] as $tourName) {
-            $tour = $tour->load ($tourName);
+            $tour = $tour->findById ($tourName);
             $tours->push ($tour);
             $missions->push (
                 $tour
