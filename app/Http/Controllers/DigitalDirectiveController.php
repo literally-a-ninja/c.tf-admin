@@ -107,7 +107,7 @@ class DigitalDirectiveController extends AppBaseController
             ->where ('target', 'LIKE', '[MVMM:%')
             ->get ()
             ->mapWithKeys (function (MissionStatistic $mission) {
-                return [ $mission->name () => $mission ];
+                return [ $mission->getAttributeId () => $mission ];
             });
 
         return view ('dd20.view', compact ('player', 'campaign', 'tours', 'missions', 'stats'));

@@ -6,7 +6,6 @@ use App\Definitions\EconCampaign;
 use App\Definitions\EconCampaignDD20;
 use App\Definitions\EconQuest;
 use App\Http\Requests\CreateStatisticRequest;
-use App\Http\Requests\UpdateStatisticRequest;
 use App\Models\Interpretations\Campaign;
 use App\Models\Interpretations\Quest;
 use App\Models\Statistic;
@@ -20,6 +19,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\Redirect;
 use Response;
 
 class ContrackerController extends AppBaseController
@@ -93,23 +93,20 @@ class ContrackerController extends AppBaseController
             ->firstOrFail ();
 
         // Load from economy.
-        $econCampaign = $econCampaign->findById ('mvm_directive');
+        $econCampaign->cacheRemove ();
+        $campaign = $econCampaign->findByKey ('mvm_directive', 'title');
+
 
         // TODO(Johnny): Soo... everything else is referenced by it's title in the DB, EXCEPT QUESTS??
         //               For quests, we're using the numeric JSON position WTF.
-        $econQuests = $econQuest
-            ->all ()
-            ->mapWithKeys (function ($value, $key) {
-                $value['id'] = $key;
-                return [ $key => $value ];
-            })
-            ->whereIn ('title', $econCampaign->quests);
+        $econQuest->cacheRemove ();
+        $econQuests = $econQuest->all ()->whereIn ('title', $campaign->quests);
 
         // REQ(Johnny): Cache this shit, this is expensive to re-run over and over again.
-        $campaign = Campaign::findEcon ($econCampaign->title, $player);
-        $quests = Quest::findEcon ($econQuests->pluck ('id'), $player);
+        $campaign = Campaign::findEcon ($campaign->title, $player);
+        $quests = Quest::findByIds ($econQuests->pluck ('id'), $player);
 
-        return view ('contracker.show', compact ('player', 'econCampaign', 'campaign', 'quests', 'econQuests'));
+        return view ('contracker.show', compact ('player', 'campaign', 'quests'));
     }
 
     /**
@@ -136,28 +133,40 @@ class ContrackerController extends AppBaseController
     /**
      * Update the specified Statistic in storage.
      *
-     * @param  int  $id
-     * @param  UpdateStatisticRequest  $request
+     * @param  Request  $request
      *
      * @return Response
      */
-    public function update ($id, UpdateStatisticRequest $request)
+    public function update (Request $request, EconQuest $econ) : Response
     {
-        /** @var Statistic $contracker */
-        $contracker = Statistic::find ($id);
+        $requestedUser = 'Potatofactory';
 
-        if (empty($contracker)) {
-            Flash::error ('Statistic not found');
+        // TODO(Johnny): Refactor into User model.
+        /** @var $player User */
+        $player = User::query ()
+            ->orWhere ('name', '=', $requestedUser)
+            ->orWhere ('steamid', '=', $requestedUser)
+            ->firstOrFail ();
 
-            return redirect (route ('contracker.index'));
+        $usafeQuests = $request->post ('quests');
+        // TODO(Johnny): Sanitise this to ensure all ids and objectives are correct by schema.
+        foreach ($usafeQuests as $questId => $objectives) {
+            $quest = Quest::query ()
+                ->where ('target', '=', "[Q:$questId]")
+                ->where ('steamid', '=', $player->steamid)
+                ->firstOrCreate ();
+            foreach ($objectives as $i => $value) {
+                /**
+                 * @var array
+                 */
+                $quest->progress["objective_$i"] = $value;
+            }
+
+            dd($quest);
+            $quest->save();
         }
 
-        $contracker->fill ($request->all ());
-        $contracker->save ();
-
-        Flash::success ('Statistic updated successfully.');
-
-        return redirect (route ('contracker.index'));
+        return Redirect::route ('contracker.show');
     }
 
     /**

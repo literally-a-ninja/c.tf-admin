@@ -7,7 +7,6 @@ use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Support\Collection;
-use JetBrains\PhpStorm\Pure;
 
 /**
  * Denotes a type of database object which is immutable.
@@ -50,8 +49,7 @@ abstract class Definition implements Arrayable, Jsonable
 
     public function __construct (
         protected Filesystem $filesystem
-    )
-    {
+    ) {
     }
 
     /**
@@ -79,20 +77,60 @@ abstract class Definition implements Arrayable, Jsonable
     }
 
     /**
+     * Generic find method checked member key if specified, otherwise uses the direct id.
+     * This is used by Eloquent to associate models to econ definitions.
+     *
+     * @param $value
+     * @return mixed
      * @throws FileNotFoundException
      */
-    public function findById ($id) : ?CachableDefinition
+    public function find ($value) : mixed
     {
-        $all = $this->all ();
-        if (! empty($this->memberKey)) {
-            return $all->firstWhere ($this->memberKey, $id);
+        if (empty($value))
+            return NULL;
+
+        return empty($this->memberKey)
+            ? $this->findById ($value)
+            : $this->findByKey ($value);
+    }
+
+    /**
+     * @return Definition
+     * @throws FileNotFoundException
+     */
+    public function findById ($id) : mixed
+    {
+        return $this->newInstance ($id)
+            ->fill ($this->all ()->get ($id));
+    }
+
+    /**
+     * @param  array|Arrayable  $arr
+     * @return Definition
+     */
+    public function fill (
+        array|Arrayable $arr
+    ) : Definition {
+        $this->contents = is_array ($arr) ? $arr : $arr->toArray ();
+        foreach ($this->contents as $k => $v) {
+            $this->$k = $v;
         }
 
-        if (! empty($this->id)) {
-            return $all->get ($id);
-        }
+        return $this;
+    }
 
-        return NULL;
+    /**
+     * Create a new instance of the given definition.
+     *
+     * @param  string  $id
+     * @return Definition
+     */
+    #[Pure] public function newInstance (string $id = '') : Definition
+    {
+        $model = new static($this->filesystem);
+        $model->id = $id;
+
+        return $model;
     }
 
     /**
@@ -121,35 +159,21 @@ abstract class Definition implements Arrayable, Jsonable
     protected function read () : Collection
     {
         $contents = $this->filesystem->get ($this->location);
-        return collect (json_decode ($contents, true));
+        return collect (json_decode ($contents, true))
+            ->map (function ($model, $id) {
+                $model['id'] = $model['id'] ?? $id;
+                return $model;
+            });
     }
 
     /**
-     * @param  array|Arrayable  $arr
-     */
-    public function fill (array|Arrayable $arr) : Definition
-    {
-        $this->contents = is_array ($arr) ? $arr : $arr->toArray ();
-        foreach ($this->contents as $k => $v) {
-            $this->$k = $v;
-        }
-
-        return $this;
-    }
-
-    /**
-     * Create a new instance of the given definition.
-     *
-     * @param  string  $id
-     * @return static
      * @throws FileNotFoundException
      */
-    #[Pure] public function newInstance (string $id = '') : CachableDefinition
+    public function findByKey ($value, $key = false) : ?Definition
     {
-        $model = new static($this->filesystem);
-        $model->id = $id;
-
-        return $model;
+        return $this
+            ->all ()
+            ->firstWhere ($key ?: $this->memberKey, $value);
     }
 
     /**

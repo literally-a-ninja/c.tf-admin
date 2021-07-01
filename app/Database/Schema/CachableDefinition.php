@@ -53,7 +53,7 @@ class CachableDefinition extends Definition
      * @return $this
      * @throws \Psr\SimpleCache\InvalidArgumentException
      */
-    protected function cacheRemove () : CachableDefinition
+    public function cacheRemove () : CachableDefinition
     {
         Cache::delete ($this->cacheKey);
         return $this;

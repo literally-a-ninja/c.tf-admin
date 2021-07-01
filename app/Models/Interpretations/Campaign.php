@@ -2,6 +2,8 @@
 
 namespace App\Models\Interpretations;
 
+use App\Definitions\EconCampaign;
+use App\Definitions\EconCampaignDD20;
 use App\Models\Statistic;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
@@ -14,6 +16,11 @@ use Illuminate\Database\Query\Builder;
  */
 class Campaign extends Statistic
 {
+    /**
+     * @var EconCampaignDD20|string
+     */
+    public mixed $definition = EconCampaignDD20::class;
+
     /**
      * @param  array|mixed|string[]  $columns
      * @return Collection|array
