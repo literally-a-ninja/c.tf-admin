@@ -58,6 +58,7 @@
                           </td>
                           <td>
                               <form action='{{route ('contracker.update')}}' method='post'>
+                                  <input type='hidden' name='player' value='{{$player->id}}'/>
                                   @csrf
                                   @method('patch')
                                   @foreach($quest->objectives as $i => $objective)

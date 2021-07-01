@@ -137,36 +137,29 @@ class ContrackerController extends AppBaseController
      *
      * @return Response
      */
-    public function update (Request $request, EconQuest $econ) : Response
+    public function update (Request $request, EconQuest $econ) : RedirectResponse
     {
-        $requestedUser = 'Potatofactory';
+        $clientUserId = $request->post ('player');
+        $clientQuestIds = $request->post ('quests');
 
-        // TODO(Johnny): Refactor into User model.
-        /** @var $player User */
-        $player = User::query ()
-            ->orWhere ('name', '=', $requestedUser)
-            ->orWhere ('steamid', '=', $requestedUser)
-            ->firstOrFail ();
-
-        $usafeQuests = $request->post ('quests');
-        // TODO(Johnny): Sanitise this to ensure all ids and objectives are correct by schema.
-        foreach ($usafeQuests as $questId => $objectives) {
-            $quest = Quest::query ()
-                ->where ('target', '=', "[Q:$questId]")
-                ->where ('steamid', '=', $player->steamid)
-                ->firstOrCreate ();
-            foreach ($objectives as $i => $value) {
-                /**
-                 * @var array
-                 */
-                $quest->progress["objective_$i"] = $value;
+        $liveQuests = Quest::findByIds (collect (array_keys ($clientQuestIds)), User::find ($clientUserId));
+        foreach ($liveQuests as $quest) {
+            foreach ($quest->objectives as $index => $_) {
+                $quest->setObjective ($index, $clientQuestIds[$quest->id][$index]);
             }
 
-            dd($quest);
-            $quest->save();
+            $quest->save ();
         }
 
-        return Redirect::route ('contracker.show');
+        return Redirect::route ('contracker.show')
+            ->with ('feedback', [
+                'success' => [
+                    [
+                        'icon' => 'fas fa-check',
+                        'title' => "Your contracker modifications have been submitted!",
+                    ],
+                ],
+            ]);
     }
 
     /**

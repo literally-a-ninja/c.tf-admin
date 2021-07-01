@@ -62,6 +62,15 @@ class Quest extends Statistic
             ->toArray ();
     }
 
+    public function setObjective ($id, $value): void
+    {
+        $progress = $this->progress;
+
+        $progress["objective_$id"] = $value;
+
+        $this->progress = $progress;
+    }
+
     public function getUpdatedAtAttribute () : string
     {
         return $this->progress['updated'] ?? '0';

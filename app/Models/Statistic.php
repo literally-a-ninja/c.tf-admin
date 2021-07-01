@@ -27,7 +27,7 @@ class Statistic extends Model
      */
     public static array $rules = [
         'target' => 'required|string|max:150',
-        'progress' => 'nullable|string',
+        'progress' => 'required|array',
     ];
 
     /**
@@ -52,7 +52,7 @@ class Statistic extends Model
     public $fillable = [
         'steamid',
         'target',
-        'progress' => '{}',
+        'progress',
     ];
 
     /**
@@ -88,7 +88,9 @@ class Statistic extends Model
 
         // Always set this value on save.
         static::saving (function ($model) {
-            $model->getAttribute ('progress')['updated'] = now ()->getTimestamp ();
+            $progress = $model->progress;
+            $progress['updated'] = time ();
+            $model->progress = $progress;
         });
     }
 
