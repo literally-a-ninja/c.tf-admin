@@ -57,7 +57,7 @@
                             </div>
                           </td>
                           <td>
-                              <form action='{{route ('contracker.update')}}' method='post'>
+                              <form action='{{route ('contracker.update', compact ('player'))}}' method='post'>
                                   <input type='hidden' name='player' value='{{$player->id}}'/>
                                   @csrf
                                   @method('patch')
@@ -75,10 +75,9 @@
                                                readonly>
                                     </li>
                                   @endforeach
-                                  <input type='submit'>
+                                  <button class='btn btn-primary' type='submit'><i class='fas fa-save'></i></button>
                               </form>
                           </td>
-                          <td><div class='btn btn-primary'></div></td>
                         </tr>
                     @endforeach
                   </tbody>

@@ -16,6 +16,7 @@ use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
@@ -29,12 +30,39 @@ class ContrackerController extends AppBaseController
      *
      * @param  Request  $request
      *
-     * @return Response
+     * @return Application|Factory|View
      */
     public function index (Request $request, EconCampaign $campaignDef)
     {
-        $campaigns = $campaignDef->all ();
-        return view ('contracker.index', compact ('campaigns'));
+        return view ('contracker.index');
+    }
+
+    /**
+     * @param  Request  $request
+     *
+     * @return RedirectResponse
+     */
+    public function find (Request $request) : RedirectResponse
+    {
+        try {
+            $query = $request->post ('query');
+            $player = User::query ()
+                ->select ('id')
+                ->orWhere ('name', '=', $query)
+                ->orWhere ('steamid', '=', $query)
+                ->firstOrFail ();
+
+            return Redirect::route ('contracker.view', compact ('player'));
+        } catch (ModelNotFoundException $exception) {
+            return Redirect::route ('contracker.index')->with ('feedback', [
+                'warning' => [
+                    [
+                        'icon' => 'fas fa-sad-tear',
+                        'title' => "We couldn't find your user.",
+                    ],
+                ],
+            ]);
+        }
     }
 
     /**
@@ -75,23 +103,12 @@ class ContrackerController extends AppBaseController
      * @return Application|Factory|View|RedirectResponse|Redirector
      * @throws FileNotFoundException
      */
-    public function show (
+    public function view (
+        User $player,
         Request $request,
         EconCampaignDD20 $econCampaign,
         EconQuest $econQuest,
     ) : View|Factory|Redirector|RedirectResponse|Application {
-
-        // Placeholders for my sanity
-        $requestedCampaign = 'mvm_directive';
-        $requestedUser = 'Potatofactory';
-
-        // TODO(Johnny): Refactor into User model.
-        /** @var $player User */
-        $player = User::query ()
-            ->orWhere ('name', '=', $requestedUser)
-            ->orWhere ('steamid', '=', $requestedUser)
-            ->firstOrFail ();
-
         // Load from economy.
         $econCampaign->cacheRemove ();
         $campaign = $econCampaign->findByKey ('mvm_directive', 'title');
@@ -106,7 +123,7 @@ class ContrackerController extends AppBaseController
         $campaign = Campaign::findEcon ($campaign->title, $player);
         $quests = Quest::findByIds ($econQuests->pluck ('id'), $player);
 
-        return view ('contracker.show', compact ('player', 'campaign', 'quests'));
+        return view ('contracker.view', compact ('player', 'campaign', 'quests'));
     }
 
     /**
@@ -137,12 +154,11 @@ class ContrackerController extends AppBaseController
      *
      * @return Response
      */
-    public function update (Request $request, EconQuest $econ) : RedirectResponse
+    public function update (Request $request, User $player, EconQuest $econ) : RedirectResponse
     {
-        $clientUserId = $request->post ('player');
         $clientQuestIds = $request->post ('quests');
 
-        $liveQuests = Quest::findByIds (collect (array_keys ($clientQuestIds)), User::find ($clientUserId));
+        $liveQuests = Quest::findByIds (collect (array_keys ($clientQuestIds)), $player);
         foreach ($liveQuests as $quest) {
             foreach ($quest->objectives as $index => $_) {
                 $quest->setObjective ($index, $clientQuestIds[$quest->id][$index]);
@@ -151,7 +167,7 @@ class ContrackerController extends AppBaseController
             $quest->save ();
         }
 
-        return Redirect::route ('contracker.show')
+        return Redirect::route ('contracker.view')
             ->with ('feedback', [
                 'success' => [
                     [

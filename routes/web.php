@@ -55,8 +55,9 @@ Route::resource('items', ItemController::class);
 
 Route::prefix ('/contracker')->group (callback: function () {
     Route::get ('/', ContrackerController::class.'@index')->name ('contracker.index');
-    Route::get ('/show', ContrackerController::class.'@show')->name ('contracker.show');
-    Route::patch ('/update', ContrackerController::class.'@update')->name ('contracker.update');
+    Route::post ('/', ContrackerController::class.'@find')->name ('contracker.find  ');
+    Route::get ('/{player}', ContrackerController::class.'@view')->name ('contracker.view');
+    Route::patch ('/{player}', ContrackerController::class.'@update')->name ('contracker.update');
 });
 Route::prefix ('/dd20')->group (function () {
     Route::get ('/', DigitalDirectiveController::class.'@index')->name ('dd20.index');

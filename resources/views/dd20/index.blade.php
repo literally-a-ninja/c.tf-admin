@@ -5,14 +5,14 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Digital Directive</h1>
+                    <h1> <i class="fas fa-meteor"></i> Digital Directive</h1>
                 </div>
-{{--                <div class="col-sm-6">--}}
-{{--                    <a class="btn btn-primary float-right"--}}
-{{--                       href="{{ route('statistics.create') }}">--}}
-{{--                        Add New--}}
-{{--                    </a>--}}
-{{--                </div>--}}
+                {{--                <div class="col-sm-6">--}}
+                {{--                    <a class="btn btn-primary float-right"--}}
+                {{--                       href="{{ route('statistics.create') }}">--}}
+                {{--                        Add New--}}
+                {{--                    </a>--}}
+                {{--                </div>--}}
             </div>
         </div>
     </section>
@@ -29,7 +29,12 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="query-addon"><i class="fas fa-user"></i></span>
                 </div>
-                <input type="text" class="form-control" name="query" placeholder="Username / Community ID" aria-label="User query" aria-describedby="query-addon">
+                <input type="text"
+                       class="form-control"
+                       name="query"
+                       placeholder="Username / Community ID"
+                       aria-label="User query"
+                       aria-describedby="query-addon">
             </div>
         </form>
     </section>
