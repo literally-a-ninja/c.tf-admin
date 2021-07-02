@@ -14,7 +14,7 @@
 
 <li class="nav-item">
     <a href="{{route ('users.index')}}" class="nav-link {{ Request::is('users*') ? 'active' : '' }}">
-       <i class="fas fa-users"></i> <label>Players</label>
+       <i class="text-muted fas fa-users"></i> <label class='text-muted'>Players</label>
     </a>
 </li>
 
