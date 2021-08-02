@@ -1,39 +1,39 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-12">
-                    <h1>Create Statistic</h1>
-                </div>
-            </div>
-        </div>
-    </section>
+	<section class="content-header">
+		<div class="container-fluid">
+			<div class="row mb-2">
+				<div class="col-sm-12">
+					<h1>Create Statistic</h1>
+				</div>
+			</div>
+		</div>
+	</section>
 
-    <div class="content px-3">
+	<div class="content px-3">
 
-        @include('adminlte-templates::common.errors')
+		@include('adminlte-templates::common.errors')
 
-        <div class="card">
+		<div class="card">
 
-            {!! Form::open(['route' => 'statistics.store']) !!}
+			{!! Form::open(['route' => 'statistics.store']) !!}
 
-            <div class="card-body">
+			<div class="card-body">
 
-                <div class="row">
-                    @include('contracker.fields')
-                </div>
+				<div class="row">
+					@include('contracker.fields')
+				</div>
 
-            </div>
+			</div>
 
-            <div class="card-footer">
-                {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('statistics.index') }}" class="btn btn-default">Cancel</a>
-            </div>
+			<div class="card-footer">
+				{!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+				<a href="{{ route('statistics.index') }}" class="btn btn-default">Cancel</a>
+			</div>
 
-            {!! Form::close() !!}
+			{!! Form::close() !!}
 
-        </div>
-    </div>
+		</div>
+	</div>
 @endsection

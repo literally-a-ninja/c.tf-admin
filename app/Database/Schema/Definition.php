@@ -28,7 +28,7 @@ abstract class Definition implements Arrayable, Jsonable
      * @var string
      * @default ''
      */
-    protected string $id = '';
+    public string $id = '';
 
     /**
      * Unique identifier each member has.
@@ -100,8 +100,7 @@ abstract class Definition implements Arrayable, Jsonable
      */
     public function findById ($id) : mixed
     {
-        return $this->newInstance ($id)
-            ->fill ($this->all ()->get ($id));
+        return $this->all ()->get ($id);
     }
 
     /**

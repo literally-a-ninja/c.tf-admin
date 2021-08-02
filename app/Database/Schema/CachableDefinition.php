@@ -6,6 +6,8 @@ use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
+use JetBrains\PhpStorm\Pure;
+use Psr\SimpleCache\InvalidArgumentException;
 
 
 /**
@@ -31,32 +33,12 @@ class CachableDefinition extends Definition
      */
     protected int $cachableTTL = 259200;
 
-    public function __construct (Filesystem $filesystem)
+    #[Pure] public function __construct (Filesystem $filesystem)
     {
         parent::__construct ($filesystem);
 
         $location = md5 ($this->location);
         $this->cacheKey = "def@{$location}";
-    }
-
-    /**
-     * @return string
-     */
-    public function getCacheKey () : string
-    {
-        return $this->cacheKey;
-    }
-
-    /**
-     * Removes an object from cache.
-     *
-     * @return $this
-     * @throws \Psr\SimpleCache\InvalidArgumentException
-     */
-    public function cacheRemove () : CachableDefinition
-    {
-        Cache::delete ($this->cacheKey);
-        return $this;
     }
 
     /**
@@ -74,5 +56,25 @@ class CachableDefinition extends Definition
         Cache::put ($this->cacheKey, $result, $this->cachableTTL);
 
         return $result;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCacheKey () : string
+    {
+        return $this->cacheKey;
+    }
+
+    /**
+     * Removes an object from cache.
+     *
+     * @return $this
+     * @throws InvalidArgumentException
+     */
+    public function cacheRemove () : CachableDefinition
+    {
+        Cache::delete ($this->cacheKey);
+        return $this;
     }
 }

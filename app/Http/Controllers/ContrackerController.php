@@ -20,7 +20,9 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redirect;
+use Ramsey\Collection\Collection;
 use Response;
 
 class ContrackerController extends AppBaseController
@@ -101,29 +103,32 @@ class ContrackerController extends AppBaseController
      * @param  EconCampaignDD20  $econCampaign
      * @param  EconQuest  $econQuest
      * @return Application|Factory|View|RedirectResponse|Redirector
-     * @throws FileNotFoundException
+     * @throws FileNotFoundException|\Psr\SimpleCache\InvalidArgumentException
      */
     public function view (
         User $player,
         Request $request,
-        EconCampaignDD20 $econCampaign,
+        EconCampaign $econCampaign,
         EconQuest $econQuest,
     ) : View|Factory|Redirector|RedirectResponse|Application {
         // Load from economy.
-        $econCampaign->cacheRemove ();
-        $campaign = $econCampaign->findByKey ('mvm_directive', 'title');
-
+        $econCampaign = $econCampaign->findByKey ('mvm_directive', 'title');
 
         // TODO(Johnny): Soo... everything else is referenced by it's title in the DB, EXCEPT QUESTS??
         //               For quests, we're using the numeric JSON position WTF.
-        $econQuest->cacheRemove ();
-        $econQuests = $econQuest->all ()->whereIn ('title', $campaign->quests);
+        $econQuests = $econQuest->all ()->whereIn ('title', $econCampaign->quests),
 
-        // REQ(Johnny): Cache this shit, this is expensive to re-run over and over again.
-        $campaign = Campaign::findEcon ($campaign->title, $player);
-        $quests = Quest::findByIds ($econQuests->pluck ('id'), $player);
+        // TODO(Johnny): temp cache until singleton is added.
+        $key = md5 ("contracker::{$player->steamid}.{$econCampaign->title}");
+        [ $dbCampaign, $dbQuests, $campaignNames ] = Cache::has ($key) ? Cache::get ($key) : [
+            Campaign::findEcon ($econCampaign->title, $player),
+            Quest::findByEcon ($econQuests, $player),
+            $econCampaign->all()->pluck ('name'),
+        ];
 
-        return view ('contracker.view', compact ('player', 'campaign', 'quests'));
+        Cache::put ($key, [$dbCampaign, $dbQuests, $campaignNames], now ()->addMinutes (5));
+
+        return view ('contracker.view', compact ('player', 'campaignNames', 'econCampaign', 'econQuests'));
     }
 
     /**
@@ -154,14 +159,19 @@ class ContrackerController extends AppBaseController
      *
      * @return Response
      */
-    public function update (Request $request, User $player, EconQuest $econ) : RedirectResponse
+    public function update (Request $request, User $player, EconQuest $econQuest) : RedirectResponse
     {
-        $clientQuestIds = $request->post ('quests');
+        $questList = collect ($request->post ('quests'));
+        $dbQuests = Quest::findByEcon (
+            $questList
+                ->keys ()
+                ->map (fn ($id) => $econQuest->findById ($id))
+            , $player
+        );
 
-        $liveQuests = Quest::findByIds (collect (array_keys ($clientQuestIds)), $player);
-        foreach ($liveQuests as $quest) {
+        foreach ($dbQuests as $quest) {
             foreach ($quest->objectives as $index => $_) {
-                $quest->setObjective ($index, $clientQuestIds[$quest->id][$index]);
+                $quest->setObjective ($index, $questList[$quest->id][$index]);
             }
 
             $quest->save ();

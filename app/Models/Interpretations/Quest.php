@@ -6,6 +6,7 @@ use App\Definitions\EconQuest;
 use App\Models\Statistic;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
 /**
@@ -34,18 +35,32 @@ class Quest extends Statistic
     }
 
     /**
-     * @param  array  $ids
+     * @param  EconQuest[]  $questList
      * @param  User  $user
      * @return Collection|array
      */
-    public static function findByIds (Collection $ids, User $user) : Collection|array
+    public static function findByEcon (Collection $questList, User $user) : Collection|array
     {
-        $ids = $ids->map (fn ($id) => "[Q:$id]");
-
-        return Quest::query ()
-            ->whereIn ('target', $ids)
+        $foundQuests = Quest::query ()
+            ->whereIn ('target', $questList->pluck ('id')->map (fn ($id) => "[Q:$id]"))
             ->where ('steamid', '=', $user->steamid)
             ->get ();
+
+        // Create quest items if they don't already exist.
+        $newQuests = collect ();
+        $mapOfIds = $foundQuests->mapWithKeys (fn ($quest) => [ $quest->title => true ]);
+        if ($mapOfIds->count ()) {
+            foreach ($questList->filter (fn ($quest) => ! isset($mapOfIds[$quest->title])) as $quest) {
+                $newQuests->push (self::create ([
+                    'target' => "[Q:{$quest->id}]",
+                    'steamid' => $user->steamid,
+                    'progress' => [],
+                ]));
+            }
+        }
+
+        return $foundQuests->merge ($newQuests);
+        return [];
     }
 
     public function getObjectivesAttribute () : array
@@ -56,13 +71,13 @@ class Quest extends Statistic
 
         return collect ($this->definition->objectives)
             ->map (function ($objective, $k) use ($points) {
-                $objective['points'] = $points->get($k, 0);
+                $objective['points'] = $points->get ($k, 0);
                 return $objective;
             })
             ->toArray ();
     }
 
-    public function setObjective ($id, $value): void
+    public function setObjective ($id, $value) : void
     {
         $progress = $this->progress;
 

@@ -5,6 +5,7 @@ namespace App\Definitions;
 
 use App\Database\Schema\CachableDefinition;
 use DateTime;
+use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Collection;
 
@@ -26,7 +27,7 @@ class EconCampaign extends CachableDefinition
      * @param  array|Arrayable  $arr
      * @return EconCampaign
      */
-    public function fill (array|Arrayable $arr): EconCampaign
+    public function fill (array|Arrayable $arr) : EconCampaign
     {
         $arr['start_time'] = strtotime ($arr['start_time'] ?? 'now');
         $arr['end_time'] = strtotime ($arr['start_time'] ?? 'now');

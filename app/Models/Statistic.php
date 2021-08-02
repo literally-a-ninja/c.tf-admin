@@ -83,6 +83,8 @@ class Statistic extends Model
         // Replace respective definition if present.
         static::retrieved (function ($model) {
             if (empty($model->definition)) return;
+
+            // TODO(Johnny): This is very hard on memory, we need to use a singleton at some point.
             $model->definition = App::make ($model->definition)->find ($model->defUnique ());
         });
 
