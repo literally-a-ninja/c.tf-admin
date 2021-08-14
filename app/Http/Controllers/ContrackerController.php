@@ -132,8 +132,7 @@ class ContrackerController extends AppBaseController
 
         // TODO(Johnny): temp cache until singleton is added.
         $key = md5 ("contracker::{$player->steamid}.{$econCampaign->title}");
-//        [ $dbCampaign, $dbQuests, $campaignNames ] = Cache::has ($key) ? Cache::get ($key) : [
-        [ $dbCampaign, $dbQuests, $campaignNames ] = [
+        [ $dbCampaign, $dbQuests, $campaignNames ] = Cache::has ($key) ? Cache::get ($key) : [
             Campaign::findEcon ($econCampaign->title, $player),
             Quest::findByEcon ($econQuests, $player),
             $econCampaign->all ()->pluck ('name', 'title'),
