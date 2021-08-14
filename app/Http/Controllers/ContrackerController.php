@@ -17,6 +17,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
@@ -24,6 +25,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redirect;
 use Ramsey\Collection\Collection;
 use Response;
+use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 
 class ContrackerController extends AppBaseController
 {
@@ -112,21 +114,32 @@ class ContrackerController extends AppBaseController
         EconQuest $econQuest,
     ) : View|Factory|Redirector|RedirectResponse|Application {
         // Load from economy.
-        $econCampaign = $econCampaign->findByKey ('mvm_directive', 'title');
+        $econCampaign = $econCampaign->findByKey ($request->get ('campaign', 'mvm_directive'), 'title');
+        if (! $econCampaign) return redirect (route ('contracker.view', compact ('player')))
+            ->with ('feedback', [
+                'warning' => [
+                    [
+                        'icon' => 'fas fa-question',
+                        'title' => 'Requested does not exist in the economy.',
+                        'message' => 'You were redirected to the default campaign title because your requested campaign does not currently exist within the C.TF economy.',
+                    ]
+                ],
+            ]);
 
         // TODO(Johnny): Soo... everything else is referenced by it's title in the DB, EXCEPT QUESTS??
         //               For quests, we're using the numeric JSON position WTF.
-        $econQuests = $econQuest->all ()->whereIn ('title', $econCampaign->quests),
+        $econQuests = isset($econCampaign->quests) ? $econQuest->all ()->whereIn ('title', $econCampaign->quests) : collect();
 
         // TODO(Johnny): temp cache until singleton is added.
         $key = md5 ("contracker::{$player->steamid}.{$econCampaign->title}");
-        [ $dbCampaign, $dbQuests, $campaignNames ] = Cache::has ($key) ? Cache::get ($key) : [
+//        [ $dbCampaign, $dbQuests, $campaignNames ] = Cache::has ($key) ? Cache::get ($key) : [
+        [ $dbCampaign, $dbQuests, $campaignNames ] = [
             Campaign::findEcon ($econCampaign->title, $player),
             Quest::findByEcon ($econQuests, $player),
-            $econCampaign->all()->pluck ('name'),
+            $econCampaign->all ()->pluck ('name', 'title'),
         ];
 
-        Cache::put ($key, [$dbCampaign, $dbQuests, $campaignNames], now ()->addMinutes (5));
+        Cache::put ($key, [ $dbCampaign, $dbQuests, $campaignNames ], now ()->addMinutes (5));
 
         return view ('contracker.view', compact ('player', 'campaignNames', 'econCampaign', 'econQuests'));
     }

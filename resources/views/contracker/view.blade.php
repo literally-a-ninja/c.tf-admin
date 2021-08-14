@@ -4,9 +4,9 @@
 	/**
 	 * @var $player \App\Models\User
 	 * @var $campaign \App\Models\Interpretations\Campaign
+	 * @var $campaignNames \App\Models\Interpretations\Campaign[]
 	 * @var $econCampaign \App\Definitions\EconCampaign
-	 * @var $campaigns \App\Models\Interpretations\Campaign[]
-	 * @var $quests \App\Models\Interpretations\Quest[]
+	 * @var $econQuests \App\Models\Interpretations\Quest[]
 	 *
 	**/
 @endphp
@@ -29,14 +29,12 @@
 
 @section('nav')
 	<section class="content px-4">
-		@foreach($campaigns as $possibleCampaign)
-			@if ($possibleCampaign->name == $econCampaign->name)
-				<button type="button" class="btn btn-primary">
-			@else
-				<button type="button" class="btn btn-link">
-			@endif
-				{{$possibleCampaign->name}}
-			</button>
+		@foreach($campaignNames as $title => $name)
+			<a
+				href="{{route ('contracker.view', compact ('player'))}}?campaign={{$title}}"
+				class="btn {{$name == $econCampaign->name ? 'btn-primary' : 'btn-link'}}">
+				{{$name}}
+			</a>
 		@endforeach
 	</section>
 @endsection
@@ -55,7 +53,7 @@
 					</tr>
 				  </thead>
 				  <tbody>
-					@foreach($quests as $quest)
+					@foreach($econQuests as $quest)
 						<tr>
 						  <th scope="row">{{$quest->id}}</th>
 						  <td class='d-flex'>

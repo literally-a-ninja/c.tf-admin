@@ -153,7 +153,7 @@ class DigitalDirectiveController extends AppBaseController
                 'success' => [
                     [
                         'icon' => 'fas fa-check',
-                        'title' => "Successfully updated {$def->name}!",
+                        'title' => "Successfully updated $def->name!",
                     ]
                 ],
             ]);
