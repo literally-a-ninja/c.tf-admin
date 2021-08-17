@@ -60,7 +60,7 @@
 	--}}
 	
 	@once
-		<x:sri.link href="css/app.css" rel="stylesheet" />
+		<link href="css/app.css" rel="stylesheet" />
 		@yield('third_party_stylesheets')
 	@endonce
 	
