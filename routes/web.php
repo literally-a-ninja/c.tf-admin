@@ -54,3 +54,4 @@ Route::prefix('/dd20')->group(function()
     Route::get('/{player}', DigitalDirectiveController::class . '@view')->name('dd20.view');
     Route::post('/{player}', DigitalDirectiveController::class . '@store')->name('dd20.save');
 });
+Route::resource('posts', App\Http\Controllers\PostsController::class);

@@ -35,7 +35,7 @@ class UserController extends AppBaseController
      */
     public function create()
     {
-        return view('users.create');
+        return view('post.create');
     }
 
     /**
