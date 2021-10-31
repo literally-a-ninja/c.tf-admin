@@ -1,3 +1,31 @@
+
+
+
+<li class="nav-header">Game</li>
+
+
+<li class="nav-item">
+    <a href="{{ route('items.index') }}"
+        class="nav-link {{ Request::is('items*') ? 'active' : '' }}">
+        <p>Items</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a 
+    {{--href="{{ route('contracts.index') }}"--}}
+        class="nav-link {{ Request::is('contracts*') ? 'active' : '' }}">
+        <p class="text-muted" >Contracts</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a 
+    {{--href="{{ route('servers.index') }}"--}}
+        class="nav-link {{ Request::is('servers*') ? 'active' : '' }}">
+        <p class="text-muted" >Servers</p>
+    </a>
+</li>
 <li class="nav-item">
     <a href="{{ route('dd20.index') }}"
        class="nav-link {{ Request::is('dd20*') ? 'active' : '' }}">
@@ -6,19 +34,13 @@
 </li>
 
 <li class="nav-item disabled">
-    <a href="{{ route('users.index') }}">
     <a
+    href="{{ route('users.index') }}"
         class="nav-link {{ Request::is('users*') ? 'active' : '' }}">
         <p >Players</p>
     </a>
 </li>
 
-<li class="nav-item">
-    <a href="{{ route('items.index') }}"
-        class="nav-link {{ Request::is('items*') ? 'active' : '' }}">
-        <p >Creators Economy</p>
-    </a>
-</li>
 
 <li class="nav-item">
     <a 
@@ -27,6 +49,8 @@
         <p class="text-muted" >Player Experience</p>
     </a>
 </li>
+
+<li class="nav-header">Website</li>
 
 <li class="nav-item">
      <a href="{{ route('posts.index') }}"
@@ -63,14 +87,6 @@
 
 <li class="nav-item">
     <a 
-    {{--href="{{ route('contracts.index') }}"--}}
-        class="nav-link {{ Request::is('contracts*') ? 'active' : '' }}">
-        <p class="text-muted" >Contracts</p>
-    </a>
-</li>
-
-<li class="nav-item">
-    <a 
     {{--href="{{ route('store.index') }}"--}}
         class="nav-link {{ Request::is('store*') ? 'active' : '' }}">
         <p class="text-muted" >Store</p>
@@ -89,14 +105,6 @@
     <a 
     {{--href="{{ route('media.index') }}"--}}
         class="nav-link {{ Request::is('media*') ? 'active' : '' }}">
-        <p class="text-muted" >Media</p>
-    </a>
-</li>
-
-<li class="nav-item">
-    <a 
-    {{--href="{{ route('keyvalue.index') }}"--}}
-        class="nav-link {{ Request::is('keyvalue*') ? 'active' : '' }}">
-        <p class="text-muted" >Misc</p>
+        <p class="text-muted" >Media, Colors, etc.</p>
     </a>
 </li>
