@@ -7,7 +7,7 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
- * Class User
+ * Class Post
  * @package App\Models
  * @version April 27, 2021, 12:37 am UTC
  *
