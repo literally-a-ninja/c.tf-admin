@@ -1,11 +1,13 @@
 <div class="card-group">
   @foreach($campaigns as $campaign)
-    <div class='card p-3 m-3' style='background: url({{asset ("img/campaign/{$campaign->title}.jpeg")}})'>
-      <div class="card text-center">
-        <div class='card-body'>
-          <h3>{{$campaign->name}}</h3>
-        </div>
+    <label for="{{$campaign->title}}">
+    <div class='card p-3 m-3'>
+      <div class="card-header">
+        <input type="radio" name="campaign" value="{{ $campaign->title }}">
       </div>
-    </div>
+      <div class="card-body">
+        <h3 for="{{ $campaign->title }}">{{$campaign->name}}</h3>
+      </div>
+    </div></label>
   @endforeach
 </div>
