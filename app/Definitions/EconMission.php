@@ -2,7 +2,7 @@
 
 namespace App\Definitions;
 
-use App\Database\Schema\CachableDefinition;
+use App\Database\Schema\CacheableDefinition;
 
 /**
  * Class Mission
@@ -15,6 +15,6 @@ use App\Database\Schema\CachableDefinition;
  * @property-read $waves
  * @property-read $indicators
  */
-class EconMission extends CachableDefinition
+class EconMission extends CacheableDefinition
 {
 }

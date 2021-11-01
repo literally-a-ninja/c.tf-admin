@@ -15,7 +15,7 @@ use Psr\SimpleCache\InvalidArgumentException;
  *
  * @package App\
  */
-class CachableDefinition extends Definition
+class CacheableDefinition extends Definition
 {
     /**
      * Definition's cache key where all parameters are hashed via MD5.
@@ -36,9 +36,20 @@ class CachableDefinition extends Definition
     #[Pure] public function __construct (Filesystem $filesystem)
     {
         parent::__construct ($filesystem);
+    }
+
+    /**
+     * @return string
+     */
+    protected function cacheKey () : string
+    {
+        if (isset($this->cacheKey))
+            return $this->cacheKey;
 
         $location = md5 ($this->location);
-        $this->cacheKey = "def@{$location}";
+
+        $this->cacheKey = "def@$location";
+        return $this->cacheKey;
     }
 
     /**
@@ -49,11 +60,14 @@ class CachableDefinition extends Definition
      */
     protected function read () : Collection
     {
-        if (Cache::has ($this->cacheKey))
-            return Cache::get ($this->cacheKey);
+
+        $key = $this->cacheKey ();
+
+        if (Cache::has ($key))
+            return Cache::get ($key);
 
         $result = parent::read ();
-        Cache::put ($this->cacheKey, $result, $this->cachableTTL);
+        Cache::put ($key, $result, $this->cachableTTL);
 
         return $result;
     }
@@ -72,7 +86,7 @@ class CachableDefinition extends Definition
      * @return $this
      * @throws InvalidArgumentException
      */
-    public function cacheRemove () : CachableDefinition
+    public function cacheRemove () : CacheableDefinition
     {
         Cache::delete ($this->cacheKey);
         return $this;

@@ -1,5 +1,21 @@
 @extends('layouts.app')
 
+@section('header')
+	<div class="d-flex justify-content-between">
+		@include('partial/player-block')
+		<div class="d-flex justify-content-center align-items-center">
+			<form id="form-rpc" method="POST" class="form-inline"
+			      action="{{ route('dd20.rpc', compact('player')) }}"
+			>
+				@csrf
+				<button type="submit" name="action" value="reset_cache" class="btn btn-success">
+					<i class="fas fa-bomb"></i> Update main cache
+				</button>
+			</form>
+		</div>
+	</div>
+@endsection
+
 @section('content')
   <section class="content-header">
 		<div class="container-fluid">
@@ -17,25 +33,10 @@
   </section>
 
   <section class="content px-4">
-		<div class="d-flex justify-content-between">
-		  @include('partial/player.block')
-		  <div class="d-flex justify-content-center align-items-center">
-				<form id="form-rpc" method="POST" class="form-inline"
-					  action="{{ route('dd20.rpc', compact('player')) }}"
-				>
-					@csrf
-				  <button type="submit" name="action" value="reset_cache" class="btn btn-success"><i
-						class="fas fa-bomb"
-					></i> Update main cache
-					</button>
-				</form>
-			</div>
-		</div>
-
 		@foreach($tours as $i => $tour)
 		  <header class='mt-2 py-3'>
 			<div class='text-muted'>
-			  <code>{{$tour->getKey()}}</code>
+			  <code>{{$tour->id}}</code>
 			</div>
 			<h2>{{$tour->tour_name}}</h2>
 			<p>{{$tour->description}}</p>

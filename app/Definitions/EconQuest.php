@@ -4,7 +4,7 @@
 namespace App\Definitions;
 
 
-use App\Database\Schema\CachableDefinition;
+use App\Database\Schema\CacheableDefinition;
 use App\Database\Schema\Definition;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Collection;
@@ -23,7 +23,7 @@ use Illuminate\Support\Collection;
  * @property-read array $objectives
  * @property-read array $rewards
  */
-class EconQuest extends CachableDefinition
+class EconQuest extends CacheableDefinition
 {
 	/**
 	 * @var string

@@ -2,7 +2,7 @@
 
 namespace App\Definitions;
 
-use App\Database\Schema\CachableDefinition;
+use App\Database\Schema\CacheableDefinition;
 use Illuminate\Support\Collection;
 
 /**
@@ -10,7 +10,7 @@ use Illuminate\Support\Collection;
  *
  * @package App\Definitions
  */
-class EconTour extends CachableDefinition
+class EconTour extends CacheableDefinition
 {
     /**
      * "tour_name": "Platinum Palliative",

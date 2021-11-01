@@ -19,16 +19,16 @@ class Mission extends Statistic
 {
     use HasFactory;
 
-    public static function boot ()
-    {
-        parent::boot ();
-
-        $updateModel = function ($model) {
-            $model->getAttribute('progress')['updated'] = now ()->getTimestamp ();
-        };
-
-        static:: ($updateModel);
-    }
+//    public static function boot ()
+//    {
+//        parent::boot ();
+//
+//        $updateModel = function ($model) {
+//            $model->getAttribute('progress')['updated'] = now ()->getTimestamp ();
+//        };
+//
+//        return $updateModel;
+//    }
 
     /**
      * Overrides local object with econ def.
