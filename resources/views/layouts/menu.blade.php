@@ -30,9 +30,8 @@
 </li>
 
 <li class="nav-item disabled">
-    <a
-    href="{{ route('users.index') }}"
-        class="nav-link {{ Request::is('users*') ? 'active' : '' }}">
+{{--    <a href="{{ route('users.index') }}" class="nav-link {{ Request::is('users*') ? 'active' : '' }}"> --}}
+	<a href="#" class="nav-link">
 				<i class="nav-icon far fa-user"></i>
         <p >Users</p>
     </a>
