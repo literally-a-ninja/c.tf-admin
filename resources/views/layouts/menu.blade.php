@@ -36,6 +36,7 @@
 				<i class="nav-icon far fa-user"></i>
         <p >Users</p>
     </a>
+</li>
 <li class="nav-item">
 	<a href="{{route ('contracker.index')}}" class="nav-link {{ Request::is('contracker*') ? 'active' : '' }}">
 	  <i class="fas fa-tasks"></i> <label>Contracker</label>
@@ -129,6 +130,11 @@
         <p class="text-muted" >Landing Pages</p>
     </a>
 </li>
+
+
+<li class="nav-header">Unsorted</li>
+
+<li class="nav-item">
 	<a href="{{route ('users.index')}}" class="nav-link {{ Request::is('users*') ? 'active' : '' }}">
 	   <i class="text-muted fas fa-users"></i> <label class='text-muted'>Players</label>
 	</a>
