@@ -4,12 +4,6 @@
 <li class="nav-header">Game</li>
 
 
-<li class="nav-item">
-    <a href="{{ route('items.index') }}"
-        class="nav-link {{ Request::is('items*') ? 'active' : '' }}">
-        <p>Items</p>
-    </a>
-</li>
 
 <li class="nav-item">
     <a 
@@ -50,6 +44,24 @@
     </a>
 </li>
 
+
+<li class="nav-header">Economy</li>
+
+<li class="nav-item">
+    <a href="{{ route('items.index') }}"
+        class="nav-link {{ Request::is('items*') ? 'active' : '' }}">
+        <p>Items</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a 
+    {{--href="{{ route('store.index') }}"--}}
+        class="nav-link {{ Request::is('store*') ? 'active' : '' }}">
+        <p class="text-muted" >Store</p>
+    </a>
+</li>
+
 <li class="nav-header">Website</li>
 
 <li class="nav-item">
@@ -85,13 +97,6 @@
     </a>
 </li>
 
-<li class="nav-item">
-    <a 
-    {{--href="{{ route('store.index') }}"--}}
-        class="nav-link {{ Request::is('store*') ? 'active' : '' }}">
-        <p class="text-muted" >Store</p>
-    </a>
-</li>
 
 <li class="nav-item">
     <a 
@@ -106,5 +111,12 @@
     {{--href="{{ route('media.index') }}"--}}
         class="nav-link {{ Request::is('media*') ? 'active' : '' }}">
         <p class="text-muted" >Media, Colors, etc.</p>
+    </a>
+</li>
+<li class="nav-item">
+    <a 
+    {{--href="{{ route('landing.index') }}"--}}
+        class="nav-link {{ Request::is('landing*') ? 'active' : '' }}">
+        <p class="text-muted" >Landing Pages</p>
     </a>
 </li>
