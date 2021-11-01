@@ -2,7 +2,7 @@
 
 namespace App\Definitions;
 
-use App\Database\Schema\Definition;
+use App\Database\Schema\CachableDefinition;
 
 /**
  * Class Mission
@@ -15,6 +15,6 @@ use App\Database\Schema\Definition;
  * @property-read $waves
  * @property-read $indicators
  */
-class Mission extends Definition
+class EconMission extends CachableDefinition
 {
 }

@@ -2,7 +2,7 @@
 
 namespace App\Definitions;
 
-use App\Database\Schema\Definition;
+use App\Database\Schema\CachableDefinition;
 use Illuminate\Support\Collection;
 
 /**
@@ -10,7 +10,7 @@ use Illuminate\Support\Collection;
  *
  * @package App\Definitions
  */
-class Tour extends Definition
+class EconTour extends CachableDefinition
 {
     /**
      * "tour_name": "Platinum Palliative",
@@ -27,7 +27,7 @@ class Tour extends Definition
     /**
      * @var string
      */
-    protected $location = 'economy/mvm/tours.json';
+    protected string $location = 'economy/mvm/tours.json';
 
     /**
      * @return Collection
@@ -40,7 +40,7 @@ class Tour extends Definition
 
         $missions = collect ();
         foreach ($this->contents['missions'] as $mission) {
-            $object = new Mission();
+            $object = new EconMission($this->filesystem);
             $object->contents = $mission;
             foreach ($mission as $k => $v) {
                 $object->$k = $v;

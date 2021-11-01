@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use App\Database\Schema\Definition;
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\App;
 
 /**
  * Class Statistic
@@ -25,7 +27,7 @@ class Statistic extends Model
      */
     public static array $rules = [
         'target' => 'required|string|max:150',
-        'progress' => 'nullable|string',
+        'progress' => 'required|array',
     ];
 
     /**
@@ -50,8 +52,15 @@ class Statistic extends Model
     public $fillable = [
         'steamid',
         'target',
-        'progress' => '{}',
+        'progress',
     ];
+
+    /**
+     * Classpath of the definition, becomes actual definition on retrieval.
+     *
+     * @var string|Definition|null
+     */
+    public mixed $definition = '';
 
     /**
      * The attributes that should be casted to native types.
@@ -64,16 +73,27 @@ class Statistic extends Model
         'progress' => 'array',
     ];
 
+    /**
+     * Called by the service container to setup Eloquent model.
+     */
     public static function boot ()
     {
         parent::boot ();
 
-        $updateModel = function ($model) {
-            $model->getAttribute('progress')['updated'] = now ()->getTimestamp ();
-        };
+        // Replace respective definition if present.
+        static::retrieved (function ($model) {
+            if (empty($model->definition)) return;
 
-        static::creating ($updateModel);
-        static::updating ($updateModel);
+            // TODO(Johnny): This is very hard on memory, we need to use a singleton at some point.
+            $model->definition = App::make ($model->definition)->find ($model->defUnique ());
+        });
+
+        // Always set this value on save.
+        static::saving (function ($model) {
+            $progress = $model->progress;
+            $progress['updated'] = time ();
+            $model->progress = $progress;
+        });
     }
 
     /**
@@ -85,13 +105,27 @@ class Statistic extends Model
     }
 
     /**
-     * Returns the "un-database'd" version of the target.
+     * Returns the "un-database" version of the target.
+     *
      *
      * @return string
      */
-    public function name () : string
+    public function getIdAttribute () : string
     {
-        $stem = explode (':', $this->target)[1];
-        return substr ($stem, 0, strlen ($stem) - 1);
+        // E.g., [C:2312] -> 2312
+        return $this->defUnique ();
+    }
+
+    /**
+     * What is used in the definition to discriminate member objects. This method is used
+     * to associate the model with the econ def and should be overridden accordingly per model.
+     *
+     * @return mixed
+     */
+    public function defUnique () : mixed
+    {
+        $stem = explode (':', $this->getAttribute ('target'))[1] ?? '';
+        if (empty($stem)) return '';
+        return intval (substr ($stem, 0, strlen ($stem) - 1));
     }
 }

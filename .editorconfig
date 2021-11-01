@@ -4,23 +4,24 @@ end_of_line = lf
 indent_size = 4
 indent_style = tab
 insert_final_newline = false
-max_line_length = 120
+max_line_length = 180
 tab_width = 4
 ij_continuation_indent_size = 8
 ij_formatter_off_tag = @formatter:off
 ij_formatter_on_tag = @formatter:on
-ij_formatter_tags_enabled = false
+ij_formatter_tags_enabled = true
 ij_smart_tabs = false
-ij_visual_guides = none
+ij_visual_guides = 80,120,180
 ij_wrap_on_typing = false
 
 [*.blade.php]
-indent_size = 2
-tab_width = 2
-ij_continuation_indent_size = 0
-ij_blade_keep_indents_on_empty_lines = false
+indent_style = tab
+ij_smart_tabs = true
+ij_visual_guides = none
+ij_blade_keep_indents_on_empty_lines = true
 
 [*.css]
+ij_visual_guides = none
 ij_css_align_closing_brace_with_properties = false
 ij_css_blank_lines_around_nested_selector = 1
 ij_css_blank_lines_between_blocks = 1
@@ -41,14 +42,17 @@ ij_css_value_alignment = do_not_align
 
 [*.feature]
 indent_size = 2
+ij_visual_guides = none
 ij_gherkin_keep_indents_on_empty_lines = false
 
 [*.haml]
 indent_size = 2
+ij_visual_guides = none
 ij_haml_keep_indents_on_empty_lines = false
 
 [*.less]
 indent_size = 2
+ij_visual_guides = none
 ij_less_align_closing_brace_with_properties = false
 ij_less_blank_lines_around_nested_selector = 1
 ij_less_blank_lines_between_blocks = 1
@@ -69,6 +73,7 @@ ij_less_value_alignment = 0
 
 [*.sass]
 indent_size = 2
+ij_visual_guides = none
 ij_sass_align_closing_brace_with_properties = false
 ij_sass_blank_lines_around_nested_selector = 1
 ij_sass_blank_lines_between_blocks = 1
@@ -89,6 +94,7 @@ ij_sass_value_alignment = 0
 
 [*.scss]
 indent_size = 2
+ij_visual_guides = none
 ij_scss_align_closing_brace_with_properties = false
 ij_scss_blank_lines_around_nested_selector = 1
 ij_scss_blank_lines_between_blocks = 1
@@ -108,6 +114,7 @@ ij_scss_use_double_quotes = true
 ij_scss_value_alignment = 0
 
 [*.twig]
+ij_visual_guides = none
 ij_twig_keep_indents_on_empty_lines = false
 ij_twig_spaces_inside_comments_delimiters = true
 ij_twig_spaces_inside_delimiters = true
@@ -117,6 +124,7 @@ ij_twig_spaces_inside_variable_delimiters = true
 indent_size = 2
 tab_width = 2
 ij_continuation_indent_size = 4
+ij_visual_guides = none
 ij_vue_indent_children_of_top_level = template
 ij_vue_interpolation_new_line_after_start_delimiter = true
 ij_vue_interpolation_new_line_before_end_delimiter = true
@@ -126,6 +134,7 @@ ij_vue_spaces_within_interpolation_expressions = true
 ij_vue_uniform_indent = true
 
 [.editorconfig]
+ij_visual_guides = none
 ij_editorconfig_align_group_field_declarations = false
 ij_editorconfig_space_after_colon = false
 ij_editorconfig_space_after_comma = true
@@ -134,6 +143,7 @@ ij_editorconfig_space_before_comma = false
 ij_editorconfig_spaces_around_assignment_operators = true
 
 [{*.ant,*.fxml,*.jhm,*.jnlp,*.jrxml,*.rng,*.tld,*.wsdl,*.xml,*.xsd,*.xsl,*.xslt,*.xul,phpunit.xml.dist}]
+ij_visual_guides = none
 ij_xml_align_attributes = true
 ij_xml_align_text = false
 ij_xml_attribute_wrap = normal
@@ -153,6 +163,7 @@ ij_xml_text_wrap = normal
 
 [{*.ats,*.ts}]
 ij_continuation_indent_size = 4
+ij_visual_guides = none
 ij_typescript_align_imports = false
 ij_typescript_align_multiline_array_initializer_expression = false
 ij_typescript_align_multiline_binary_operation = false
@@ -322,6 +333,7 @@ ij_typescript_wrap_comments = false
 [{*.bash,*.sh,*.zsh}]
 indent_size = 2
 tab_width = 2
+ij_visual_guides = none
 ij_shell_binary_ops_start_line = false
 ij_shell_keep_column_alignment_padding = false
 ij_shell_minify_program = false
@@ -331,6 +343,7 @@ ij_shell_use_unix_line_separator = true
 
 [{*.cjs,*.js}]
 ij_continuation_indent_size = 4
+ij_visual_guides = none
 ij_javascript_align_imports = false
 ij_javascript_align_multiline_array_initializer_expression = false
 ij_javascript_align_multiline_binary_operation = false
@@ -498,6 +511,7 @@ ij_javascript_wrap_comments = false
 indent_size = 2
 tab_width = 2
 ij_continuation_indent_size = 2
+ij_visual_guides = none
 ij_coffeescript_align_function_body = false
 ij_coffeescript_align_imports = false
 ij_coffeescript_align_multiline_array_initializer_expression = true
@@ -626,7 +640,7 @@ ij_php_blank_lines_after_opening_tag = 0
 ij_php_blank_lines_after_package = 1
 ij_php_blank_lines_around_class = 1
 ij_php_blank_lines_around_constants = 0
-ij_php_blank_lines_around_field = 0
+ij_php_blank_lines_around_field = 1
 ij_php_blank_lines_around_method = 1
 ij_php_blank_lines_before_class_end = 0
 ij_php_blank_lines_before_imports = 1
@@ -808,6 +822,7 @@ ij_php_while_on_new_line = false
 
 [{*.har,*.jsb2,*.jsb3,*.json,.babelrc,.eslintrc,.stylelintrc,bowerrc,composer.lock,jest.config}]
 indent_size = 2
+ij_visual_guides = none
 ij_json_keep_blank_lines_in_code = 0
 ij_json_keep_indents_on_empty_lines = false
 ij_json_keep_line_breaks = true
@@ -820,9 +835,7 @@ ij_json_spaces_within_brackets = false
 ij_json_wrap_long_lines = false
 
 [{*.htm,*.html,*.ng,*.sht,*.shtm,*.shtml}]
-indent_size = 2
-tab_width = 2
-ij_continuation_indent_size = 2
+ij_visual_guides = none
 ij_html_add_new_line_before_tags = body,div,p,form,h1,h2,h3,section,article
 ij_html_align_attributes = true
 ij_html_align_text = false
@@ -834,7 +847,7 @@ ij_html_do_not_indent_children_of_tags = html,body,thead,tbody,tfoot,section,art
 ij_html_enforce_quotes = true
 ij_html_inline_tags = a,abbr,acronym,b,basefont,bdo,big,br,cite,cite,code,dfn,em,font,i,img,input,kbd,label,q,s,samp,select,small,span,strike,strong,sub,sup,textarea,tt,u,var
 ij_html_keep_blank_lines = 2
-ij_html_keep_indents_on_empty_lines = false
+ij_html_keep_indents_on_empty_lines = true
 ij_html_keep_line_breaks = true
 ij_html_keep_line_breaks_in_text = true
 ij_html_keep_whitespaces = true
@@ -851,6 +864,7 @@ ij_html_text_wrap = normal
 ij_html_uniform_ident = true
 
 [{*.markdown,*.md}]
+ij_visual_guides = none
 ij_markdown_force_one_space_after_blockquote_symbol = true
 ij_markdown_force_one_space_after_header_symbol = true
 ij_markdown_force_one_space_after_list_bullet = true
@@ -865,6 +879,7 @@ ij_markdown_min_lines_between_paragraphs = 1
 
 [{*.yaml,*.yml}]
 indent_size = 2
+ij_visual_guides = none
 ij_yaml_align_values_properties = do_not_align
 ij_yaml_autoinsert_sequence_marker = true
 ij_yaml_block_mapping_on_new_line = false

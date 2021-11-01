@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Models\Derived;
+namespace App\Models\Interpretations;
 
-use App\Definitions\Mission as MissionDef;
+use App\Definitions\EconMission as MissionDef;
 use App\Models\Statistic;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
@@ -20,6 +19,16 @@ class Mission extends Statistic
 {
     use HasFactory;
 
+    public static function boot ()
+    {
+        parent::boot ();
+
+        $updateModel = function ($model) {
+            $model->getAttribute('progress')['updated'] = now ()->getTimestamp ();
+        };
+
+        static:: ($updateModel);
+    }
 
     /**
      * Overrides local object with econ def.

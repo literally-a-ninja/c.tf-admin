@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Definitions\Tour;
+use App\Definitions\EconCampaignDD20;
+use App\Definitions\EconQuest;
+use App\Definitions\EconTour;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -22,8 +24,11 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(EconCampaignDD20 $dd20)
     {
+//        dd($dd20->newInstance ('mvm_directive')->loadFromDisk ());
+//        dd($quest->newInstance ('scrapyard_slaughter')->loadFromDisk ());
+//        dd($quest->newInstance ('scrapyard_slaughter')->loadFromDisk ());
         return view('home');
     }
 }

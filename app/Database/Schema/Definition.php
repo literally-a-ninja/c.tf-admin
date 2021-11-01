@@ -2,11 +2,11 @@
 
 namespace App\Database\Schema;
 
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
+use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
-use Illuminate\Database\RecordsNotFoundException;
-use Illuminate\Support\Facades\Storage;
-use JetBrains\PhpStorm\Pure;
+use Illuminate\Support\Collection;
 
 /**
  * Denotes a type of database object which is immutable.
@@ -20,7 +20,7 @@ abstract class Definition implements Arrayable, Jsonable
      *
      * @var string
      */
-    protected $location;
+    protected string $location;
 
     /**
      * The key/name of a definition.
@@ -28,7 +28,29 @@ abstract class Definition implements Arrayable, Jsonable
      * @var string
      * @default ''
      */
-    protected $key = '';
+    public string $id = '';
+
+    /**
+     * Unique identifier each member has.
+     * If not empty, $memberKey will be treated as key to $id.
+     *
+     * @var string
+     * @default ''
+     */
+    protected string $memberKey = '';
+
+    /**
+     * The contents of a definition.
+     *
+     * @var array
+     * @default an empty array
+     */
+    protected array $contents = [];
+
+    public function __construct (
+        protected Filesystem $filesystem
+    ) {
+    }
 
     /**
      * @return string
@@ -41,17 +63,9 @@ abstract class Definition implements Arrayable, Jsonable
     /**
      * @return string
      */
-    public function getKey () : string
+    public function getId () : string
     {
-        return $this->key;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDisk () : string
-    {
-        return $this->disk;
+        return $this->id;
     }
 
     /**
@@ -63,99 +77,119 @@ abstract class Definition implements Arrayable, Jsonable
     }
 
     /**
-     * The disk this defintion is located on.
+     * Generic find method checked member key if specified, otherwise uses the direct id.
+     * This is used by Eloquent to associate models to econ definitions.
      *
-     * @var string
-     * @default 'local-def'
+     * @param $value
+     * @return mixed
+     * @throws FileNotFoundException
      */
-    protected $disk = 'local-def';
-
-    /**
-     * The contents of a definition.
-     *
-     * @var array
-     * @default an empty array
-     */
-    protected $contents = [];
-
-    /**
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
-     */
-    public function loadFromDisk(): Definition
+    public function find ($value) : mixed
     {
-        $contents = Storage::disk($this->disk)->get($this->location);
-        $contents = json_decode($contents, true);
-        $this->fill($this->transform($contents));
+        if (empty($value))
+            return NULL;
+
+        return empty($this->memberKey)
+            ? $this->findById ($value)
+            : $this->findByKey ($value);
+    }
+
+    /**
+     * @return Definition
+     * @throws FileNotFoundException
+     */
+    public function findById ($id) : mixed
+    {
+        return $this->all ()->get ($id);
+    }
+
+    /**
+     * @param  array|Arrayable  $arr
+     * @return Definition
+     */
+    public function fill (
+        array|Arrayable $arr
+    ) : Definition {
+        $this->contents = is_array ($arr) ? $arr : $arr->toArray ();
+        foreach ($this->contents as $k => $v) {
+            $this->$k = $v;
+        }
 
         return $this;
     }
 
     /**
-     * Applies any necessary transformations to obtain our data.
-     *
-     * @param array $original
-     *
-     * @return array
-     */
-    protected function transform(array $original): array
-    {
-        try
-        {
-            if (!empty($this->key))
-            {
-                return $original[$this->key];
-            }
-            return $original;
-        }
-        catch (\ErrorException $error)
-        {
-            // This exception confirms better to what we're doing plus this will create a 404 if unhandled.
-            throw new RecordsNotFoundException("$this->key not found.");
-        }
-    }
-
-    /**
      * Create a new instance of the given definition.
      *
-     * @param  string  $key
-     * @return static
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     * @param  string  $id
+     * @return Definition
      */
-    #[Pure] public function newInstance(string $key = '') : Definition
+    #[Pure] public function newInstance (string $id = '') : Definition
     {
-        $model = new static();
-        $model->key = $key;
+        $model = new static($this->filesystem);
+        $model->id = $id;
 
         return $model;
     }
 
     /**
+     * Returns a collection of all definitions within this file.
+     *
+     * @return Collection
+     * @throws FileNotFoundException
+     */
+    public function all () : Collection
+    {
+        return $this->read ()
+            ->map (function ($data) {
+                $c = new static($this->filesystem);
+                $c->fill ($data);
+                return $c;
+            });
+
+    }
+
+    /**
+     * Reads and parse data.
+     *
+     * @return Collection
+     * @throws FileNotFoundException
+     */
+    protected function read () : Collection
+    {
+        $contents = $this->filesystem->get ($this->location);
+        return collect (json_decode ($contents, true))
+            ->map (function ($model, $id) {
+                $model['id'] = $model['id'] ?? $id;
+                return $model;
+            });
+    }
+
+    /**
+     * @throws FileNotFoundException
+     */
+    public function findByKey ($value, $key = false) : ?Definition
+    {
+        return $this
+            ->all ()
+            ->firstWhere ($key ?: $this->memberKey, $value);
+    }
+
+    /**
      * @return array
      */
-    public function toArray(): array
+    public function toArray () : array
     {
         return $this->contents;
     }
 
     /**
-     * @param int $options
+     * @param  int  $options
      *
      * @return string
      */
-    public function toJson($options = 0): string
+    public function toJson ($options = 0) : string
     {
-        return json_encode($this->contents, $options);
-    }
-
-    /**
-     * @param  array|Arrayable  $arr
-     */
-    public function fill(array|Arrayable $arr)
-    {
-        $this->contents = is_array ($arr) ? $arr : $arr->toArray ();
-        foreach ($this->contents as $k => $v)
-        {
-            $this->$k = $v;
-        }
+        return json_encode ($this->contents, $options);
     }
 }

@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\ContrackerController;
 use App\Http\Controllers\DigitalDirectiveController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ItemController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,37 +24,46 @@ use App\Http\Controllers\HomeController;
 //     return view('welcome');
 // });
 
-Auth::routes();
+Auth::routes ();
 
-Route::get('/', [HomeController::class, 'index',])->name('home');
+Route::get ('/', [ HomeController::class, 'index', ])->name ('home');
 
-Route::get('generator_builder', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@builder')->name('io_generator_builder');
+Route::get ('generator_builder', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@builder')
+    ->name ('io_generator_builder');
 
-Route::get('field_template', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@fieldTemplate')->name('io_field_template');
+Route::get ('field_template', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@fieldTemplate')
+    ->name ('io_field_template');
 
-Route::get('relation_field_template', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@relationFieldTemplate')->name('io_relation_field_template');
+Route::get ('relation_field_template',
+    '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@relationFieldTemplate')
+    ->name ('io_relation_field_template');
 
-Route::post('generator_builder/generate', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generate')->name('io_generator_builder_generate');
+Route::post ('generator_builder/generate', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generate')
+    ->name ('io_generator_builder_generate');
 
-Route::post('generator_builder/rollback', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@rollback')->name('io_generator_builder_rollback');
+Route::post ('generator_builder/rollback', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@rollback')
+    ->name ('io_generator_builder_rollback');
 
-Route::post(
+Route::post (
     'generator_builder/generate-from-file',
     '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generateFromFile'
-)->name('io_generator_builder_generate_from_file');
+)->name ('io_generator_builder_generate_from_file');
 
-Route::resource('users', App\Http\Controllers\UserController::class);
+Route::resource ('users', UserController::class);
 
-Route::resource('items', App\Http\Controllers\ItemController::class);
+Route::resource('items', ItemController::class);
 
-Route::resource('statistics', App\Http\Controllers\StatisticController::class);
-
-Route::prefix('/dd20')->group(function()
-{
-    Route::get('/', DigitalDirectiveController::class . '@index')->name('dd20.index');
-    Route::get('/find', DigitalDirectiveController::class . '@find')->name('dd20.find');
-    Route::post('/{player}/rpc', DigitalDirectiveController::class . '@cmd')->name('dd20.rpc');
-    Route::get('/{player}', DigitalDirectiveController::class . '@view')->name('dd20.view');
-    Route::post('/{player}', DigitalDirectiveController::class . '@store')->name('dd20.save');
+Route::prefix ('/contracker')->group (callback: function () {
+    Route::get ('/', ContrackerController::class.'@index')->name ('contracker.index');
+    Route::post ('/', ContrackerController::class.'@find')->name ('contracker.find  ');
+    Route::get ('/{player}', ContrackerController::class.'@view')->name ('contracker.view');
+    Route::patch ('/{player}', ContrackerController::class.'@update')->name ('contracker.update');
+});
+Route::prefix ('/dd20')->group (function () {
+    Route::get ('/', DigitalDirectiveController::class.'@index')->name ('dd20.index');
+    Route::get ('/find', DigitalDirectiveController::class.'@find')->name ('dd20.find');
+    Route::post ('/{player}/rpc', DigitalDirectiveController::class.'@cmd')->name ('dd20.rpc');
+    Route::get ('/{player}', DigitalDirectiveController::class.'@view')->name ('dd20.view');
+    Route::post ('/{player}', DigitalDirectiveController::class.'@store')->name ('dd20.save');
 });
 Route::resource('posts', App\Http\Controllers\PostsController::class);

@@ -38,6 +38,7 @@ return [
         'local-def' => [
             'driver' => 'local',
             'root' => storage_path('definitions'),
+            'visibility' => 'private',
         ],
 
         'public' => [
