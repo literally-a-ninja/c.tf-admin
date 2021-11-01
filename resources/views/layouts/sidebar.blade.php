@@ -9,7 +9,7 @@
 
 	<div class="sidebar" style="overflow-y: auto;">
 		<nav class="mt-2">
-			<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+			<ul class="nav nav-pills nav-sidebar nav-child-indent flex-column" data-widget="treeview" role="menu">
 				@include('layouts.menu')
 			</ul>
 		</nav>
