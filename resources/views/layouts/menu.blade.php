@@ -58,9 +58,10 @@
 <li class="nav-header">Economy</li>
 
 <li class="nav-item">
-    <a href="{{ route('items.index') }}"
+    <a
+	{{--href="{{ route('items.index') }}"--}}
         class="nav-link {{ Request::is('items*') ? 'active' : '' }}">
-        <p>Items</p>
+        <p class="text-muted">Items</p>
     </a>
 </li>
 
