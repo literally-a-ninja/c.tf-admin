@@ -38,9 +38,10 @@
     </a>
 </li>
 <li class="nav-item">
-	<a href="{{route ('contracker.index')}}" class="nav-link {{ Request::is('contracker*') ? 'active' : '' }}">
-	  <i class="fas fa-tasks"></i> <label>Contracker</label>
-		<span class="badge badge-primary">NEW</span>
+{{--	<a href="{{route ('contracker.index')}}" class="nav-link {{ Request::is('contracker*') ? 'active' : '' }}">--}}
+	<a href="#" class="nav-link">
+	  <i class="text-muted fas fa-tasks"></i> <label class="text-muted">Contracker</label>
+{{--		<span class="badge badge-primary">NEW</span>--}}
 	</a>
 </li>
 
@@ -135,14 +136,16 @@
 <li class="nav-header">Unsorted</li>
 
 <li class="nav-item">
-	<a href="{{route ('users.index')}}" class="nav-link {{ Request::is('users*') ? 'active' : '' }}">
+{{--	<a href="{{route ('users.index')}}" class="nav-link {{ Request::is('users*') ? 'active' : '' }}">--}}
+	<a href="#" class="nav-link">
 	   <i class="text-muted fas fa-users"></i> <label class='text-muted'>Players</label>
 	</a>
 </li>
 
 <li class="nav-item">
-	<a href="{{ route('items.index') }}"
-	   class="nav-link {{ Request::is('items*') ? 'active' : '' }}">
+{{--	<a href="{{ route('items.index') }}"--}}
+{{--	   class="nav-link {{ Request::is('items*') ? 'active' : '' }}">--}}
+	<a href="#" class="nav-link">
 		<i class="text-muted fas fa-luggage-cart"></i> <label class="text-muted">Economy</label>
 	</a>
 </li>
