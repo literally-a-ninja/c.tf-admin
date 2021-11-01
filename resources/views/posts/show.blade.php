@@ -30,20 +30,26 @@
 					</h6>
 				</div>
 				<div class="mailbox-read-message">
-					{{ $post->story}}
 					@if($post->is_html==1)
-					<?php
-						$post->story = str_replace('"/','"//creators.tf/',$post->story);
-						$post->story = str_replace('{CDN}','//creators.tf/cdn',$post->story);
-						echo $post->story;
-					?>
+						<?php
+							$post->story = str_replace('{CDN}','/cdn',$post->story);
+							$post->story = str_replace('"/','"//creators.tf/',$post->story);
+							echo $post->story;
+						?>
 					@else
 						{{ $post->story }}
 					@endif
 				</div>
 			</div>
 			<div class="card-footer row">
-				<i class="fa-thumbs-up"></i>
+				<span>
+				<i class="fas fa-thumbs-up"></i>
+				{{$post->likes,0}}
+			</span>
+			<span>
+				<i class="fas fa-eye"></i>
+				{{$post->views}}
+			</span>
 			</div>
 		</div>
 	</div>
