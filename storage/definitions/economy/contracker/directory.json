@@ -14,7 +14,7 @@
             "background": "{CDN}/assets/images/contracker/cyoa_classchoice_icon_v2.svg",
             "icon": "{CDN}/assets/images/contracker/cyoa_classchoice_icon_v2.svg",
             "position": {
-                "x": "50%",
+                "x": "25%",
                 "y": "50%"
             },
             "quests": [{
@@ -413,56 +413,24 @@
                 },
                 {
                     "name": "weapons",
-                    "type": "tree",
+                    "type": "list",
                     "title": "node-creators-weapons",
                     "dir": "./root/creators/weapons",
                     "background": "{CDN}/assets/images/contracker/cyoa_classchoice_icon_v2.svg",
                     "required": [
                         "creators"
                     ],
-                    "quests": [{
-                        "title": "syringe",
-                        "position": {
-                            "x": "63%",
-                            "y": "35%"
-                        }
-                    }, {
-                        "title": "thumper",
-                        "position": {
-                            "x": "37%",
-                            "y": "35%"
-                        }
-                    }, {
-                        "title": "crate_smasher",
-                        "position": {
-                            "x": "20%",
-                            "y": "25%"
-                        }
-                    }, {
-                        "title": "gamma_gazer",
-                        "position": {
-                            "x": "80%",
-                            "y": "25%"
-                        }
-                    }, {
-                        "title": "bolshevik_bomber",
-                        "position": {
-                            "x": "20%",
-                            "y": "65%"
-                        }
-                    }, {
-                        "title": "carved_cutter",
-                        "position": {
-                            "x": "50%",
-                            "y": "65%"
-                        }
-                    }, {
-                        "title": "wasp_launcher",
-                        "position": {
-                            "x": "80%",
-                            "y": "65%"
-                        }
-                    }],
+                    "quests": [
+                        "syringe",
+                        "thumper",
+                        "crate_smasher",
+                        "wasp_launcher",
+                        "gamma_gazer",
+                        "bolshevik_bomber",
+                        "carved_cutter",
+                        "quickdraw",
+                        "bloodybrick"
+                    ],
                     "icon": "{CDN}/assets/images/contracker/cyoa_crowbar_icon.png",
                     "position": {
                         "x": "82%",
@@ -484,43 +452,24 @@
                         "y": "75%"
                     },
                     "quests": [
-                        "cp_degrootkeep",
-                        "cp_dustbowl",
-                        "cp_gorge",
-                        "cp_gullywash",
+                        "cp_freight",
+                        "cp_mercenarypark",
                         "cp_mountainlab",
+                        "cp_mossrock",
                         "cp_powerhouse",
                         "cp_process",
                         "cp_snakewater",
-                        "cp_steel",
                         "cp_sunshine",
-                        "cp_freight",
-                        "ctf_2fort",
-                        "ctf_hellfire",
-                        "ctf_foundry",
-                        "ctf_landfall",
-                        "ctf_turbine",
-                        "ctf_thundermountain",
                         "koth_harvest",
                         "koth_highpass",
                         "koth_king",
-                        "pass_brickyard",
-                        "pass_district",
-                        "pass_timbertown",
+                        "koth_lazarus",
                         "pl_enclosure",
+                        "pl_frontier_final",
                         "pl_borneo",
                         "pl_pier",
                         "pl_swiftwater",
-                        "pl_upward",
-                        "plr_bananabay",
-                        "plr_hightower",
-                        "plr_nightfall",
-                        "plr_pipeline",
-                        "rd_asteroid",
-                        "pd_monster_bash",
-                        "pd_watergate",
-                        "sd_doomsday",
-                        "tc_hydro"
+                        "pl_upward"
                     ]
                 },
                 {
@@ -539,8 +488,13 @@
                     },
                     "quests": [
                         "cp_fulgur",
+                        "cp_gorge",
                         "cp_glassworks",
                         "cp_kalinka",
+                        "cp_lushlands",
+                        "cp_overgrown",
+                        "cp_steel",
+                        "cp_villa",
                         "koth_cascade",
                         "koth_ashville",
                         "koth_bagel_fall",
@@ -549,17 +503,182 @@
                         "koth_databank",
                         "koth_product",
                         "koth_ramjam",
+                        "koth_sharkbay",
                         "koth_slaughter",
                         "koth_spillway",
                         "koth_synthetic",
+                        "koth_warmtic",
                         "pl_badwater_pro",
-                        "pl_barnblitz_pro6",
+                        "pl_problitz",
                         "pl_fifthcurve",
+                        "pl_humidity",
                         "pl_sludgepit",
                         "pl_stranded",
                         "pl_summercoast",
                         "pl_vigil"
                     ]
+                }
+            ]
+        }, 
+        {
+            "name": "halloween",
+            "title": "node-halloween",
+            "dir": "./root/halloween",
+            "type": "tree",
+            "background": "{CDN}/assets/images/contracker/cyoa_icon_sf_pumpkin.png",
+            "icon": "{CDN}/assets/images/contracker/cyoa_classchoice_icon_v2.svg",
+            "position": {
+                "x": "75%",
+                "y": "50%"
+            },
+            "quests": [{
+                "title": "halloween_2021",
+                "position": {
+                    "x": "50%",
+                    "y": "45%"
+                },
+                "connect": [
+                    "node-halloween_maps",
+                    "node-halloween_cosmetics",
+                    "halloween2021_wizard",
+                    "halloween2021_office"
+                ]
+            }, {
+                "title": "halloween2021_wizard",
+                "position": {
+                    "x": "33%",
+                    "y": "75%"
+                },
+                "required": [
+                    "halloween_2021"
+                ]
+            }, {
+                "title": "halloween2021_office",
+                "position": {
+                    "x": "66%",
+                    "y": "75%"
+                },
+                "required": [
+                    "halloween_2021"
+                ]
+            }],
+            "nodes": [
+                {
+                    "name": "halloween_maps",
+                    "title": "node-halloween_maps",
+                    "dir": "./root/halloween/halloween_maps",
+                    "type": "list",
+                    "background": "{CDN}/assets/images/contracker/cyoa_icon_sf_pumpkin.png",
+                    "icon": "{CDN}/assets/images/contracker/cyoa_classchoice_icon_v2.svg",
+                    "required": [
+                        "halloween_2021"
+                    ],
+                    "position": {
+                        "x": "75%",
+                        "y": "33%"
+                    },
+                    "quests": [
+                        "ctf_helltrain",
+                        "ctf_hades",
+                        "cp_well_event",
+                        "cp_ghastlane_event"
+                    ]
+                }, {
+                    "name": "halloween_cosmetics",
+                    "title": "node-halloween_cosmetics",
+                    "dir": "./root/halloween/halloween_cosmetics",
+                    "type": "tree",
+                    "background": "{CDN}/assets/images/contracker/cyoa_icon_sf_pumpkin.png",
+                    "icon": "{CDN}/assets/images/contracker/cyoa_classchoice_icon_v2.svg",
+                    "required": [
+                        "halloween_2021"
+                    ],
+                    "position": {
+                        "x": "25%",
+                        "y": "33%"
+                    },
+                    "quests": [{
+                        "title": "halloween2021_trippinghazard",
+                        "position": {
+                            "x": "33%",
+                            "y": "25%"
+                        },
+                        "required": [
+                            "halloween_2021"
+                        ]
+                    }, {
+                        "title": "halloween2021_bread",
+                        "position": {
+                            "x": "66%",
+                            "y": "25%"
+                        },
+                        "required": [
+                            "halloween_2021"
+                        ]
+                    }, {
+                        "title": "halloween2021_taskful",
+                        "position": {
+                            "x": "25%",
+                            "y": "50%"
+                        },
+                        "required": [
+                            "halloween_2021"
+                        ]
+                    }, {
+                        "title": "halloween2021_needsanerf",
+                        "position": {
+                            "x": "50%",
+                            "y": "50%"
+                        },
+                        "required": [
+                            "halloween_2021"
+                        ]
+                    }, {
+                        "title": "halloween2021_bunsen",
+                        "position": {
+                            "x": "75%",
+                            "y": "50%"
+                        },
+                        "required": [
+                            "halloween_2021"
+                        ]
+                    }, {
+                        "title": "halloween2021_bombs",
+                        "position": {
+                            "x": "20%",
+                            "y": "75%"
+                        },
+                        "required": [
+                            "halloween_2021"
+                        ]
+                    }, {
+                        "title": "halloween2021_nope",
+                        "position": {
+                            "x": "40%",
+                            "y": "75%"
+                        },
+                        "required": [
+                            "halloween_2021"
+                        ]
+                    }, {
+                        "title": "halloween2021_cuteness",
+                        "position": {
+                            "x": "60%",
+                            "y": "75%"
+                        },
+                        "required": [
+                            "halloween_2021"
+                        ]
+                    }, {
+                        "title": "halloween2021_eye",
+                        "position": {
+                            "x": "80%",
+                            "y": "75%"
+                        },
+                        "required": [
+                            "halloween_2021"
+                        ]
+                    }]
                 }
             ]
         }]

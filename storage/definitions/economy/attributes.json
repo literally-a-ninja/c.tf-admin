@@ -162,7 +162,7 @@
     },
     "syringe blood mode uber": {
         "color": 1,
-        "value": "and applies %ss of buff effect, depending on your Medigun."
+        "value": "and applies the concheror buff effect for %ss."
     },
     "damage penalty": {
         "value": "%s% damage penalty",
@@ -697,7 +697,7 @@
         "value": "Attrib_SoldierBuffType"
     },
     "dmg falloff increased": {
-        "value": "Attrib_Dmg_Falloff_Increased",
+        "value": "%s% splash damage fall off",
         "display_as": "inverted_percentage",
         "color": -1
     },
@@ -1082,6 +1082,10 @@
     "apply look velocity on damage": {
         "value": "Attrib_Knockback"
     },
+    "apply z velocity on damage": {
+        "value": "On Hit: Apply extra vertical knockback",
+        "color": 1
+    },
     "sanguisuge": {
         "value": "On Backstab: Absorbs the health from your victim.",
         "color": 1
@@ -1098,8 +1102,9 @@
         "color": 1
     },
     "mult decloak rate": {
-        "value": "Attrib_DecloakRate",
-        "color": 1
+        "value": "+%s% decloak time",
+        "display_as": "percentage",
+        "color": -1
     },
     "mult sniper charge after bodyshot": {
         "value": "On Scoped Bodyshot: Rifle charge rate increased by %s%",
@@ -2726,5 +2731,57 @@
     "Halloween Spellbook Page: Veteris": {
         "value": "Pages of Veteris: %s",
         "color": 1
+    },
+    "quickdraw timed damage bonus": {
+        "value": "Western Duel: Mini-Crits are dealt for one second after being deployed. Shooting an enemy who has a Quickdraw out during this second will insta-kill.",
+        "color": 0,
+        "weight": -50
+    },
+    "revolver style desc": {
+        "value": "This is a revolver-styled pistol.",
+        "color": 0,
+        "weight": 0
+    },
+    "proj is brick": {
+        "value": "Hitting an enemy from a medium distance will deal bleeding damage",
+        "color": 0,
+        "weight": 0
+    },
+    "brick no point blank": {
+        "value": "Hits at point blank deal no bleeding damage",
+        "color": -1,
+        "weight": 0
+    },
+    "knife leap": {
+        "value": "While Cloaked: Press the RELOAD key to leap into the direction you are facing for 25% of your cloak (8 second cooldown)",
+        "color": 0,
+        "weight": 0
+    },
+    "beta testing weapon": {
+        "value": "This item is restricted to a beta program and therefore cannot be equipped on a normal Creators.TF server.",
+        "color": "ff0000",
+        "weight": 100
+    },
+    "charge shot with secondary": {
+        "value": "Alt-Fire: Hold to charge a shot",
+        "color": 1
+    },
+    "charge shot with secondary damage": {
+        "value": "On fully charged hit: Deal +%s% more damage\nOn fully charged shot: 20% more accurate",
+        "color": 1,
+        "display_as": "percentage"
+    },
+    "charge shot with secondary decay": {
+        "value": "Charged shot decays after %s seconds",
+        "color": -1
+    },
+    "charge shot with secondary clip consume": {
+        "value": "Charged hits comsume %s clip",
+        "color": -1
+    },
+    "charge shot with secondary time": {
+        "value": "Fully charging a shot takes %s seconds",
+        "color": 1,
+        "weight": 1
     }
 }

@@ -135,7 +135,7 @@
         }],
         "rewards": [{
             "type": "currency",
-            "amount": 250
+            "amount": 300
         }]
     },
     "21": {
@@ -174,7 +174,7 @@
         }]
     },
     "22": {
-        "name": "Gorge",
+        "name": "Gorge (Reborn)",
         "title": "cp_gorge",
         "icon": "{CDN}/assets/images/contracker/cyoa_classchoice_icon_v2.svg",
         "image": "{CDN}/assets/images/contracker/nodes/maps/node_view_contract_gorge.jpg",
@@ -209,7 +209,7 @@
         }]
     },
     "23": {
-        "name": "Steel",
+        "name": "Steel (Refresh)",
         "title": "cp_steel",
         "icon": "{CDN}/assets/images/contracker/cyoa_classchoice_icon_v2.svg",
         "image": "{CDN}/assets/images/contracker/nodes/maps/node_view_contract_steel.jpg",
@@ -569,7 +569,7 @@
         }]
     },
     "33": {
-        "name": "Crate Smasher",
+        "name": "The Crate Smasher",
         "title": "crate_smasher",
         "image": "{CDN}/assets/images/contracker/nodes/node_view_contract_citadel.jpg",
         "icon": "{CDN}/assets/images/contracker/cyoa_classchoice_icon_v2.svg",
@@ -579,14 +579,14 @@
         },
         "objectives": [{
             "name": "Get a kill with the Crate Smasher",
-            "points": 2,
+            "points": 5,
             "hooks": [{
                 "event": "TF_KILL"
             }]
         }, {
             "name": "Get 3 kills with the Crate Smasher in a single life",
-            "points": 5,
-            "limit": 10,
+            "points": 15,
+            "limit": 3,
             "end": 3,
             "hooks": [{
                 "action": "increment",
@@ -596,22 +596,17 @@
                 "event": "TF_SPAWN"
             }]
         }, {
-            "name": "Get 5 kills with the Crate Smasher in a single life",
-            "points": 10,
-            "limit": 5,
-            "end": 5,
+            "name": "Dominate an enemy by killing them with the Crate Smasher",
+            "points": 25,
+            "limit": 2,
             "hooks": [{
-                "action": "increment",
-                "event": "TF_KILL"
-            }, {
-                "action": "reset",
-                "event": "TF_SPAWN"
+            	"event": "TF_KILL_DOMINATE"
             }]
         }],
         "required_items": ["Crate Smasher"],
         "rewards": [{
             "type": "currency",
-            "amount": 300
+            "amount": 250
         }, {
             "type": "item",
             "index": 12
@@ -649,7 +644,7 @@
         }],
         "rewards": [{
             "type": "currency",
-            "amount": 350
+            "amount": 300
         }]
     },
     "35": {
@@ -684,7 +679,7 @@
         }],
         "rewards": [{
             "type": "currency",
-            "amount": 350
+            "amount": 300
         }]
     },
     "36": {
@@ -719,7 +714,7 @@
         }],
         "rewards": [{
             "type": "currency",
-            "amount": 350
+            "amount": 300
         }]
     },
     "37": {
@@ -732,23 +727,23 @@
             "weapon": "Gamma Gazer"
         },
         "objectives": [{
-            "name": "Get a kill with the Gamma Gazer",
-            "points": 2,
-            "hooks": [{
-                "event": "TF_KILL"
-            }]
-        }, {
             "name": "Remove a sapper with the Gamma Gazer",
-            "points": 6,
-            "limit": 15,
+            "points": 2,
             "hooks": [{
                 "event": "TF_KILL_OBJECT_SAPPER"
             }]
         }, {
-            "name": "Get 5 kills with the Gamma Gazer in a single life",
-            "points": 10,
+            "name": "Get a kill with the Gamma Gazer",
+            "points": 2,
+            "limit": 20,
+            "hooks": [{
+                "event": "TF_KILL"
+            }]
+        }, {
+            "name": "Get 3 kills with the Gamma Gazer in a single life",
+            "points": 15,
             "limit": 3,
-            "end": 5,
+            "end": 3,
             "hooks": [{
                 "action": "increment",
                 "event": "TF_KILL"
@@ -760,7 +755,7 @@
         "required_items": ["Gamma Gazer"],
         "rewards": [{
             "type": "currency",
-            "amount": 300
+            "amount": 250
         }, {
             "type": "item",
             "index": 1003
@@ -776,13 +771,13 @@
             "weapon": "Thumper"
         },
         "objectives": [{
-            "name": "Kill an enemy with the Thumper",
+            "name": "Get a kill with the Thumper",
             "points": 2,
             "hooks": [{
                 "event": "TF_KILL"
             }]
         }, {
-            "name": "Kill 3 enemies with the Thumper in a single life",
+            "name": "Get 3 kills with the Thumper in a single life",
             "points": 5,
             "limit": 12,
             "end": 3,
@@ -794,9 +789,9 @@
                 "event": "TF_SPAWN"
             }]
         }, {
-            "name": "Kill 2 enemies with the Thumper without holstering it",
-            "points": 10,
-            "limit": 5,
+            "name": "Get 2 kills with the Thumper without holstering it",
+            "points": 15,
+            "limit": 3,
             "end": 2,
             "hooks": [{
                 "action": "increment",
@@ -809,7 +804,7 @@
         "required_items": ["Thumper"],
         "rewards": [{
             "type": "currency",
-            "amount": 300
+            "amount": 250
         }, {
             "type": "item",
             "index": 1001
@@ -826,7 +821,7 @@
         },
         "objectives": [{
             "name": "Heal teammates for 300 HP",
-            "points": 5,
+            "points": 2,
             "end": 300,
             "hooks": [{
                 "action": "increment",
@@ -837,15 +832,15 @@
             }]
         }, {
             "name": "Earn an assist while healing a patient",
-            "points": 10,
-            "limit": 5,
+            "points": 2,
+            "limit": 25,
             "hooks": [{
                 "event": "TF_ASSIST"
             }]
         }, {
-            "name": "Charge your teammate with the Hypodermic Injector",
-            "points": 20,
-            "limit": 7,
+            "name": "Charge a teammate with the Hypodermic Injector",
+            "points": 5,
+            "limit": 10,
             "restrictions": {
                 "weapon": "Hypodermic Injector"
             },
@@ -856,7 +851,7 @@
         "required_items": ["Hypodermic Injector"],
         "rewards": [{
             "type": "currency",
-            "amount": 300
+            "amount": 250
         }, {
             "type": "item",
             "index": 1002
@@ -1365,22 +1360,22 @@
         }]
     },
     "54": {
-        "name": "Barnblitz Pro",
-        "title": "pl_barnblitz_pro6",
+        "name": "Problitz",
+        "title": "pl_problitz",
         "icon": "{CDN}/assets/images/contracker/cyoa_classchoice_icon_v2.svg",
         "image": "{CDN}/assets/images/contracker/nodes/maps/node_view_contract_barnblitzpro.jpg",
         "class": "All Class",
         "restrictions": {
-            "map": "pl_barnblitz_pro6"
+            "map": "pl_problitz"
         },
         "objectives": [{
-            "name": "Assist or kill an enemy on Barnblitz",
+            "name": "Assist or kill an enemy on Problitz",
             "points": 2,
             "hooks": [{
                 "event": "TF_KILL_OR_ASSIST"
             }]
         }, {
-            "name": "Push the cart on Barnblitz",
+            "name": "Push the cart on Problitz",
             "points": 2,
             "limit": 20,
             "end": 15,
@@ -1389,7 +1384,7 @@
                 "event": "TF_PAYLOAD_PUSH"
             }]
         }, {
-            "name": "Defend the cart on Barnblitz",
+            "name": "Defend the cart on Problitz",
             "points": 10,
             "limit": 7,
             "hooks": [{
@@ -1840,14 +1835,14 @@
         },
         "objectives": [{
             "name": "Get a kill with the W.A.S.P. Launcher",
-            "points": 2,
+            "points": 1,
             "hooks": [{
                 "event": "TF_KILL"
             }]
         }, {
             "name": "Get 3 kills with the W.A.S.P. Launcher in a single life",
             "points": 5,
-            "limit": 20,
+            "limit": 10,
             "end": 3,
             "hooks": [{
                 "action": "increment",
@@ -1858,8 +1853,8 @@
             }]
         }, {
             "name": "Get 5 kills with the W.A.S.P. Launcher in a single life",
-            "points": 10,
-            "limit": 15,
+            "points": 15,
+            "limit": 3,
             "end": 5,
             "hooks": [{
                 "action": "increment",
@@ -1889,27 +1884,27 @@
         },
         "objectives": [{
             "name": "Get a kill with the Bolshevik Bomber",
-            "points": 2,
+            "points": 3,
             "hooks": [{
                 "event": "TF_KILL"
             }]
         }, {
-            "name": "Get 3 kills with the Bolshevik Bomber in a single life",
-            "points": 5,
-            "limit": 20,
-            "end": 3,
+            "name": "Deal 500 damage with the Bolshevik Bomber in one life",
+            "points": 10,
+            "limit": 5,
+            "end": 500,
             "hooks": [{
                 "action": "increment",
-                "event": "TF_KILL"
+                "event": "TF_DEAL_DAMAGE"
             }, {
                 "action": "reset",
                 "event": "TF_SPAWN"
             }]
         }, {
-            "name": "Get 5 kills with the Bolshevik Bomber in a single life",
-            "points": 10,
-            "limit": 15,
-            "end": 5,
+            "name": "Get 3 kills with the Bolshevik Bomber in a single life",
+            "points": 15,
+            "limit": 3,
+            "end": 3,
             "hooks": [{
                 "action": "increment",
                 "event": "TF_KILL"
@@ -1925,55 +1920,6 @@
         }, {
             "type": "item",
             "index": 1005
-        }]
-    },
-    "69": {
-        "name": "The Carved Cutter",
-        "title": "carved_cutter",
-        "icon": "{CDN}/assets/images/contracker/cyoa_classchoice_icon_v2.svg",
-        "image": "{CDN}/assets/images/contracker/nodes/weapons/node_view_contract_carved_cutter.jpg",
-        "class": "Spy",
-        "restrictions": {
-            "weapon": "Carved Cutter"
-        },
-        "objectives": [{
-            "name": "Get a kill with the Carved Cutter",
-            "points": 2,
-            "hooks": [{
-                "event": "TF_KILL"
-            }]
-        }, {
-            "name": "Get 3 kills with the Carved Cutter in a single life",
-            "points": 5,
-            "limit": 20,
-            "end": 3,
-            "hooks": [{
-                "action": "increment",
-                "event": "TF_KILL"
-            }, {
-                "action": "reset",
-                "event": "TF_SPAWN"
-            }]
-        }, {
-            "name": "Get 5 kills with the Carved Cutter in a single life",
-            "points": 10,
-            "limit": 15,
-            "end": 5,
-            "hooks": [{
-                "action": "increment",
-                "event": "TF_KILL"
-            }, {
-                "action": "reset",
-                "event": "TF_SPAWN"
-            }]
-        }],
-        "required_items": ["Carved Cutter"],
-        "rewards": [{
-            "type": "currency",
-            "amount": 250
-        }, {
-            "type": "item",
-            "index": 1004
         }]
     },
     "70": {
@@ -2253,7 +2199,7 @@
         }],
         "rewards": [{
             "type": "currency",
-            "amount": 550
+            "amount": 450
         }]
     },
     "77": {
@@ -3054,7 +3000,7 @@
         "image": "{CDN}/assets/images/contracker/nodes/maps/node_view_contract_bagel.jpg",
         "class": "All Class",
         "restrictions": {
-            "map": "koth_bagel_rc3"
+            "map": "koth_bagel"
         },
         "objectives": [{
             "name": "Assist or kill an enemy on Bagel",
@@ -3684,7 +3630,7 @@
         "name": "Fulgur",
         "title": "cp_fulgur",
         "icon": "{CDN}/assets/images/contracker/cyoa_classchoice_icon_v2.svg",
-        "image": "{CDN}/assets/images/contracker/nodes/maps/node_view_contract_fulgur.png",
+        "image": "{CDN}/assets/images/contracker/nodes/maps/node_view_contract_fulgur.jpg",
         "restrictions": {
             "map": "cp_fulgur"
         },
@@ -3718,7 +3664,7 @@
         "name": "Daenam",
         "title": "koth_daenam",
         "icon": "{CDN}/assets/images/contracker/cyoa_classchoice_icon_v2.svg",
-        "image": "{CDN}/assets/images/contracker/nodes/maps/node_view_contract_daenam.png",
+        "image": "{CDN}/assets/images/contracker/nodes/maps/node_view_contract_daenam.jpg",
         "restrictions": {
             "map": "koth_daenam"
         },
@@ -3752,7 +3698,7 @@
         "name": "Ramjam",
         "title": "koth_ramjam",
         "icon": "{CDN}/assets/images/contracker/cyoa_classchoice_icon_v2.svg",
-        "image": "{CDN}/assets/images/contracker/nodes/maps/node_view_contract_ramjam.png",
+        "image": "{CDN}/assets/images/contracker/nodes/maps/node_view_contract_ramjam.jpg",
         "restrictions": {
             "map": "koth_ramjam"
         },
@@ -3786,7 +3732,7 @@
         "name": "Ashville",
         "title": "koth_ashville",
         "icon": "{CDN}/assets/images/contracker/cyoa_classchoice_icon_v2.svg",
-        "image": "{CDN}/assets/images/contracker/nodes/maps/node_view_contract_ashville.png",
+        "image": "{CDN}/assets/images/contracker/nodes/maps/node_view_contract_ashville.jpg",
         "restrictions": {
             "map": "koth_ashville"
         },
@@ -4851,7 +4797,7 @@
     "153": {
         "name": "Relentless Defense",
         "title": "relentless_defense",
-        "image": "{CDN}/assets/images/contracker/mechach/gate_squad.png",
+        "image": "{CDN}/assets/images/contracker/mechach/gate_squad.jpg",
         "background": true,
         "difficulty": 3,
         "restrictions": {
@@ -4933,7 +4879,7 @@
     "155": {
         "name": "Plus 2",
         "title": "plus_two",
-        "image": "{CDN}/assets/images/contracker/mechach/plus2.png",
+        "image": "{CDN}/assets/images/contracker/mechach/plus2.jpg",
         "background": true,
         "difficulty": 4,
         "restrictions": {
@@ -4973,7 +4919,7 @@
     "156": {
         "name": "A Sig-nificant Upgrade",
         "title": "sig_upgrade",
-        "image": "{CDN}/assets/images/contracker/mechach/sigsegv.png",
+        "image": "{CDN}/assets/images/contracker/mechach/sigsegv.jpg",
         "background": true,
         "difficulty": 4,
         "restrictions": {
@@ -5017,7 +4963,7 @@
     "158": {
         "name": "Do Androids Feel Shame?",
         "title": "tauntkill_contract",
-        "image": "{CDN}/assets/images/contracker/mechach/androids_dream.png",
+        "image": "{CDN}/assets/images/contracker/mechach/androids_dream.jpg",
         "background": true,
         "difficulty": 4,
         "restrictions": {
@@ -5039,7 +4985,7 @@
     "159": {
         "name": "Oh, The Humanity!",
         "title": "blimp_contract",
-        "image": "{CDN}/assets/images/contracker/mechach/blimp.png",
+        "image": "{CDN}/assets/images/contracker/mechach/blimp.jpg",
         "background": true,
         "difficulty": 4,
         "restrictions": {
@@ -5075,10 +5021,10 @@
                 "event": "TF_DEATH",
                 "action": "subtract"
             }, {
-                "event": "TF_MVM_GAME_START",
+                "event": "TF_MVM_MISSION_RESET",
                 "action": "reset"
             }, {
-                "event": "TF_MVM_MISSION_COMPLETE",
+                "event": "TF_MVM_MISSION_COMPLETE_ALL_WAVES",
                 "action": "increment"
             }]
         }],
@@ -5091,7 +5037,7 @@
     "161": {
         "name": "Holes in Your Pocket",
         "title": "money_contract",
-        "image": "{CDN}/assets/images/contracker/mechach/let_it_sit.png",
+        "image": "{CDN}/assets/images/contracker/mechach/let_it_sit.jpg",
         "background": true,
         "difficulty": 2,
         "restrictions": {
@@ -5131,7 +5077,7 @@
     "162": {
         "name": "Dairy Delivery",
         "title": "dairy_delivery",
-        "image": "{CDN}/assets/images/contracker/mechach/tf_mad_milk.png",
+        "image": "{CDN}/assets/images/contracker/mechach/tf_mad_milk.jpg",
         "background": true,
         "difficulty": 2,
         "restrictions": {
@@ -5215,7 +5161,7 @@
     "164": {
         "name": "Scout has a gun?!",
         "title": "dmgscout_contract",
-        "image": "{CDN}/assets/images/contracker/mechach/beverage_bonanza.png",
+        "image": "{CDN}/assets/images/contracker/mechach/beverage_bonanza.jpg",
         "background": true,
         "difficulty": 4,
         "restrictions": {
@@ -5262,7 +5208,7 @@
     "165": {
         "name": "Doot and Shoot",
         "title": "doot_shoot",
-        "image": "{CDN}/assets/images/contracker/mechach/doot_shoot.png",
+        "image": "{CDN}/assets/images/contracker/mechach/doot_shoot.jpg",
         "difficulty": 2,
         "background": true,
         "restrictions": {
@@ -5405,7 +5351,7 @@
                 "event": "TF_MVM_KILL_WHILE_AIRBORNE"
             }]
         }, {
-            "name": "Destroy 3 or more Uber Medics in 1 second",
+            "name": "Destroy 3 or more fully charged Uber Medics in 1 second",
             "points": 5,
             "limit": 5,
             "end": 3,
@@ -5433,7 +5379,7 @@
     "169": {
         "name": "That's Gotta Sting",
         "title": "wasp_contract",
-        "image": "{CDN}/assets/images/contracker/mechach/that_stings2.png",
+        "image": "{CDN}/assets/images/contracker/mechach/that_stings2.jpg",
         "background": true,
         "difficulty": 3,
         "restrictions": {
@@ -5570,11 +5516,11 @@
     "172": {
         "name": "Propulsion Pilot",
         "title": "propulsion_pilot",
-        "image": "{CDN}/assets/images/contracker/mechach/propulsion_pilot.png",
+        "image": "{CDN}/assets/images/contracker/mechach/propulsion_pilot.jpg",
         "difficulty": 4,
         "background": true,
         "restrictions": {
-            "weapon": "The Thermal Thruster",
+            "item_classname": "tf_weapon_rocketpack",
             "map": "mvm_"
         },
         "objectives": [{
@@ -5702,7 +5648,7 @@
     "175": {
         "name": "Pipe Dream",
         "title": "pipe_dream",
-        "image": "{CDN}/assets/images/contracker/mechach/pipe_dream.png",
+        "image": "{CDN}/assets/images/contracker/mechach/pipe_dream.jpg",
         "background": true,
         "difficulty": 3,
         "restrictions": {
@@ -5716,7 +5662,7 @@
             "end": 15,
             "hooks": [{
                 "action": "increment",
-                "event": "TF_MVM_KILL_ROBOT"
+                "event": "TF_MVM_KILL_ROBOT_ACTIVE_WEAPON"
             }]
         }, {
             "name": "Deal 8000 damage with the Grenade Launcher",
@@ -5725,14 +5671,14 @@
             "end": 8000,
             "hooks": [{
                 "action": "increment",
-                "event": "TF_MVM_DAMAGE_ROBOT"
+                "event": "TF_MVM_DAMAGE_ROBOT_ACTIVE_WEAPON"
             }]
         }, {
             "name": "Deal the most damage to tanks with a grenade launcher",
             "points": 20,
             "limit": 2,
             "hooks": [{
-                "event": "TF_MVM_DAMAGE_TANK_MVP"
+                "event": "TF_MVM_DAMAGE_TANK_MVP_GRENADE"
             }]
         }],
         "rewards": [{
@@ -5748,7 +5694,7 @@
         "background": true,
         "difficulty": 4,
         "restrictions": {
-            "weapon_slot": "melee",
+            "weapon_classname": "tf_weapon_sword,tf_weapon_katana",
             "class": "demoman",
             "map": "mvm_"
         },
@@ -5759,7 +5705,7 @@
             "end": 6,
             "hooks": [{
                 "action": "increment",
-                "event": "TF_MVM_KILL_ROBOT"
+                "event": "TF_MVM_KILL_ROBOT_ACTIVE_WEAPON"
             }]
         }, {
             "name": "Deal 7000 damage with a Sword",
@@ -5768,16 +5714,16 @@
             "end": 7000,
             "hooks": [{
                 "action": "increment",
-                "event": "TF_MVM_DAMAGE_ROBOT"
+                "event": "TF_MVM_DAMAGE_ROBOT_ACTIVE_WEAPON"
             }]
         }, {
-            "name": "Destroy 8 Uber Medics with a Sword",
+            "name": "Destroy 8 fully charged Uber Medics with a Sword",
             "points": 20,
             "limit": 2,
             "end": 8,
             "hooks": [{
                 "action": "increment",
-                "event": "TF_MVM_KILL_UBER_MEDIC"
+                "event": "TF_MVM_KILL_UBER_MEDIC_ACTIVE_WEAPON"
             }]
         }],
         "rewards": [{
@@ -5789,7 +5735,7 @@
     "178": {
         "name": "The Immovable Object",
         "title": "immovable_object",
-        "image": "{CDN}/assets/images/contracker/mechach/higher_caliber.png",
+        "image": "{CDN}/assets/images/contracker/mechach/higher_caliber.jpg",
         "background": true,
         "difficulty": 2,
         "restrictions": {
@@ -5953,7 +5899,7 @@
                 "event": "TF_SPAWN"
             }]
         }, {
-            "name": "Destroy 10 Uber Medics with the Killing Gloves of Boxing",
+            "name": "Destroy 10 fully charged Uber Medics with the Killing Gloves of Boxing",
             "points": 20,
             "limit": 2,
             "end": 10,
@@ -6088,7 +6034,7 @@
                 "event": "TF_MVM_KILL_ROBOT"
             }]
         }, {
-            "name": "Destroy 3 Uber Medics with the Frontier Justice",
+            "name": "Destroy 3 fully charged Uber Medics with the Frontier Justice",
             "points": 20,
             "limit": 2,
             "end": 3,
@@ -6106,7 +6052,7 @@
     "185": {
         "name": "Short Circuited",
         "title": "short_circuited",
-        "image": "{CDN}/assets/images/contracker/mechach/postive_feedback_loop.png",
+        "image": "{CDN}/assets/images/contracker/mechach/postive_feedback_loop.jpg",
         "background": true,
         "difficulty": 3,
         "restrictions": {
@@ -6198,7 +6144,7 @@
         "name": "Lactose Intolerance",
         "title": "milksyringe_contract",
         "background": true,
-        "image": "{CDN}/assets/images/contracker/mechach/lactose_tolerant.png",
+        "image": "{CDN}/assets/images/contracker/mechach/lactose_tolerant.jpg",
         "difficulty": 3,
         "restrictions": {
             "class": "medic",
@@ -6294,7 +6240,7 @@
     "189": {
         "name": "Anti-Robotic Resistant Bugs",
         "title": "vacc_contract",
-        "image": "{CDN}/assets/images/contracker/mechach/protective_medicine.png",
+        "image": "{CDN}/assets/images/contracker/mechach/protective_medicine.jpg",
         "background": true,
         "difficulty": 4,
         "restrictions": {
@@ -6302,19 +6248,19 @@
             "map": "mvm_"
         },
         "objectives": [{
-            "name": "Resist 1000 damage with the vaccinator",
+            "name": "Resist 500 damage with the vaccinator",
             "points": 1,
             "limit": 100,
-            "end": 1000,
+            "end": 500,
             "hooks": [{
                 "action": "increment",
                 "event": "TF_MVM_BLOCK_DAMAGE_VAC"
             }]
         }, {
-            "name": "Resist 5000 damage with the vaccinator",
-            "points": 5,
+            "name": "Resist 2500 damage with the vaccinator",
+            "points": 7,
             "limit": 5,
-            "end": 5000,
+            "end": 2500,
             "hooks": [{
                 "action": "increment",
                 "event": "TF_MVM_BLOCK_DAMAGE_VAC"
@@ -6358,7 +6304,7 @@
                 "event": "TF_MVM_KILL_ROBOT"
             }]
         }, {
-            "name": "Destroy 8 Uber Medics with the Hitman's Heatmaker",
+            "name": "Destroy 8 fully charged Uber Medics with the Hitman's Heatmaker",
             "points": 5,
             "limit": 5,
             "end": 8,
@@ -6388,7 +6334,7 @@
     "191": {
         "name": "Precise Power",
         "title": "precise_power",
-        "image": "{CDN}/assets/images/contracker/mechach/boss_contracts.png",
+        "image": "{CDN}/assets/images/contracker/mechach/boss_contracts.jpg",
         "background": true,
         "difficulty": 3,
         "restrictions": {
@@ -6455,16 +6401,16 @@
             "end": 2,
             "hooks": [{
                 "action": "increment",
-                "event": "TF_MVM_KILL_GIANT"
+                "event": "TF_MVM_KILL_ROBOT_GIANT"
             }]
         }, {
-            "name": "Destroy 10 Giants with the Bazaar Bargain",
+            "name": "Destroy 3 Giants with the Bazaar Bargain",
             "points": 20,
             "limit": 2,
             "end": 3,
             "hooks": [{
                 "action": "increment",
-                "event": "TF_MVM_KILL_ROBOT_GIANT"
+                "event": "TF_MVM_KILL_ROBOT_GIANT_FINAL"
             }]
         }],
         "rewards": [{
@@ -6591,7 +6537,7 @@
                 "event": "TF_SPAWN"
             }]
         }, {
-            "name": "Destroy 5 Uber Medics with Your Eternal Reward in a single life",
+            "name": "Destroy 5 fully charged Uber Medics with Your Eternal Reward in a single life",
             "points": 20,
             "limit": 2,
             "end": 5,
@@ -6874,7 +6820,7 @@
     "202": {
         "name": "Critical Mass",
         "title": "kritz_contract",
-        "image": "{CDN}/assets/images/contracker/mechach/tf_medic.png",
+        "image": "{CDN}/assets/images/contracker/mechach/tf_medic.jpg",
         "background": true,
         "difficulty": 3,
         "restrictions": {
@@ -6945,9 +6891,12 @@
             "points": 5,
             "limit": 5,
             "end": 5000,
+            "restrictions": {
+                "weapon_slot": "secondary"
+            },
             "hooks": [{
                 "action": "increment",
-                "event": "TF_MVM_DAMAGE_ROBOT"
+                "event": "TF_MVM_DAMAGE_ROBOT_ACTIVE_WEAPON"
             }]
         }, {
             "name": "Heal 10,000HP worth of damage to your teammates (no overheal)",
@@ -6975,7 +6924,7 @@
             "map": "mvm_"
         },
         "objectives": [{
-            "name": "Destroy a bot deploying the bomb",
+            "name": "Push back a bot deploying the bomb",
             "points": 50,
             "hooks": [{
                 "event": "TF_MVM_BOMB_DEPLOY_RESET"
@@ -6997,7 +6946,7 @@
             "map": "mvm_"
         },
         "objectives": [{
-            "name": "Complete a mission with zero failed waves",
+            "name": "Complete an entire mission with zero failed waves",
             "points": 50,
             "end": 1,
             "hooks": [{
@@ -7056,7 +7005,7 @@
         "name": "Highpass",
         "title": "koth_highpass",
         "icon": "{CDN}/assets/images/contracker/cyoa_classchoice_icon_v2.svg",
-        "image": "{CDN}/assets/images/contracker/nodes/maps/node_view_contract_highpass.png",
+        "image": "{CDN}/assets/images/contracker/nodes/maps/node_view_contract_highpass.jpg",
         "class": "All Class",
         "restrictions": {
             "map": "koth_highpass"
@@ -7091,7 +7040,7 @@
         "name": "Enclosure",
         "title": "pl_enclosure",
         "icon": "{CDN}/assets/images/contracker/cyoa_classchoice_icon_v2.svg",
-        "image": "{CDN}/assets/images/contracker/nodes/maps/node_view_contract_enclosure.png",
+        "image": "{CDN}/assets/images/contracker/nodes/maps/node_view_contract_enclosure.jpg",
         "class": "All Class",
         "restrictions": {
             "map": "pl_enclosure"
@@ -7128,7 +7077,7 @@
         "name": "Freight",
         "title": "cp_freight",
         "icon": "{CDN}/assets/images/contracker/cyoa_classchoice_icon_v2.svg",
-        "image": "{CDN}/assets/images/contracker/nodes/maps/node_view_contract_freight.png",
+        "image": "{CDN}/assets/images/contracker/nodes/maps/node_view_contract_freight.jpg",
         "class": "All Class",
         "restrictions": {
             "map": "cp_freight"
@@ -7154,6 +7103,1110 @@
                 "event": "TF_DEFEND_POINT"
             }]
         }],
+        "rewards": [{
+            "type": "currency",
+            "amount": 300
+        }]
+    },
+    "210": {
+        "name": "Frontier",
+        "title": "pl_frontier_final",
+        "icon": "{CDN}/assets/images/contracker/cyoa_classchoice_icon_v2.svg",
+        "image": "{CDN}/assets/images/contracker/nodes/maps/node_view_contract_frontier.jpg",
+        "class": "All Class",
+        "restrictions": {
+            "map": "pl_frontier_final"
+        },
+        "objectives": [{
+            "name": "Assist or kill an enemy on Frontier",
+            "points": 2,
+            "hooks": [{
+                "event": "TF_KILL_OR_ASSIST"
+            }]
+        }, {
+            "name": "Push the cart on Frontier",
+            "points": 2,
+            "limit": 20,
+            "end": 15,
+            "hooks": [{
+                "action": "increment",
+                "event": "TF_PAYLOAD_PUSH"
+            }]
+        }, {
+            "name": "Defend the cart on Frontier",
+            "points": 10,
+            "limit": 7,
+            "hooks": [{
+                "event": "TF_DEFEND_POINT"
+            }]
+        }],
+        "rewards": [{
+            "type": "currency",
+            "amount": 300
+        }]
+    },
+    "211": {
+        "name": "Lazarus",
+        "title": "koth_lazarus",
+        "icon": "{CDN}/assets/images/contracker/cyoa_classchoice_icon_v2.svg",
+        "image": "{CDN}/assets/images/contracker/nodes/maps/node_view_contract_lazarus.jpg",
+        "class": "All Class",
+        "restrictions": {
+            "map": "koth_lazarus"
+        },
+        "objectives": [{
+            "name": "Assist or kill an enemy on Lazarus",
+            "points": 2,
+            "hooks": [{
+                "event": "TF_KILL_OR_ASSIST"
+            }]
+        }, {
+            "name": "Capture the point on Lazarus",
+            "points": 5,
+            "limit": 20,
+            "hooks": [{
+                "event": "TF_CAPTURE_POINT"
+            }]
+        }, {
+            "name": "Defend the point on Lazarus",
+            "points": 10,
+            "limit": 7,
+            "hooks": [{
+                "event": "TF_DEFEND_POINT"
+            }]
+        }],
+        "rewards": [{
+            "type": "currency",
+            "amount": 300
+        }]
+    },
+    "212": {
+        "name": "Mercenary Park",
+        "title": "cp_mercenarypark",
+        "icon": "{CDN}/assets/images/contracker/cyoa_classchoice_icon_v2.svg",
+        "image": "{CDN}/assets/images/contracker/nodes/maps/node_view_contract_mercenarypark.jpg",
+        "class": "All Class",
+        "restrictions": {
+            "map": "cp_mercenarypark"
+        },
+        "objectives": [{
+            "name": "Assist or kill an enemy on Mercenary Park",
+            "points": 2,
+            "hooks": [{
+                "event": "TF_KILL_OR_ASSIST"
+            }]
+        }, {
+            "name": "Capture the point on Mercenary Park",
+            "points": 5,
+            "limit": 20,
+            "hooks": [{
+                "event": "TF_CAPTURE_POINT"
+            }]
+        }, {
+            "name": "Defend the point on Mercenary Park",
+            "points": 10,
+            "limit": 7,
+            "hooks": [{
+                "event": "TF_DEFEND_POINT"
+            }]
+        }],
+        "rewards": [{
+            "type": "currency",
+            "amount": 300
+        }]
+    },
+    "213": {
+        "name": "Lushlands",
+        "title": "cp_lushlands",
+        "icon": "{CDN}/assets/images/contracker/cyoa_classchoice_icon_v2.svg",
+        "image": "{CDN}/assets/images/contracker/nodes/maps/node_view_contract_lushlands.jpg",
+        "class": "All Class",
+        "restrictions": {
+            "map": "cp_lushlands"
+        },
+        "objectives": [{
+            "name": "Assist or kill an enemy on Lushlands",
+            "points": 2,
+            "hooks": [{
+                "event": "TF_KILL_OR_ASSIST"
+            }]
+        }, {
+            "name": "Capture the point on Lushlands",
+            "points": 5,
+            "limit": 20,
+            "hooks": [{
+                "event": "TF_CAPTURE_POINT"
+            }]
+        }, {
+            "name": "Defend the point on Lushlands",
+            "points": 10,
+            "limit": 7,
+            "hooks": [{
+                "event": "TF_DEFEND_POINT"
+            }]
+        }],
+        "rewards": [{
+            "type": "currency",
+            "amount": 300
+        }]
+    },
+    "214": {
+        "name": "Warmtic",
+        "title": "koth_warmtic",
+        "icon": "{CDN}/assets/images/contracker/cyoa_classchoice_icon_v2.svg",
+        "image": "{CDN}/assets/images/contracker/nodes/maps/node_view_contract_warmtic.jpg",
+        "class": "All Class",
+        "restrictions": {
+            "map": "koth_warmtic"
+        },
+        "objectives": [{
+            "name": "Assist or kill an enemy on Warmtic",
+            "points": 2,
+            "hooks": [{
+                "event": "TF_KILL_OR_ASSIST"
+            }]
+        }, {
+            "name": "Capture the point on Warmtic",
+            "points": 5,
+            "limit": 20,
+            "hooks": [{
+                "event": "TF_CAPTURE_POINT"
+            }]
+        }, {
+            "name": "Defend the point on Warmtic",
+            "points": 10,
+            "limit": 7,
+            "hooks": [{
+                "event": "TF_DEFEND_POINT"
+            }]
+        }],
+        "rewards": [{
+            "type": "currency",
+            "amount": 300
+        }]
+    },
+    "215": {
+        "name": "Timbermill",
+        "title": "pl_timbermill",
+        "icon": "{CDN}/assets/images/contracker/cyoa_classchoice_icon_v2.svg",
+        "image": "{CDN}/assets/images/contracker/nodes/maps/node_view_contract_timbermill.jpg",
+        "class": "All Class",
+        "restrictions": {
+            "map": "pl_timbermill"
+        },
+        "objectives": [{
+            "name": "Assist or kill an enemy on Timbermill",
+            "points": 2,
+            "hooks": [{
+                "event": "TF_KILL_OR_ASSIST"
+            }]
+        }, {
+            "name": "Push the cart on Timbermill",
+            "points": 2,
+            "limit": 20,
+            "end": 15,
+            "hooks": [{
+                "action": "increment",
+                "event": "TF_PAYLOAD_PUSH"
+            }]
+        }, {
+            "name": "Defend the cart on Timbermill",
+            "points": 10,
+            "limit": 7,
+            "hooks": [{
+                "event": "TF_DEFEND_POINT"
+            }]
+        }],
+        "rewards": [{
+            "type": "currency",
+            "amount": 300
+        }]
+    },
+    "216": {
+        "name": "Koreto",
+        "title": "koth_koreto",
+        "icon": "{CDN}/assets/images/contracker/cyoa_classchoice_icon_v2.svg",
+        "image": "{CDN}/assets/images/contracker/nodes/maps/node_view_contract_koreto.jpg",
+        "class": "All Class",
+        "restrictions": {
+            "map": "koth_koreto"
+        },
+        "objectives": [{
+            "name": "Assist or kill an enemy on Koreto",
+            "points": 2,
+            "hooks": [{
+                "event": "TF_KILL_OR_ASSIST"
+            }]
+        }, {
+            "name": "Capture the point on Koreto",
+            "points": 5,
+            "limit": 20,
+            "hooks": [{
+                "event": "TF_CAPTURE_POINT"
+            }]
+        }, {
+            "name": "Defend the point on Koreto",
+            "points": 10,
+            "limit": 7,
+            "hooks": [{
+                "event": "TF_DEFEND_POINT"
+            }]
+        }],
+        "rewards": [{
+            "type": "currency",
+            "amount": 300
+        }]
+    },
+    "217": {
+        "name": "Villa",
+        "title": "cp_villa",
+        "icon": "{CDN}/assets/images/contracker/cyoa_classchoice_icon_v2.svg",
+        "image": "{CDN}/assets/images/contracker/nodes/maps/node_view_contract_villa.jpg",
+        "class": "All Class",
+        "restrictions": {
+            "map": "cp_villa"
+        },
+        "objectives": [{
+            "name": "Assist or kill an enemy on Villa",
+            "points": 2,
+            "hooks": [{
+                "event": "TF_KILL_OR_ASSIST"
+            }]
+        }, {
+            "name": "Capture the point on Villa",
+            "points": 5,
+            "limit": 20,
+            "hooks": [{
+                "event": "TF_CAPTURE_POINT"
+            }]
+        }, {
+            "name": "Defend the point on Villa",
+            "points": 10,
+            "limit": 7,
+            "hooks": [{
+                "event": "TF_DEFEND_POINT"
+            }]
+        }],
+        "rewards": [{
+            "type": "currency",
+            "amount": 300
+        }]
+    },
+    "218": {
+        "name": "The Quickdraw",
+        "title": "quickdraw",
+        "image": "{CDN}/assets/images/contracker/nodes/weapons/node_view_contract_quickdraw.jpg",
+        "icon": "{CDN}/assets/images/contracker/cyoa_classchoice_icon_v2.svg",
+        "class": "Engineer",
+        "restrictions": {
+            "weapon": "Quickdraw"
+        },
+        "objectives": [{
+            "name": "Get a kill with the Quickdraw",
+            "points": 2,
+            "hooks": [{
+                "event": "TF_KILL"
+            }]
+        }, {
+            "name": "Get 3 kills with the Quickdraw in a single life",
+            "points": 15,
+            "limit": 3,
+            "hooks": [{
+                "action": "increment",
+                "event": "TF_KILL"
+            }, {
+                "action": "reset",
+                "event": "TF_SPAWN"
+            }]
+        }, {
+            "name": "Get a duel kill with the Quickdraw",
+            "points": 50,
+            "limit": 1,
+            "hooks": [{
+                "event": "TF_QUICKDRAW_DUEL_KILL"
+            }]
+        }],
+        "required_items": ["Quickdraw"],
+        "rewards": [{
+            "type": "currency",
+            "amount": 250
+        }, {
+            "type": "item",
+            "index": 1009
+        }]
+    },
+    "219": {
+        "name": "The Bloody Brick",
+        "title": "bloodybrick",
+        "image": "{CDN}/assets/images/contracker/nodes/weapons/node_view_contract_brick.jpg",
+        "icon": "{CDN}/assets/images/contracker/cyoa_classchoice_icon_v2.svg",
+        "class": "Sniper",
+        "restrictions": {
+            "weapon": "Bloody Brick"
+        },
+        "objectives": [{
+            "name": "Hit a player with the Bloody Brick",
+            "points": 2,
+            "hooks": [{
+                "event": "TF_HIT_PLAYER"
+            }]
+        }, {
+            "name": "Deal 50 damage with the Bloody Brick",
+            "points": 5,
+            "limit": 10,
+            "end": 50,
+            "hooks": [{
+                "action": "increment",
+                "event": "TF_DEAL_DAMAGE"
+            }]
+        }, {
+            "name": "Hit 5 players with the Bloody Brick in one life",
+            "points": 15,
+            "limit": 3,
+            "end": 5,
+            "hooks": [{
+                "action": "increment",
+                "event": "TF_HIT_PLAYER"
+            }, {
+                "action": "reset",
+                "event": "TF_SPAWN"
+            }]
+        }],
+        "required_items": ["Bloody Brick"],
+        "rewards": [{
+            "type": "currency",
+            "amount": 250
+        }, {
+            "type": "item",
+            "index": 1010
+        }]
+    },
+    "220": {
+        "name": "The Carved Cutter",
+        "title": "carved_cutter",
+        "icon": "{CDN}/assets/images/contracker/cyoa_classchoice_icon_v2.svg",
+        "image": "{CDN}/assets/images/contracker/nodes/weapons/node_view_contract_carved_cutter.jpg",
+        "class": "Spy",
+        "restrictions": {
+            "weapon": "Carved Cutter"
+        },
+        "objectives": [{
+            "name": "Get a kill with the Carved Cutter",
+            "points": 2,
+            "hooks": [{
+                "event": "TF_KILL"
+            }]
+        }, {
+            "name": "Get a backstab kill with the Carved Cutter",
+            "points": 3,
+            "limit": 20,
+            "hooks": [{
+                "event": "TF_KILL_BACKSTAB"
+            }]
+        }, {
+            "name": "Get 3 kills with the Carved Cutter in a single life",
+            "points": 10,
+            "limit": 5,
+            "end": 3,
+            "hooks": [{
+                "action": "increment",
+                "event": "TF_KILL"
+            }, {
+                "action": "reset",
+                "event": "TF_SPAWN"
+            }]
+        }],
+        "required_items": ["Carved Cutter"],
+        "rewards": [{
+            "type": "currency",
+            "amount": 250
+        }, {
+            "type": "item",
+            "index": 1004
+        }]
+    },
+    "221": {
+        "name": "Sharkbay",
+        "title": "koth_sharkbay",
+        "icon": "{CDN}/assets/images/contracker/cyoa_classchoice_icon_v2.svg",
+        "image": "{CDN}/assets/images/contracker/nodes/maps/node_view_contract_sharkbay.jpg",
+        "class": "All Class",
+        "restrictions": {
+            "map": "koth_sharkbay"
+        },
+        "objectives": [{
+            "name": "Assist or kill an enemy on Sharkbay",
+            "points": 2,
+            "hooks": [{
+                "event": "TF_KILL_OR_ASSIST"
+            }]
+        }, {
+            "name": "Capture the point on Sharkbay",
+            "points": 5,
+            "limit": 20,
+            "hooks": [{
+                "event": "TF_CAPTURE_POINT"
+            }]
+        }, {
+            "name": "Defend the point on Sharkbay",
+            "points": 10,
+            "limit": 7,
+            "hooks": [{
+                "event": "TF_DEFEND_POINT"
+            }]
+        }],
+        "rewards": [{
+            "type": "currency",
+            "amount": 300
+        }]
+    },
+    "222": {
+        "name": "Overgrown",
+        "title": "cp_overgrown",
+        "icon": "{CDN}/assets/images/contracker/cyoa_classchoice_icon_v2.svg",
+        "image": "{CDN}/assets/images/contracker/nodes/maps/node_view_contract_overgrown.jpg",
+        "class": "All Class",
+        "restrictions": {
+            "map": "cp_overgrown"
+        },
+        "objectives": [{
+            "name": "Assist or kill an enemy on Overgrown",
+            "points": 2,
+            "hooks": [{
+                "event": "TF_KILL_OR_ASSIST"
+            }]
+        }, {
+            "name": "Capture the point on Overgrown",
+            "points": 5,
+            "limit": 20,
+            "hooks": [{
+                "event": "TF_CAPTURE_POINT"
+            }]
+        }, {
+            "name": "Defend the point on Overgrown",
+            "points": 10,
+            "limit": 7,
+            "hooks": [{
+                "event": "TF_DEFEND_POINT"
+            }]
+        }],
+        "rewards": [{
+            "type": "currency",
+            "amount": 300
+        }]
+    },
+    "263": {
+        "name": "Humidity",
+        "title": "pl_humidity",
+        "icon": "{CDN}/assets/images/contracker/cyoa_classchoice_icon_v2.svg",
+        "image": "{CDN}/assets/images/contracker/nodes/maps/node_view_contract_humidity.jpg",
+        "class": "All Class",
+        "restrictions": {
+            "map": "pl_humidity"
+        },
+        "objectives": [{
+            "name": "Assist or kill an enemy on Humidity",
+            "points": 2,
+            "hooks": [{
+                "event": "TF_KILL_OR_ASSIST"
+            }]
+        }, {
+            "name": "Push the cart on Humidity",
+            "points": 2,
+            "limit": 20,
+            "end": 15,
+            "hooks": [{
+                "action": "increment",
+                "event": "TF_PAYLOAD_PUSH"
+            }]
+        }, {
+            "name": "Defend the cart on Humidity",
+            "points": 10,
+            "limit": 7,
+            "hooks": [{
+                "event": "TF_DEFEND_POINT"
+            }]
+        }],
+        "rewards": [{
+            "type": "currency",
+            "amount": 300
+        }]
+    },
+    "264": {
+        "name": "Helltrain",
+        "title": "ctf_helltrain",
+        "icon": "{CDN}/assets/images/contracker/cyoa_classchoice_icon_v2.svg",
+        "image": "{CDN}/assets/images/contracker/nodes/maps/node_view_contract_helltrain.jpg",
+        "restrictions": {
+            "map": "ctf_helltrain"
+        },
+        "objectives": [{
+            "name": "Assist or kill an enemy on Helltrain",
+            "points": 2,
+            "hooks": [{
+                "event": "TF_KILL_OR_ASSIST"
+            }]
+        }, {
+            "name": "Capture the intelligence on Helltrain",
+            "points": 10,
+            "limit": 5,
+            "hooks": [{
+                "event": "TF_CAPTURE_FLAG"
+            }]
+        }, {
+            "name": "Defend the intelligence on Helltrain",
+            "points": 5,
+            "limit": 7,
+            "hooks": [{
+                "event": "TF_DEFEND_FLAG"
+            }]
+        }],
+        "rewards": [{
+            "type": "currency",
+            "amount": 300
+        }]
+    },
+    "265": {
+        "name": "Hades",
+        "title": "ctf_hades",
+        "icon": "{CDN}/assets/images/contracker/cyoa_classchoice_icon_v2.svg",
+        "image": "{CDN}/assets/images/contracker/nodes/maps/node_view_contract_hades.jpg",
+        "restrictions": {
+            "map": "ctf_hades"
+        },
+        "objectives": [{
+            "name": "Assist or kill an enemy on Hades",
+            "points": 2,
+            "hooks": [{
+                "event": "TF_KILL_OR_ASSIST"
+            }]
+        }, {
+            "name": "Capture the intelligence on Hades",
+            "points": 10,
+            "limit": 5,
+            "hooks": [{
+                "event": "TF_CAPTURE_FLAG"
+            }]
+        }, {
+            "name": "Defend the intelligence on Hades",
+            "points": 5,
+            "limit": 7,
+            "hooks": [{
+                "event": "TF_DEFEND_FLAG"
+            }]
+        }],
+        "rewards": [{
+            "type": "currency",
+            "amount": 300
+        }]
+    },
+    "266": {
+        "name": "Well Event",
+        "title": "cp_well_event",
+        "icon": "{CDN}/assets/images/contracker/cyoa_classchoice_icon_v2.svg",
+        "image": "{CDN}/assets/images/contracker/nodes/maps/node_view_contract_well_event.jpg",
+        "restrictions": {
+            "map": "cp_well_event"
+        },
+        "objectives": [{
+            "name": "Assist or kill an enemy on Well Event",
+            "points": 2,
+            "hooks": [{
+                "event": "TF_KILL_OR_ASSIST"
+            }]
+        }, {
+            "name": "Capture the point on Well Event",
+            "points": 5,
+            "limit": 20,
+            "hooks": [{
+                "event": "TF_CAPTURE_POINT"
+            }]
+        }, {
+            "name": "Defend the point on Well Event",
+            "points": 10,
+            "limit": 7,
+            "hooks": [{
+                "event": "TF_DEFEND_POINT"
+            }]
+        }],
+        "rewards": [{
+            "type": "currency",
+            "amount": 300
+        }]
+    },
+    "267": {
+        "name": "Ghastlane Event",
+        "title": "cp_ghastlane_event",
+        "icon": "{CDN}/assets/images/contracker/cyoa_classchoice_icon_v2.svg",
+        "image": "{CDN}/assets/images/contracker/nodes/maps/node_view_contract_ghastlane.jpg",
+        "restrictions": {
+            "map": "cp_ghastlane_event"
+        },
+        "objectives": [{
+            "name": "Assist or kill an enemy on Ghastlane Event",
+            "points": 2,
+            "hooks": [{
+                "event": "TF_KILL_OR_ASSIST"
+            }]
+        }, {
+            "name": "Capture the point on Ghastlane Event",
+            "points": 5,
+            "limit": 20,
+            "hooks": [{
+                "event": "TF_CAPTURE_POINT"
+            }]
+        }, {
+            "name": "Defend the point on Ghastlane Event",
+            "points": 10,
+            "limit": 7,
+            "hooks": [{
+                "event": "TF_DEFEND_POINT"
+            }]
+        }],
+        "rewards": [{
+            "type": "currency",
+            "amount": 300
+        }]
+    },
+    "268": {
+        "name": "Halloween 2021",
+        "title": "halloween_2021",
+        "icon": "{CDN}/assets/images/contracker/cyoa_classchoice_icon_v2.svg",
+        "image": "{CDN}/assets/images/contracker/nodes/node_view_contract_scream_fortress_intro.jpg",
+        "objectives": [{
+            "name": "Assist or kill an enemy during the Creators.TF Halloween Special event",
+            "points": 2,
+            "hooks": [{
+                "event": "TF_KILL_OR_ASSIST"
+            }]
+        }, {
+            "name": "Get a kill wearing a Creators.TF halloween-restricted cosmetic",
+            "points": 5,
+            "limit": 10,
+            "hooks": [{
+                "event": "CREATORS_HALLOWEEN_RESTRICTED_KILL"
+            }]
+        }, {
+            "name": "Dominate a player during the Creators.TF Halloween Special event",
+            "points": 15,
+            "limit": 2,
+            "hooks": [{
+                "event": "TF_KILL_DOMINATE"
+            }]
+        }],
+        "rewards": [{
+            "type": "currency",
+            "amount": 500
+        }]
+    },
+    "269": {
+        "name": "Tripping Hazard",
+        "title": "halloween2021_trippinghazard",
+        "icon": "{CDN}/assets/images/contracker/cyoa_icon_sf_pumpkin.png",
+        "image": "{CDN}/assets/images/contracker/nodes/node_view_contract_scream_fortress_intro.jpg",
+        "objectives": [{
+            "name": "Cause an environmental kill",
+            "points": 6,
+            "hooks": [{
+                "event": "TF_KILL_ENVIRONMENTAL"
+            }]
+        }, {
+            "name": "Kill an airborne enemy",
+            "points": 10,
+            "limit": 3,
+            "hooks": [{
+                "event": "TF_KILL_AIRBORNE_ENEMY"
+            }]
+        }, {
+            "name": "Kill an enemy with a pumpkin bomb",
+            "points": 5,
+            "limit": 7,
+            "hooks": [{
+                "event": "TF_KILL_PUMPKIN_BOMB"
+            }]
+        }],
+        "rewards": [{
+            "type": "currency",
+            "amount": 300
+        }]
+    },
+    "270": {
+        "name": "Needs a Nerf!",
+        "title": "halloween2021_needsanerf",
+        "icon": "{CDN}/assets/images/contracker/cyoa_icon_sf_pumpkin.png",
+        "image": "{CDN}/assets/images/contracker/nodes/node_view_contract_scream_fortress_intro.jpg",
+        "class": "Engineer",
+        "restrictions": {
+            "class": "engineer"
+        },
+        "objectives": [{
+            "name": "Get a kill while wearing the Body Builder",
+            "points": 3,
+            "hooks": [{
+                "event": "CREATORS_HALLOWEEN_BODYBUILDER_KILL"
+            }]
+        }, {
+            "name": "Destroy 5 sappers in a match while wearing the Body Builder",
+            "points": 15,
+            "limit": 2,
+            "end": 5,
+            "hooks": [{
+                "action": "increment",
+                "event": "CREATORS_HALLOWEEN_BODYBUILDER_SAPPER"
+            }]
+        }, {
+            "name": "Get two dominations in a match while wearing the Body Builder",
+            "points": 10,
+            "limit": 3,
+            "end": 2,
+            "hooks": [{
+                "action": "increment",
+                "event": "CREATORS_HALLOWEEN_BODYBUILDER_DOMINATE"
+            }]
+        }],
+        "required_items": ["Body Builder"],
+        "rewards": [{ 
+            "type": "currency",
+            "amount": 300
+        }]
+    },
+    "271": {
+        "name": "Taskful Opportunities",
+        "title": "halloween2021_taskful",
+        "icon": "{CDN}/assets/images/contracker/cyoa_icon_sf_pumpkin.png",
+        "image": "{CDN}/assets/images/contracker/nodes/node_view_contract_scream_fortress_intro.jpg",
+        "class": "Pyro",
+        "restrictions": {
+            "class": "pyro"
+        },
+        "objectives": [{
+            "name": "Get a kill while wearing the Molten Monitor",
+            "points": 3,
+            "hooks": [{
+                "event": "CREATORS_HALLOWEEN_MOLTENMONITOR_KILL"
+            }]
+        }, {
+            "name": "Eject a player by causing an environmental kill while wearing the Molten Monitor",
+            "points": 10,
+            "limit": 3,
+            "hooks": [{
+                "event": "CREATORS_HALLOWEEN_MOLTENMONITOR_EJECT"
+            }]
+        }, {
+            "name": "Be the MVP at the end of the round while wearing the Molten Monitor",
+            "points": 25,
+            "limit": 1,
+            "hooks": [{
+                "event": "CREATORS_HALLOWEEN_MOLTENMONITOR_MVP"
+            }]
+        }],
+        "required_items": ["Molten Monitor"],
+        "rewards": [{
+            "type": "currency",
+            "amount": 300
+        }]
+    },
+    "272": {
+        "name": "Discount Wizardry",
+        "title": "halloween2021_wizard",
+        "icon": "{CDN}/assets/images/contracker/cyoa_icon_sf_pumpkin.png",
+        "image": "{CDN}/assets/images/contracker/nodes/node_view_contract_scream_fortress_intro.jpg",
+        "restrictions": {
+            "weapon": "Conjurer's Staff"
+        },
+        "objectives": [{
+            "name": "Get a kill using the Conjurer's Staff",
+            "points": 3,
+            "hooks": [{
+                "event": "TF_KILL"
+            }]
+        }, {
+            "name": "Kill three skeletons in one life with the Conjurer's Staff",
+            "points": 5,
+            "limit": 7,
+            "end": 3,
+            "hooks": [{
+                "action": "increment",
+                "event": "TF_SKELETON_KILL"
+            }, {
+                "action": "reset",
+                "event": "TF_SPAWN"
+            }]
+        }, {
+            "name": "Kill a halloween boss using the Conjurer's Staff",
+            "points": 50,
+            "limit": 1,
+            "hooks": [{
+                "event": "TF_MERASMUS_KILL"
+            }, {
+                "event": "TF_HHH_KILL"
+            }, {
+                "event": "TF_EYEBALL_KILL"
+            }]
+        }],
+        "required_items": ["Conjurer's Staff"],
+        "rewards": [{
+            "type": "currency",
+            "amount": 300
+        }, {
+            "type": "item",
+            "index": 1011
+        }]
+    },
+    "273": {
+        "name": "Bunsen Burner Chaos",
+        "title": "halloween2021_bunsen",
+        "icon": "{CDN}/assets/images/contracker/cyoa_icon_sf_pumpkin.png",
+        "image": "{CDN}/assets/images/contracker/nodes/node_view_contract_scream_fortress_intro.jpg",
+        "class": "Pyro",
+        "restrictions": {
+            "class": "pyro"
+        },
+        "objectives": [{
+            "name": "Deal 212 fire damage as Pyro while wearing the Aquanaut",
+            "points": 1,
+            "end": 212,
+            "hooks": [{
+                "action": "increment",
+                "event": "CREATORS_HALLOWEEN_FIRE_AQUANAUT"
+            }]
+        }, {
+            "name": "Deal 750 mini-crit or critical damage as Pyro while wearing the Aquanaut",
+            "points": 5,
+            "limit": 6,
+            "end": 750,
+            "hooks": [{
+                "action": "increment",
+                "event": "CREATORS_HALLOWEEN_CRITS_AQUANAUT"
+            }]
+        }],
+        "required_items": ["Aquanaut"],
+        "rewards": [{
+            "type": "currency",
+            "amount": 300
+        }]
+    },
+    "274": {
+        "name": "Office Complex",
+        "title": "halloween2021_office",
+        "icon": "{CDN}/assets/images/contracker/cyoa_icon_sf_pumpkin.png",
+        "image": "{CDN}/assets/images/contracker/nodes/node_view_contract_scream_fortress_intro.jpg",
+        "class": "Scout",
+        "restrictions": {
+            "class": "scout",
+            "weapon": "Scattershock"
+        },
+        "objectives": [{
+            "name": "Get a kill with the Scattershock",
+            "points": 2,
+            "hooks": [{
+                "event": "TF_KILL"
+            }]
+        }, {
+            "name": "Get 3 kills with the Scattershock in a single life",
+            "points": 15,
+            "limit": 2,
+            "end": 3,
+            "hooks": [{
+                "action": "increment",
+                "event": "TF_KILL"
+            }, {
+                "action": "reset",
+                "event": "TF_SPAWN"
+            }]
+        }, {
+            "name": "Deal over 250 damage with the Scattershock in a single life",
+            "points": 10,
+            "limit": 3,
+            "end": 250,
+            "hooks": [{
+                "action": "increment",
+                "event": "TF_DEAL_DAMAGE"
+            }, {
+                "action": "reset",
+                "event": "TF_SPAWN"
+            }]
+        }],
+        "required_items": ["Scattershock"],
+        "rewards": [{
+            "type": "currency",
+            "amount": 300
+        }, {
+            "type": "item",
+            "index": 1012
+        }]
+    },
+    "275": {
+        "name": "BOMBS? You want it?",
+        "title": "halloween2021_bombs",
+        "icon": "{CDN}/assets/images/contracker/cyoa_icon_sf_pumpkin.png",
+        "image": "{CDN}/assets/images/contracker/nodes/node_view_contract_scream_fortress_intro.jpg",
+        "class": "Pyro, Soldier, Demoman",
+        "objectives": [{
+            "name": "Get a kill while wearing the BOMBINOCULUS!",
+            "points": 3,
+            "hooks": [{
+                "event": "CREATORS_HALLOWEEN_BOMB_KILL"
+            }]
+        }, {
+            "name": "Deal 500 blast or fire damage in single life while wearing the BOMBINOCULUS!",
+            "points": 12,
+            "limit": 3,
+            "end": 500,
+            "hooks": [{
+                "action": "increment",
+                "event": "CREATORS_HALLOWEEN_BOMB_FIREORBLAST_DAMAGE"
+            }, {
+                "action": "reset",
+                "event": "TF_SPAWN"
+            }]
+        }, {
+            "name": "Kill an enemy while airborne and wearing the BOMBINOCULUS!",
+            "points": 7,
+            "limit": 4,
+            "hooks": [{
+                "event": "CREATORS_HALLOWEEN_BOMB_AIRBORNE_KILL"
+            }]
+        }],
+        "required_items": ["BOMBINOCULUS!"],
+        "rewards": [{
+            "type": "currency",
+            "amount": 300
+        }]
+    },
+    "276": {
+        "name": "nope.",
+        "title": "halloween2021_nope",
+        "icon": "{CDN}/assets/images/contracker/cyoa_icon_sf_pumpkin.png",
+        "image": "{CDN}/assets/images/contracker/nodes/node_view_contract_scream_fortress_intro.jpg",
+        "class": "Engineer",
+        "objectives": [{
+            "name": "Get a kill while wearing the Pocket nope.avi",
+            "points": 3,
+            "hooks": [{
+                "event": "CREATORS_HALLOWEEN_NOPE_KILL"
+            }]
+        }, {
+            "name": "Get an airborne kill while wearing the Pocket nope.avi",
+            "points": 5,
+            "limit": 5,
+            "hooks": [{
+                "event": "CREATORS_HALLOWEEN_NOPE_AIRBORNE"
+            }]
+        }, {
+            "name": "Exert true dominance by dominating a player while wearing the Pocket nope.avi",
+            "points": 15,
+            "limit": 2,
+            "hooks": [{
+                "event": "CREATORS_HALLOWEEN_NOPE_DOMINATE"
+            }]
+        }],
+        "required_items": ["Pocket nope.avi"],
+        "rewards": [{
+            "type": "currency",
+            "amount": 300
+        }]
+    },
+    "277": {
+        "name": "CUTENESS OVERLOAD",
+        "title": "halloween2021_cuteness",
+        "icon": "{CDN}/assets/images/contracker/cyoa_icon_sf_pumpkin.png",
+        "image": "{CDN}/assets/images/contracker/nodes/node_view_contract_scream_fortress_intro.jpg",
+        "objectives": [{
+            "name": "Get a kill while wearing the Voodoonicorn",
+            "points": 3,
+            "hooks": [{
+                "event": "CREATORS_HALLOWEEN_VOODOO_KILL"
+            }]
+        }, {
+            "name": "Capture the objective while wearing the Voodoonicorn",
+            "points": 15,
+            "limit": 3,
+            "hooks": [{
+                "event": "CREATORS_HALLOWEEN_VOODOO_CAPTURE"
+            }]
+        }, {
+            "name": "Get true revenge on your enemies while wearing the Voodoonicorn",
+            "points": 10,
+            "limit": 3,
+            "hooks": [{
+                "event": "CREATORS_HALLOWEEN_VOODOO_DOMINATE"
+            }]
+        }],
+        "required_items": ["Voodoonicorn"],
+        "rewards": [{
+            "type": "currency",
+            "amount": 300
+        }]
+    },
+    "278": {
+        "name": "An Eye for an Eye",
+        "title": "halloween2021_eye",
+        "class": "Demoman",
+        "icon": "{CDN}/assets/images/contracker/cyoa_icon_sf_pumpkin.png",
+        "image": "{CDN}/assets/images/contracker/nodes/node_view_contract_scream_fortress_intro.jpg",
+        "objectives": [{
+            "name": "Kill another Demoman while wearing the Iron Sight",
+            "points": 4,
+            "hooks": [{
+                "event": "CREATORS_HALLOWEEN_IRON_DEMOKILL"
+            }]
+        }, {
+            "name": "Kill an airborne enemy while wearing the Iron Sight",
+            "points": 7,
+            "limit": 3,
+            "hooks": [{
+                "event": "CREATORS_HALLOWEEN_IRON_AIRBORNE"
+            }]
+        }, {
+            "name": "Smash into your enemies with a shield while wearing the Iron Sight",
+            "points": 5,
+            "limit": 7,
+            "hooks": [{
+                "event": "CREATORS_HALLOWEEN_IRON_SMASH"
+            }]
+        }],
+        "required_items": ["Iron Sight"],
+        "rewards": [{
+            "type": "currency",
+            "amount": 300
+        }]
+    },
+    "279": {
+        "name": "Teleported Bread",
+        "title": "halloween2021_bread",
+        "class": "Soldier",
+        "icon": "{CDN}/assets/images/contracker/cyoa_icon_sf_pumpkin.png",
+        "image": "{CDN}/assets/images/contracker/nodes/node_view_contract_scream_fortress_intro.jpg",
+        "objectives": [{
+            "name": "Kill a player with a spell while using the Minor Magus Sleeves",
+            "points": 4,
+            "hooks": [{
+                "event": "CREATORS_HALLOWEEN_MAGUS_SPELLKILL"
+            }]
+        }, {
+            "name": "Deal 300 non-explosive damage in a single life while wearing the Minor Magus Sleeves",
+            "points": 7,
+            "limit": 4,
+            "end": 300,
+            "hooks": [{
+                "action": "increment",
+                "event": "CREATORS_HALLOWEEN_MAGUS_NOBLASTDAMAGE"
+            }, {
+                "action": "reset",
+                "event": "TF_SPAWN"
+            }]
+        }, {
+            "name": "Deal 5000 explosive damage across an entire match while wearing the Minor Magus Sleeves",
+            "points": 30,
+            "limit": 1,
+            "end": 5000,
+            "hooks": [{
+                "action": "increment",
+                "event": "CREATORS_HALLOWEEN_MAGUS_BLASTDAMAGE"
+            }]
+        }],
+        "required_items": ["Minor Magus Sleeves"],
         "rewards": [{
             "type": "currency",
             "amount": 300

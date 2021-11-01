@@ -433,11 +433,12 @@
     },
     "12": {
         "name": "Crate Smasher",
+        "item_logname":"crate_smasher",
         "description": "A near-perfect replica of a certain crowbar. If only you could climb through vents...",
         "type": "weapon",
         "image": "{CDN}/assets/images/inventory/items/all_class/weapon_allclass_crowbar.png",
         "item_class": "tf_weapon_saxxy",
-        "item_index": 1123,
+        "item_index": 30758,
         "world_model": "models/weapons/c_models/c_cratesmasher/c_cratesmasher_1.mdl",
         "preserve_attributes": true,
         "capabilities": {
@@ -1738,7 +1739,7 @@
             "value": "auto"
         }, {
             "name": "submission workshop link",
-            "value": "1928024044"
+            "value": "818786224"
         }],
         "preview": {
             "path": "cosmetics/{class}/charlatans_cordobs.glb",
@@ -2763,46 +2764,6 @@
             ],
             "disables": ["HEAD"],
             "colourMask": "cosmetics/stitched_smile_mask.png",
-            "additive": false,
-            "centerPos": null,
-            "rotFix": false
-        }
-    },
-    "97": {
-        "name": "Batter's Beak",
-        "type": "cosmetic",
-        "description": "",
-        "equip_region": "whole_head",
-        "world_model": "models/community/player/items/scout/batters_beak/batters_beak.mdl",
-        "item_index": 30767,
-        "image": "{CDN}/assets/images/inventory/items/scout/batters_beak.png",
-        "capabilities": {
-            "can_strangify": true
-        },
-        "used_by_classes": {
-            "scout": true
-        },
-        "attributes": [{
-            "name": "credits",
-            "value": "Bonk Nickeltoon, Muha, Corvalho"
-        }, {
-            "name": "submission workshop link",
-            "value": "1874045396"
-        }, {
-            "name": "holiday restricted",
-            "value": 3
-        }, {
-            "name": "tags",
-            "value": "auto"
-        }],
-        "preview": {
-            "path": "cosmetics/{class}/batters_beak.glb",
-            "skeleton": "",
-            "models": [
-                ""
-            ],
-            "disables": ["HEAD", "HAT", "HEADPHONES_S"],
-            "colourMask": "cosmetics/batters_beak_mask.png",
             "additive": false,
             "centerPos": null,
             "rotFix": false
@@ -4260,7 +4221,7 @@
             "value": "OverPovered, Phe, Coldchou Zhao"
         }, {
             "name": "submission workshop link",
-            "value": "2284280350"
+            "value": "2284267250"
         }, {
             "name": "tags",
             "value": "auto"
@@ -4984,6 +4945,664 @@
             "centerPos": null,
             "rotFix": false,
             "disables": ["HAT"]
+        }
+    },
+    "175": {
+        "name": "September 1st Keyless Crate",
+        "type": "tool",
+        "description": "Contains a community-made item from the September 1st Collection.",
+        "image": "{CDN}/assets/images/inventory/items/tools/item_tool_sept1st2021_crate.png",
+        "collection_reference": "Sept1st2021_collection",
+        "additional_collection_references": {
+            "strangifier": 2
+        },
+        "tool_type": "collection_drop",
+        "attributes": [{
+            "name": "lootbox no decoder",
+            "value": 1
+        }, {
+            "name": "lootbox strange chance",
+            "value": 15
+        }, {
+            "name": "tags",
+            "value": "auto"
+        }]
+    },
+    "176": {
+        "name": "Cyber Coverup",
+        "type": "cosmetic",
+        "description": "Systems liberated.",
+        "equip_region": "face",
+        "world_model": "models/community/player/items/soldier/cyber_coverup/cyber_coverup.mdl",
+        "item_index": 340,
+        "image": "{CDN}/assets/images/inventory/items/soldier/cyber_coverup.png",
+        "capabilities": {
+            "can_strangify": true
+        },
+        "used_by_classes": {
+            "soldier": 1
+        },
+        "attributes": [{
+            "name": "credits",
+            "value": "joe from impractical jokers, Sky, DJB2401"
+        }, {
+            "name": "submission workshop link",
+            "value": "1900375657"
+        }, {
+            "name": "tags",
+            "value": "auto"
+        }],
+        "preview": {
+            "path": "cosmetics/{class}/cyber_coverup.glb",
+            "skeleton": "",
+            "colourMask": [
+                {"key": "cyber_coverup", "value": "cosmetics/cyber_coverup_mask.png"},
+                {"key": "cyber_coverup_1", "value": "cosmetics/cyber_coverup_1_mask.png"}
+            ],
+            "additive": false,
+            "centerPos": null,
+            "rotFix": false,
+            "disables":["HAT"]
+        }
+    },
+    "177": {
+        "name": "Deconstruction Primitive",
+        "type": "cosmetic",
+        "description": "Back in my day, you could tell who was a real demoman by the fact he ran around exploding things with explosive, not swinging swords and axes around while dressed like a pirate!",
+        "equip_region": "belt",
+        "world_model": "models/community/player/items/demo/tntpouch/tntpouch.mdl",
+        "item_index": 30793,
+        "image": "{CDN}/assets/images/inventory/items/demo/tntpouch.png",
+        "capabilities": {
+            "can_strangify": true,
+            "paintable": true
+        },
+        "used_by_classes": {
+            "demo": 1
+        },
+        "attributes": [{
+            "name": "credits",
+            "value": "Napy Da Wise, Pie_Savvy"
+        }, {
+            "name": "submission workshop link",
+            "value": "170436250"
+        }, {
+            "name": "tags",
+            "value": "auto"
+        }],
+        "preview": {
+            "path": "cosmetics/{class}/tntpouch",
+            "skeleton": "",
+            "colourMask": "cosmetics/tntpouch_mask.png",
+            "additive": false,
+            "centerPos": null,
+            "rotFix": false
+        }
+    },
+    "178": {
+        "name": "Field Pharma",
+        "type": "cosmetic",
+        "description": "Harvesting organs when out on the field has never been easier with this handy little kit!",
+        "equip_region": "belt",
+        "world_model": "models/community/player/items/medic/field_pharma/field_pharma.mdl",
+        "item_index": 30096,
+        "image": "{CDN}/assets/images/inventory/items/medic/field_pharma.png",
+        "capabilities": {
+            "can_strangify": true,
+            "paintable": true,
+            "team_paintable": true
+        },
+        "used_by_classes": {
+            "medic": 1
+        },
+        "attributes": [{
+            "name": "credits",
+            "value": "Napy Da Wise, Pie_Savvy, Dilly"
+        }, {
+            "name": "submission workshop link",
+            "value": "1385790685"
+        }, {
+            "name": "tags",
+            "value": "auto"
+        }],
+        "preview": {
+            "path": "cosmetics/{class}/field_pharma",
+            "skeleton": "",
+            "colourMask": [
+                {"key": "field_pharma", "value": "cosmetics/field_pharma_mask.png"},
+                {"key": "field_pharma_1", "value": "IGNORE_COLOR_TINT"}
+            ],
+            "additive": true,
+            "centerPos": null,
+            "rotFix": false
+        }
+    },
+    "179": {
+        "name": "Neck Snappers",
+        "type": "cosmetic",
+        "description": "You don't need spikes to snap necks.",
+        "equip_region": "sleeves",
+        "world_model": "models/community/player/items/soldier/spiked_gloves/spiked_gloves.mdl",
+        "item_index": 30126,
+        "image": "{CDN}/assets/images/inventory/items/soldier/spiked_gloves.png",
+        "capabilities": {
+            "can_strangify": true
+        },
+        "used_by_classes": {
+            "soldier": 1
+        },
+        "attributes": [{
+            "name": "credits",
+            "value": "Coolchou Zhao"
+        }, {
+            "name": "submission workshop link",
+            "value": "2109837993"
+        }, {
+            "name": "tags",
+            "value": "auto"
+        }],
+        "preview": {
+            "path": "cosmetics/{class}/spiked_gloves.glb",
+            "skeleton": "",
+            "colourMask": "",
+            "additive": false,
+            "centerPos": null,
+            "rotFix": false
+        }
+    },
+    "180": {
+        "name": "Shine Eye",
+        "type": "cosmetic",
+        "description": "See the world in a different way with these special lenses.",
+        "equip_region": "glasses",
+        "world_model": "models/community/player/items/all_class/shine_eye/shine_eye_%s.mdl",
+        "item_index": 816,
+        "image": "{CDN}/assets/images/inventory/items/all_class/shine_eye.png",
+        "capabilities": {
+            "can_strangify": true
+        },
+        "used_by_classes": {
+            "pyro": 1,
+            "engineer": 1
+        },
+        "attributes": [{
+            "name": "credits",
+            "value": "Coolchou Zhao, Feksil"
+        }, {
+            "name": "submission workshop link",
+            "value": "2327485236"
+        }, {
+            "name": "tags",
+            "value": "auto"
+        }],
+        "preview": {
+            "path": "cosmetics/{class}/shine_eye.glb",
+            "skeleton": "",
+            "colourMask": "",
+            "additive": false,
+            "centerPos": null,
+            "rotFix": false
+        }
+    },
+    "181": {
+        "name": "Visionary",
+        "type": "cosmetic",
+        "description": "The future is now, old man.",
+        "equip_region": "glasses",
+        "world_model": "models/community/player/items/engineer/display_goggle/display_goggle.mdl",
+        "item_index": 591,
+        "image": "{CDN}/assets/images/inventory/items/engineer/display_goggle.png",
+        "capabilities": {
+            "can_strangify": true
+        },
+        "used_by_classes": {
+            "engineer": 1
+        },
+        "attributes": [{
+            "name": "credits",
+            "value": "Coolchou Zhao"
+        }, {
+            "name": "submission workshop link",
+            "value": "2129169899"
+        }, {
+            "name": "tags",
+            "value": "auto"
+        }],
+        "preview": {
+            "path": "cosmetics/{class}/display_goggle.glb",
+            "skeleton": "",
+            "colourMask": "",
+            "additive": false,
+            "centerPos": null,
+            "rotFix": false
+        }
+    },
+    "182": {
+        "name": "Supervisor",
+        "type": "cosmetic",
+        "description": "The latest in Gray Robotics Co. 'employee motivational robots' ensures that employee productivity goes up while lunch breaks, cigarette breaks and toilet breaks are thoroughly monitored.",
+        "equip_region": "disconnected_floating_item",
+        "world_model": "models/community/player/items/all_class/supervisor/supervisor.mdl",
+        "item_index": 733,
+        "image": "{CDN}/assets/images/inventory/items/all_class/supervisor.png",
+        "capabilities": {
+            "can_strangify": true,
+            "paintable": true,
+            "team_paintable": true
+        },
+        "used_by_classes": {
+            "spy": 1,
+            "demo": 1,
+            "heavy": 1,
+            "pyro": 1,
+            "engineer": 1,
+            "scout": 1,
+            "sniper": 1,
+            "medic": 1,
+            "soldier": 1
+        },
+        "attributes": [{
+            "name": "credits",
+            "value": "Biggus Dickus, Pie_Savvy, Hotrod McCoolgal, Strno8 / Patrezak"
+        }, {
+            "name": "submission workshop link",
+            "value": "1899455248"
+        }, {
+            "name": "tags",
+            "value": "auto"
+        }],
+        "preview": {
+            "path": "cosmetics/allclass/supervisor.glb",
+            "skeleton": "",
+            "colourMask": [
+                {"key": "supervisor_1", "value": "cosmetics/supervisor_1_mask.png"},
+                {"key": "supervisor", "value": "IGNORE_COLOR_TINT"}
+            ],
+            "additive": true,
+            "centerPos": null,
+            "rotFix": false
+        }
+    },
+    "183": {
+        "name": "Mega Hand",
+        "type": "cosmetic",
+        "description": "Now you're building with power!",
+        "equip_region": "engineer_left_arm",
+        "world_model": "models/community/player/items/engineer/bet_pb/mega_hand__beep_man_style.mdl",
+        "item_index": 519,
+        "image": "{CDN}/assets/images/inventory/items/engineer/mega_hand.png",
+        "capabilities": {
+            "can_strangify": true,
+            "paintable": true,
+            "team_paintable": true
+        },
+        "used_by_classes": {
+            "engineer": 1
+        },
+        "attributes": [{
+            "name": "credits",
+            "value": "NeoDement, Gamer Rev"
+        }, {
+            "name": "submission workshop link",
+            "value": "1790475603"
+        }, {
+            "name": "tags",
+            "value": "auto"
+        }],
+        "preview": {
+            "path": "cosmetics/{class}/mega_hand__beep_man_style.glb",
+            "skeleton": "",
+            "colourMask": "cosmetics/mega_hand__beep_man_style_mask.png",
+            "additive": false,
+            "centerPos": null,
+            "rotFix": false
+        }
+    },
+    "184": {
+        "name": "Hauntingly Homecooked Halloween Special Keyless Crate",
+        "type": "tool",
+        "description": "Contains a community-made item from the Hauntingly Homecooked Halloween Special Collection.",
+        "image": "{CDN}/assets/images/inventory/items/tools/item_tool_oct2021_crate.png",
+        "collection_reference": "Oct2021_collection",
+        "additional_collection_references": {
+            "strangifier": 2
+        },
+        "tool_type": "collection_drop",
+        "attributes": [{
+            "name": "lootbox no decoder",
+            "value": 1
+        }, {
+            "name": "lootbox strange chance",
+            "value": 15
+        }, {
+            "name": "tags",
+            "value": "auto"
+        }]
+    },
+    "185": {
+        "name": "Body Builder",
+        "type": "cosmetic",
+        "description": "An update has been released for Creators.TF servers.\n- Buffed Engineer.",
+        "equip_region": "shirt",
+        "world_model": "models/workshop/player/items/engineer/c_buffengineer_2/c_buffengineer_2.mdl",
+        "item_index": 30412,
+        "image": "{CDN}/assets/images/inventory/items/engineer/bodybuilder.png",
+        "capabilities": {
+            "can_strangify": true
+        },
+        "used_by_classes": {
+            "engineer": 1
+        },
+        "attributes": [{
+            "name": "holiday restricted",
+            "value": 3
+        }, {
+            "name": "credits",
+            "value": "Barno"
+        }, {
+            "name": "submission workshop link",
+            "value": "2443183272"
+        }, {
+            "name": "tags",
+            "value": "auto"
+        }],
+        "preview": {
+            "path": "cosmetics/{class}/c_buffengineer_2.glb",
+            "skeleton": "",
+            "colourMask": "",
+            "additive": false,
+            "centerPos": null,
+            "rotFix": false
+        }
+    },
+    "186": {
+        "name": "Aquanaut",
+        "type": "cosmetic",
+        "description": "The cold and calculating look of a killer from the deep.",
+        "equip_region": "pyro_head_replacement",
+        "world_model": "models/community/player/items/pyro/aquanaut/aquanaut.mdl",
+        "item_index": 30036,
+        "image": "{CDN}/assets/images/inventory/items/pyro/aquanaut.png",
+        "capabilities": {
+            "can_strangify": true
+        },
+        "used_by_classes": {
+            "pyro": 1
+        },
+        "attributes": [{
+            "name": "holiday restricted",
+            "value": 3
+        }, {
+            "name": "credits",
+            "value": "Pie_Savvy, Strno8 / Patrezak, DJB2401, TheLazerSofa"
+        }, {
+            "name": "submission workshop link",
+            "value": "2218362161"
+        }, {
+            "name": "tags",
+            "value": "auto"
+        }],
+        "preview": {
+            "path": "cosmetics/{class}/aquanaut.glb",
+            "skeleton": "",
+            "colourMask": [
+              {"key": "aquanaut", "value": "cosmetics/aquanaut_mask.png"},
+              {"key": "aquanaut_1", "value": "IGNORE_COLOR_TINT"}
+            ],
+            "disables": ["HEAD"],
+            "additive": false,
+            "centerPos": null,
+            "rotFix": false,
+            "alphaMask": [
+              {"key": "aquanaut_1", "value": "cosmetics/aquanaut_1_color_alpha.png"}
+            ]
+        }
+    },
+    "187": {
+        "name": "BOMBINOCULUS!",
+        "type": "cosmetic",
+        "description": "Expertly engineered explosive eyeballs.",
+        "equip_region": "grenades",
+        "world_model": "models/community/player/items/all_class/2020_bombinoculus_new/2020_bombinoculus_new_%s.mdl",
+        "item_index": 30431,
+        "image": "{CDN}/assets/images/inventory/items/demo/bombinoculus.png",
+        "capabilities": {
+            "can_strangify": true,
+            "paintable": true,
+            "team_paintable": true
+        },
+        "used_by_classes": {
+            "demo": 1,
+            "pyro": 1,
+            "soldier": 1
+        },
+        "attributes": [{
+            "name": "holiday restricted",
+            "value": 3
+        }, {
+            "name": "credits",
+            "value": "Mark Unread The Enby Werewolf, OverPovered, Phe, Overlord Lettuce"
+        }, {
+            "name": "submission workshop link",
+            "value": "2217746776"
+        }, {
+            "name": "tags",
+            "value": "auto"
+        }],
+        "preview": {
+            "path": "cosmetics/{class}/2020_bombinoculus_new.glb",
+            "skeleton": "",
+            "colourMask": [
+              {"key": "2020_bombinoculus_new", "value": "cosmetics/2020_bombinoculus_new_mask.png"},
+              {"key": "2020_bombinoculus_new_1", "value": "IGNORE_COLOR_TINT"}
+            ],
+            "additive": false,
+            "centerPos": null,
+            "rotFix": false
+        }
+    },
+    "188": {
+        "name": "Iron Sight",
+        "type": "cosmetic",
+        "description": "Shooting lasers from your eyes is cool and all, but what about pipe bombs?",
+        "equip_region": "glasses",
+        "world_model": "models/community/player/items/demo/sf14_demo_cyborg/iron_sight.mdl",
+        "item_index": 709,
+        "image": "{CDN}/assets/images/inventory/items/demo/ironsight.png",
+        "capabilities": {
+            "can_strangify": true,
+            "paintable": true,
+            "team_paintable": true
+        },
+        "used_by_classes": {
+            "demo": 1
+        },
+        "attributes": [{
+            "name": "holiday restricted",
+            "value": 3
+        }, {
+            "name": "credits",
+            "value": "Pie_Savvy, Gamer Rev, Strno8 / Patrezak"
+        }, {
+            "name": "submission workshop link",
+            "value": "2236670873"
+        }, {
+            "name": "tags",
+            "value": "auto"
+        }],
+        "preview": {
+            "path": "cosmetics/{class}/iron_sight.glb",
+            "skeleton": "",
+            "colourMask": "",
+            "additive": false,
+            "centerPos": null,
+            "rotFix": false
+        }
+    },
+    "189": {
+        "name": "Minor Magus Sleeves",
+        "type": "cosmetic",
+        "description": "Disclaimer: Equipping this does not allow the Soldier to summon a Magic Missile tower.",
+        "equip_region": "shirt",
+        "world_model": "models/community/player/items/soldier/minor_magus_sleeves/minor_magus_sleeves.mdl",
+        "item_index": 30142,
+        "image": "{CDN}/assets/images/inventory/items/soldier/magnussleeves.png",
+        "capabilities": {
+            "can_strangify": true,
+            "paintable": true,
+            "team_paintable": true
+        },
+        "used_by_classes": {
+            "soldier": 1
+        },
+        "attributes": [{
+            "name": "holiday restricted",
+            "value": 3
+        }, {
+            "name": "credits",
+            "value": "Gigazelle"
+        }, {
+            "name": "submission workshop link",
+            "value": "526727864"
+        }, {
+            "name": "tags",
+            "value": "auto"
+        }],
+        "preview": {
+            "path": "cosmetics/{class}/minor_magus_sleeves.glb",
+            "skeleton": "",
+            "colourMask": [
+              {"key": "minor_magus_sleeves", "value": "cosmetics/minor_magus_sleeves_mask.png"},
+              {"key": "minor_magus_sleeves_1", "value": "IGNORE_COLOR_TINT"}
+            ],
+            "additive": true,
+            "centerPos": null,
+            "rotFix": false
+        }
+    },
+    "190": {
+        "name": "Molten Monitor",
+        "type": "cosmetic",
+        "description": "Become the ultimate taskmaster! Rewire lights, set the cameras straight! Make the show the best it can be! (and make sure nobody is too suspicious of the pile of corpses).",
+        "equip_region": "pyro_head_replacement",
+        "world_model": "models/community/player/items/pyro/molten_monitor/molten_monitor.mdl",
+        "item_index": 30036,
+        "image": "{CDN}/assets/images/inventory/items/pyro/amongus.png",
+        "capabilities": {
+            "can_strangify": true,
+            "paintable": true,
+            "team_paintable": true
+        },
+        "used_by_classes": {
+            "pyro": 1
+        },
+        "attributes": [{
+            "name": "holiday restricted",
+            "value": 3
+        }, {
+            "name": "credits",
+            "value": "Biggus Dickus, Vipes"
+        }, {
+            "name": "submission workshop link",
+            "value": "2295819307"
+        }, {
+            "name": "tags",
+            "value": "auto"
+        }],
+        "preview": {
+            "path": "cosmetics/{class}/molten_monitor.glb",
+            "skeleton": "",
+            "colourMask": [
+              {"key": "molten_monitor_1", "value": "cosmetics/molten_monitor_1_mask.png"},
+              {"key": "molten_monitor", "value": "IGNORE_COLOR_TINT"}
+            ],
+            "additive": false,
+            "centerPos": null,
+            "rotFix": false
+        }
+    },
+    "191": {
+        "name": "Pocket nope.avi",
+        "type": "cosmetic",
+        "description": "Best used with a slide whistle.",
+        "equip_region": "belt",
+        "world_model": "models/community/player/items/engineer/pocket_nopeavi/pocket_nopeavi.mdl",
+        "item_index": 30549,
+        "image": "{CDN}/assets/images/inventory/items/engineer/nope.png",
+        "capabilities": {
+            "can_strangify": true,
+            "paintable": true,
+            "team_paintable": true
+        },
+        "used_by_classes": {
+            "engineer": 1
+        },
+        "attributes": [{
+            "name": "holiday restricted",
+            "value": 3
+        }, {
+            "name": "credits",
+            "value": "[RMF]RIKUSYO"
+        }, {
+            "name": "submission workshop link",
+            "value": "2115806731"
+        }, {
+            "name": "tags",
+            "value": "auto"
+        }],
+        "preview": {
+            "path": "cosmetics/{class}/pocket_nopeavi.glb",
+            "skeleton": "cosmetics/pocket_nopeavi_mask.png",
+            "colourMask": "",
+            "additive": false,
+            "centerPos": null,
+            "rotFix": false
+        }
+    },
+    "192": {
+        "name": "Voodoonicorn",
+        "type": "cosmetic",
+        "description": "Hex your enemies with this cute plush!",
+        "equip_region": "disconnected_floating_item",
+        "world_model": "models/community/player/items/all_class/voodoonicorn_pin/voodoonicorn_pin_%s.mdl",
+        "item_index": 31126,
+        "image": "{CDN}/assets/images/inventory/items/pyro/voodoo.png",
+        "capabilities": {
+            "can_strangify": true,
+            "paintable": true,
+            "team_paintable": true
+        },
+        "used_by_classes": {
+            "spy": 1,
+            "demo": 1,
+            "heavy": 1,
+            "pyro": 1,
+            "engineer": 1,
+            "scout": 1,
+            "sniper": 1,
+            "medic": 1,
+            "soldier": 1
+        },
+        "attributes": [{
+            "name": "holiday restricted",
+            "value": 3
+        }, {
+            "name": "credits",
+            "value": "The 64th Gamer"
+        }, {
+            "name": "submission workshop link",
+            "value": "2602314111"
+        }, {
+            "name": "tags",
+            "value": "auto"
+        }],
+        "preview": {
+            "path": "cosmetics/{class}/voodooicorn_pin.glb",
+            "skeleton": "",
+            "colourMask": "cosmetics/voodoonicorn_pin_mask.png",
+            "additive": false,
+            "centerPos": null,
+            "rotFix": false
         }
     },
     "501": {
@@ -6203,7 +6822,8 @@
         "type": "tool",
         "tool_type": "item_modifier",
         "usage_capabilities": {
-            "can_deal_damage": true
+            "can_deal_damage": true,
+            "can_heal": true
         },
         "usage_attributes": {
             "killstreak tier": false
@@ -6695,7 +7315,7 @@
     "701": {
         "name": "Music Kit: Into The Center of the Earth",
         "type": "soundtrack",
-        "description": "Special Music Kit made for the TFConnect 2020 charity stream. Adds soundtrack to following events: Round Start and End, Payload Terminus Warning, Objective Capture.",
+        "description": "Special Music Kit made for the TFConnect 2020 charity stream. Adds music to following in-game events: Round Start/End, Payload Terminus Warning and Objective Capture.",
         "image": "{CDN}/assets/images/inventory/items/tools/music_kits/kit_tfconnect_2020.png",
         "attributes": [{
             "name": "credits",
@@ -6785,7 +7405,7 @@
     "702": {
         "name": "Music Kit: Gravel Slaughter",
         "type": "soundtrack",
-        "description": "Music Kit made in the authentic spirit of Team Fortress 2. Adds soundtrack to following events: Round Start and End, Payload Terminus Warning, Objective Capture, Mann vs. Machine.",
+        "description": "Music Kit made in the authentic spirit of Team Fortress 2. Adds music to following in-game events: Round Start/End, Payload Terminus Warning and Objective Capture.",
         "image": "{CDN}/assets/images/inventory/items/tools/music_kits/kit_creators.png",
         "attributes": [{
             "name": "credits",
@@ -6935,6 +7555,7 @@
     },
     "1001": {
         "name": "Thumper",
+        "item_logname":"thumper",
         "type": "weapon",
         "propername": true,
         "item_class": "tf_weapon_shotgun",
@@ -6957,7 +7578,7 @@
         "weapon_ammo": 48,
         "attributes": [{
             "name": "damage bonus",
-            "value": 2.1
+            "value": 1.9
         }, {
             "name": "clip size bonus",
             "value": 1.3
@@ -7053,6 +7674,7 @@
     },
     "1002": {
         "name": "Hypodermic Injector",
+        "item_logname":"hypodermic_injector",
         "type": "weapon",
         "description": "Hold still, this will only sting for a moment.",
         "item_class": "tf_weapon_bonesaw",
@@ -7074,7 +7696,7 @@
             "value": 1
         }, {
             "name": "syringe blood mode capacity",
-            "value": 350
+            "value": 500
         }, {
             "name": "syringe blood mode heal",
             "value": 180
@@ -7114,6 +7736,7 @@
     },
     "1003": {
         "name": "Gamma Gazer",
+        "item_logname":"gamma_gazer",
         "description": "Packs a mean dose of extra-hertz.",
         "propername": true,
         "type": "weapon",
@@ -7138,9 +7761,6 @@
         }, {
             "name": "fixed damage against sappers",
             "value": 34
-        }, {
-            "name": "damage bonus",
-            "value": 1.3
         }, {
             "name": "weapon spread bonus",
             "value": 0.3
@@ -7180,6 +7800,7 @@
     },
     "1004": {
         "name": "Carved Cutter",
+        "item_logname":	"carved_cutter",
         "propername": true,
         "type": "weapon",
         "item_class": "tf_weapon_knife",
@@ -7197,6 +7818,21 @@
             "can_backstab": true
         },
         "attributes": [{
+            "name": "knife leap",
+            "value": 1
+        }, {
+            "name": "knife leap distance",
+            "value": 384
+        }, {
+            "name": "max health additive penalty",
+            "value": -25
+        }, {
+            "name": "mult cloak rate",
+            "value": 0.5
+        }, {
+            "name": "mult decloak rate",
+            "value": 1.25
+        }, {
             "name": "credits",
             "value": "robsan and Kirillian"
         }, {
@@ -7217,6 +7853,7 @@
     },
     "1005": {
         "name": "Bolshevik Bomber",
+        "item_logname":"bolshevik_bomber",
         "description": "This thing could kill an elephant and whatever is in a 10ft radius of said elephant.",
         "propername": true,
         "type": "weapon",
@@ -7273,6 +7910,7 @@
     },
     "1006": {
         "name": "W.A.S.P. Launcher",
+        "item_logname":"wasp",
         "propername": true,
         "type": "weapon",
         "item_class": "tf_weapon_rocketlauncher",
@@ -7289,15 +7927,6 @@
             "can_destroy_buildings": true
         },
         "attributes": [{
-            "name": "damage penalty",
-            "value": 0.9
-        }, {
-            "name": "Projectile speed decreased",
-            "value": 0.8
-        }, {
-            "name": "Blast radius increased",
-            "value": 1.2
-        }, {
             "name": "credits",
             "value": "Gadget, Sims_doc, Vipes and Judgement Kazzy"
         }, {
@@ -7342,6 +7971,7 @@
     },
     "1007": {
         "name": "Silver Crate Smasher",
+        "item_logname":"crate_smasher",
         "type": "weapon",
         "image": "{CDN}/assets/images/inventory/items/all_class/new_zealium_cratesmasher.png",
         "item_class": "tf_weapon_saxxy",
@@ -7451,6 +8081,258 @@
             "name": "tags",
             "value": "auto"
         }]
+    },
+    "1009": {
+        "name": "Quickdraw",
+        "item_logname":"quickdraw",
+        "description": "This town ain't big enough for the two of us.",
+        "propername": true,
+        "type": "weapon",
+        "item_class": "tf_weapon_pistol",
+        "item_index": 22,
+        "world_model": "models/weapons/c_models/c_quickdraw/c_quickdraw_engineer.mdl",
+        "image": "{CDN}/assets/images/inventory/items/engineer/weapon_quickdraw.png",
+        "preserve_attributes": true,
+        "used_by_classes": {
+            "engineer": 1
+        },
+        "capabilities": {
+            "can_strangify": true,
+            "can_deal_damage": true,
+            "can_destroy_buildings": true
+        },
+        "weapon_clip": 6,
+        "weapon_ammo": 32,
+        "attributes": [{
+            "name": "quickdraw timed damage bonus",
+            "value": 1
+        }, {
+            "name": "duel against quickdraw engineers",
+            "value": 1
+        }, {
+            "name": "single wep deploy time decreased",
+            "value": 0.5
+        }, {
+            "name": "damage bonus",
+            "value": 1.5
+        }, {
+            "name": "clip size penalty",
+            "value": 0.5
+        }, {
+            "name": "fire rate penalty",
+            "value": 2.5
+        }, {
+            "name": "hidden secondary max ammo penalty",
+            "value": 0.2
+        }, {
+            "name": "weapon spread bonus",
+            "value": 0.25
+        }, {
+            "name": "revolver style desc",
+            "value": 1
+        }, {
+            "name": "credits",
+            "value": "TheSpookiestUser, UmKlaiDet, ZoNiCaL"
+        }, {
+            "name": "tags",
+            "value": "auto"
+        }, {
+            "name": "submission workshop link",
+            "value": "2543416205"
+        }],
+        "preview": {
+            "path": "weapons/c_quickdraw.glb",
+            "type": "secondary",
+            "skeletonName": "c_brick.qc_skeleton",
+            "classIDs": [
+                5
+            ]
+        }
+    },
+    "1010": {
+        "name": "Bloody Brick",
+        "item_logname":"brick",
+        "description": "When you run out of jars to throw at someone, a good hardy brick just laying around can be more than enough to send a message at someone's face.",
+        "propername": true,
+        "type": "weapon",
+        "item_class": "tf_weapon_jar",
+        "item_index": 58,
+        "world_model": "models/weapons/c_models/c_brick/c_brick.mdl",
+        "image": "{CDN}/assets/images/inventory/items/all_class/brick.png",
+        "preserve_attributes": true,
+        "used_by_classes": {
+            "sniper": 1
+        },
+        "capabilities": {
+            "can_strangify": true,
+            "can_deal_damage": true,
+            "can_destroy_buildings": true
+        },
+        "attributes": [{
+            "name": "proj is brick",
+            "value": 1
+        }, {
+            "name": "brick speed",
+            "value": 1.8
+        }, {
+            "name": "brick bleed",
+            "value": 4.0
+        }, {
+            "name": "brick bleed min",
+            "value": 3.0
+        }, {
+            "name": "brick bleed max",
+            "value": 8.0
+        }, {
+            "name": "brick bleed dist",
+            "value": 550.0
+        }, {
+            "name": "brick bleed dist min",
+            "value": 400.0
+        }, {
+            "name": "effect bar recharge rate increased",
+            "value": 0.5
+        }, {
+            "name": "brick no point blank",
+            "value": 1
+        }, {
+            "name": "full value damage bonus",
+            "value": 25.0
+        }, {
+            "name": "credits",
+            "value": "Strange Sentinel, Sims_doc, Ivory"
+        }, {
+            "name": "tags",
+            "value": "auto"
+        }, {
+            "name": "submission workshop link",
+            "value": "1238959606"
+        }],
+        "preview": {
+            "path": "weapons/c_brick.glb",
+            "type": "melee",
+            "skeletonName": "c_quickdraw_engineer.qc_skeleton",
+            "classIDs": [
+                7
+            ]
+        }
+    },
+    "1011": {
+        "name": "Conjurer's Staff",
+        "item_logname":"conjurers_staff",
+        "description": "To the untrained eye, this looks like any regular old staff. If you look very carefully however, you may be able spot a magical glowing crystal!",
+        "type": "weapon",
+        "image": "{CDN}/assets/images/inventory/items/all_class/conjurers_staff.png",
+        "item_class": "tf_weapon_saxxy",
+        "item_index": 30758,
+        "world_model": "models/weapons/c_models/c_conjstaff/c_conjstaff.mdl",
+        "preserve_attributes": true,
+        "capabilities": {
+            "can_deal_damage": true,
+            "can_strangify": true
+        },
+        "used_by_classes": {
+            "scout": 2,
+            "soldier": 2,
+            "pyro": 2,
+            "demo": 2,
+            "heavy": 2,
+            "engineer": 2,
+            "sniper": 2,
+            "medic": 2
+        },
+        "attributes": [{
+            "name": "credits",
+            "value": "santumerino"
+        }, {
+            "name": "tags",
+            "value": "auto"
+        }, {
+            "name": "submission workshop link",
+            "value": "2581401876"
+        }],
+        "preview": {
+            "path": "weapons/c_conjstaff.glb",
+            "type": "melee",
+            "skeletonName": "",
+            "classIDs": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+            ]
+        }
+    },
+    "1012": {
+        "name": "Scattershock",
+        "type": "weapon",
+        "image": "{CDN}/assets/images/inventory/items/scout/lightning_scattergun.png",
+        "propername": true,
+        "item_class": "tf_weapon_scattergun",
+        "world_model": "models/weapons/c_models/c_lightning_sg/c_lightning_sg.mdl",
+        "item_index": 200,
+        "preserve_attributes": true,
+        "used_by_classes": {
+            "scout": 0
+        },
+        "attributes": [{
+            "name": "charge shot with secondary",
+            "value": 1
+        }, {
+            "name":  "charge shot with secondary time",
+            "value": 2.5
+        }, {
+            "name":  "charge shot with secondary decay",
+            "value": 1.5
+        }, {
+            "name": "charge shot with secondary damage",
+            "value": 1.65
+        }, {
+            "name": "charge shot with secondary clip consume",
+            "value": 3
+        }, {
+            "name": "damage penalty",
+            "value": 0.9
+        }, {
+            "name": "fire rate penalty",
+            "value": 1.15
+        }, {
+            "name": "dmg penalty vs buildings",
+            "value": 0.2
+        }, {
+            "name": "crits_become_minicrits",
+            "value": 1
+        }, {
+            "name": "ragdolls become ash",
+            "value": 1
+        }, {
+            "name": "credits",
+            "value": "McNamJam, UmKlaiDet, Qualitycont"
+        }, {
+            "name": "tags",
+            "value": "auto"
+        }, {
+            "name": "submission workshop link",
+            "value": "2583983044"
+        }],
+        "capabilities": {
+            "can_strangify": true,
+            "can_deal_damage": true,
+            "can_destroy_buildings": true,
+            "can_crit": true
+        },
+        "preview": {
+          "path": "weapons/c_lightning_sg.glb",
+          "type": "primary",
+          "classIDs": [
+              0
+          ]
+      }
     },
     "2000": {
         "name": "Scattergun",
@@ -8301,6 +9183,9 @@
                                 "key": "metalness",
                                 "value": 1
                             }
+                        ],
+                        "animationOverride": [
+                            "", "", "", "melee_sword.glb", "", "", "", "", ""
                         ]
                     }
                 }

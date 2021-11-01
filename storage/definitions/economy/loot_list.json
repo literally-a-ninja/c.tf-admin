@@ -3,43 +3,29 @@
         "_comment": "Used to give items for completing a mission.",
 
         "lists": [{
-            "_comment": "80% of getting a Robo crate",
+            "_comment": "100% of getting a Robo crate",
 
             "chance": 100,
             "type": "random_from_list",
             "items": [{
-                "name": "Digital Directive Crate"
+                "name": "Digital Directive Keyless Crate"
             }]
         }, {
-            "_comment": "40% of getting 1 random crate.",
+            "_comment": "60% of getting a random strange part.",
 
-            "chance": 40,
-            "type": "random_from_random_collection",
-            "collections": [
-                "Crates_collection"
-            ]
-        }, {
-            "_comment": "100% of getting a random strange part.",
-
-            "chance": 80,
+            "chance": 60,
             "type": "random_from_collection",
             "collection": "StrangeParts_collection"
         }, {
-            "_comment": "10% of getting a music kit.",
+            "_comment": "60% of getting a random paint kit.",
 
-            "chance": 10,
-            "type": "random_from_collection",
-            "collection": "MusicKits_collection"
-        }, {
-            "_comment": "70% of getting a random paint kit.",
-
-            "chance": 70,
+            "chance": 60,
             "type": "random_from_collection",
             "collection": "ExtraLootPaints_collection"
         }, {
-            "_comment": "50% chance to get a basic killstreak kit.",
+            "_comment": "30% chance to get a basic killstreak kit.",
 
-            "chance": 50,
+            "chance": 30,
             "type": "random_from_list",
             "items": [{
                 "name": "Killstreak Kit",
@@ -48,6 +34,20 @@
                     "value": 1
                 }]
             }]
+        }, {
+            "_comment": "30% of getting 1 random crate.",
+
+            "chance": 40,
+            "type": "random_from_random_collection",
+            "collections": [
+                "Crates_collection"
+            ]
+        }, {
+            "_comment": "10% of getting a music kit.",
+
+            "chance": 10,
+            "type": "random_from_collection",
+            "collection": "MusicKits_collection"
         }]
     },
     "mvm_victory_directive": {

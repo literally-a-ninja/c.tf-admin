@@ -34,15 +34,15 @@
             "waves": 5,
             "indicators": ["major_changes", "gatebot"]
         }, {
-            "map": "mvm_goldpit_rc1",
+            "map": "mvm_goldpit_rc2",
             "name": "Equal Opposites",
-            "title": "mvm_goldpit_rc1_adv_equal_opposites",
+            "title": "mvm_goldpit_rc2_adv_equal_opposites",
             "waves": 7,
             "indicators": ["gatebot"]
         }, {
-            "map": "mvm_goldpit_rc1",
+            "map": "mvm_goldpit_rc2",
             "name": "Gilded Mainframe",
-            "title": "mvm_goldpit_rc1_adv_gilded_mainframe",
+            "title": "mvm_goldpit_rc2_adv_gilded_mainframe",
             "waves": 7,
             "indicators": ["robot_changes", "player_changes"]
         }, {
