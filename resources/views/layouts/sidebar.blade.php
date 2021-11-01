@@ -7,7 +7,7 @@
 		<span class="brand-text font-weight-light">C.TF Watchroom</span>
 	</a>
 
-	<div class="sidebar">
+	<div class="sidebar" style="overflow-y: auto;">
 		<nav class="mt-2">
 			<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 				@include('layouts.menu')
