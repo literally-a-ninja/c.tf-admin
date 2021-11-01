@@ -42,14 +42,23 @@
 				</div>
 			</div>
 			<div class="card-footer row">
-				<span>
-				<i class="fas fa-thumbs-up"></i>
-				{{$post->likes,0}}
-			</span>
-			<span>
-				<i class="fas fa-eye"></i>
-				{{$post->views}}
-			</span>
+				<span class="col-1">
+					<i class="fas fa-thumbs-up"></i>
+					@if (isset($post->likes))
+					{{ $post->likes }}
+					@else
+						0
+					@endif
+					{{$post->likes}}
+				</span>
+				<span class="col-1">
+					<i class="fas fa-eye"></i>
+					@if (isset($post->views))
+						{{ $post->views }}
+					@else
+						0
+					@endif
+				</span>
 			</div>
 		</div>
 	</div>

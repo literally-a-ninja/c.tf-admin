@@ -51,18 +51,34 @@
 							<td>{{ $post->created }}</td>
 							<td>{{ $post->published }}</td>
 							<td>{{ $post->author }}</td>
-							<td>{{ $post->views }}</td>
-							<td>{{ $post->likes }}</td>
+							<td>
+								<i class="fas fa-eye"></i>
+								@if (isset($post->views))
+									{{ $post->views }}
+								@else
+									0
+								@endif
+							</td>
+							<td>
+								<i class="fas fa-thumbs-up"></i>
+								@if (isset($post->likes))
+									{{ $post->likes }}
+								@else
+									0
+								@endif
+							</td>
 							<td width="120">
 								{!! Form::open(['route' => ['posts.destroy', $post->id], 'method' => 'delete']) !!}
 								<div class='btn-group'>
 									<a href="{{ route('posts.show', [$post->id]) }}" class='btn btn-default btn-xs'>
 										<i class="far fa-eye"></i>
 									</a>
-									<a href="{{ route('posts.edit', [$post->id]) }}" class='btn btn-default btn-xs'>
+									{{--
+									<a href="{{ route('posts.edit', [$post->id]) }}" class='btn btn-default btn-xs disabled'>
 										<i class="far fa-edit"></i>
 									</a>
 									{!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+									--}}
 								</div>
 								{!! Form::close() !!}
 							</td>
