@@ -9,6 +9,7 @@
     <a 
     {{--href="{{ route('contracts.index') }}"--}}
         class="nav-link {{ Request::is('contracts*') ? 'active' : '' }}">
+				<i class="nav-icon far fa-tablet-alt"></i>
         <p class="text-muted" >Contracts</p>
     </a>
 </li>
@@ -17,6 +18,7 @@
     <a 
     {{--href="{{ route('servers.index') }}"--}}
         class="nav-link {{ Request::is('servers*') ? 'active' : '' }}">
+				<i class="nav-icon far fa-tablet-alt"></i>
         <p class="text-muted" >Servers</p>
     </a>
 </li>
@@ -31,7 +33,7 @@
     <a
     href="{{ route('users.index') }}"
         class="nav-link {{ Request::is('users*') ? 'active' : '' }}">
-        <p >Players</p>
+        <p >Users</p>
     </a>
 </li>
 
@@ -40,7 +42,7 @@
     <a 
     {{--href="{{ route('statistics.index') }}"--}}Z
         class="nav-link {{ Request::is('statistics*') ? 'active' : '' }}">
-        <p class="text-muted" >Player Experience</p>
+        <p class="text-muted" >Statistics</p>
     </a>
 </li>
 
